@@ -7,10 +7,11 @@ There's a fish
 -> Eat it
     <<set $eatenfish to true>>
     It has a weird taste... hm
-    <<jump Continue>>
+    <<detour Continue>>
 -> Yeet it
     I have to keep away from calories.
      <<jump Continue>>
+Welp.
 ===
 title: Continue
 ---
