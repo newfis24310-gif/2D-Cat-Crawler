@@ -1,5 +1,21 @@
 ﻿title: Start
 ---
+<<declare $eatenfish = false>>
 Steve: Ok, here kitty kitty!
 Clark: The wild cat has sharpened her deadly claws.
+There's a fish
+-> Eat it
+    <<set $eatenfish to true>>
+    It has a weird taste... hm
+    <<jump Continue>>
+-> Yeet it
+    I have to keep away from calories.
+     <<jump Continue>>
+===
+title: Continue
+---
+Your story goes on...
+<<if $eatenfish>>
+    Your stomach feels full.
+<<endif>>
 ===
