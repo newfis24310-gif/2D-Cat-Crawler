@@ -72,4 +72,11 @@ public class GridManager : MonoBehaviour
         }
         return null; // Επιστρέφει null αν οι συντεταγμένες είναι εκτός ορίων
     }
+
+    // Μέθοδος για να αποκαλύπτουμε το tile που έχει μπει ο  παίκτης/
+    //  Θα καλείται από τον Player όταν μετακινείται σε ένα νέο tile;;;;
+    public void revealTile(int x, int y)
+    {
+        // 
+    }
 }
