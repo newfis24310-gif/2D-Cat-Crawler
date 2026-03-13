@@ -45,7 +45,8 @@ public class GridManager : MonoBehaviour
                 BaseTile tileObject = Instantiate(tilePrefab, tilePosition, Quaternion.identity); // Δημιουργούμε το tile στη σωστή θέση
                 tileObject.name = $"Tile_{x}_{y}"; // Ονομάζουμε το tile για ευκολότερη αναγνώριση στο hierarchy και το debugging
                 tileObject.transform.parent = transform; // Ορίζουμε το GridManager ως γονέα για καλύτερη οργάνωση στο hierarchy
-                
+                // Ρυθμίζουμε τις συντεταγμένες του tile στον πίνακα μέσω της μεθόδου SetUp του BaseTile
+                tileObject.SetUp(x, y); 
                 // Αποθήκευση στον πίνακα grid
                 grid[x,y] = tileObject;
                 
@@ -75,8 +76,17 @@ public class GridManager : MonoBehaviour
 
     // Μέθοδος για να αποκαλύπτουμε το tile που έχει μπει ο  παίκτης/
     //  Θα καλείται από τον Player όταν μετακινείται σε ένα νέο tile;;;;
-    public void revealTile(int x, int y)
+    public void RevealTile(int x, int y)
     {
-        // 
+        // Έλεγχος οριών πίνακα
+        if (x < 00 || x >= width || y < 0 || y >= height)
+        {
+            Debug.LogWarning($"Attempted to reveal tile at ({x}, {y}), but it's out of bounds.");
+            return; // Επιστρέφουμε αν οι συντεταγμένες είναι εκτός ορίων
+        }
+
+        grid[x, y].RevealTile(true); // Αποκαλύπτουμε το tile που βρίσκεται στις συντεταγμένες (x, y)
+
+
     }
 }

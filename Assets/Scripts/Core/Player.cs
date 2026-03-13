@@ -1,13 +1,16 @@
 using UnityEngine;
 
 public class Player : MonoBehaviour
-{
+{   
+    [Header("References")]
     public GridManager gridManager; // Αναφορά στον GridManager για να μπορούμε να αλληλεπιδράσουμε με τα tiles
     private Vector3 targetPosition; // Η θέση που θέλουμε να μετακινηθεί ο παίκτης
 
+    [Header("Player Stats")]
     public int x, y; // Συντεταγμένες του παίκτη στον πίνακα
     public int maxHealth = 100; // Υγεία του παίκτη (έβαλα 100 αυθαίρετα, το βλέπουμε)
     public int currentHealth;
+    public bool isAlive = true; // Κατάσταση ζωής του παίκτη
     
     void Start()
     {
@@ -38,6 +41,9 @@ public class Player : MonoBehaviour
             x = clickedTile.x; // Ενημέρωση των συντεταγμένων του παίκτη
             y = clickedTile.y;
             Debug.Log($"Player moved to tile at ({clickedTile.name}) with coordinates ({clickedTile.x}, {clickedTile.y})");
+    
+            gridManager.RevealTile(x, y); // Αποκαλύπτουμε το tile που βρίσκεται στις συντεταγμένες του παίκτη
+
         }
     }
 
@@ -56,6 +62,7 @@ public class Player : MonoBehaviour
     // Μέθοδος για να χειριστούμε το θάνατο του παίκτη
     private void Die()
     {
+        isAlive = false; // Ο παίκτης δεν είναι πλέον ζωντανός
         Debug.Log("Player has died!");
         // Εδώ μπορούμε να προσθέσουμε λογική για το τι συμβαίνει όταν ο παίκτης πεθαίνει 
         // π.χ. να αλλάζει το sprite της γάτας σε σκελετό.

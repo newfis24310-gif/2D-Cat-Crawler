@@ -317,7 +317,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   width: 5
   height: 4
-  tilePrefab: {fileID: 0}
+  tilePrefab: {fileID: 8994755127399401231, guid: 7f48bc889c0e4cd488e18646223d9adc, type: 3}
   tileSpacing: 1.5
 --- !u!1 &519420028
 GameObject:
@@ -546,37 +546,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &906287192
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 906287193}
-  m_Layer: 0
-  m_Name: Managers
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &906287193
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 906287192}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &915545795 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 9078442560890639579, guid: 52571f68872914e24837210513edea1d, type: 3}
@@ -698,6 +667,7 @@ MonoBehaviour:
   y: 0
   maxHealth: 100
   currentHealth: 0
+  isAlive: 1
 --- !u!1001 &6932855482325357220
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -750,6 +720,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5980726342998907677, guid: 57692e5f2785811449c904233c5627e9, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 2078166861265284774, guid: aa957ef6606fd6d4a9af4bdf53a162ac, type: 3}
+    - target: {fileID: 5980726342998907677, guid: 57692e5f2785811449c904233c5627e9, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5980726342998907677, guid: 57692e5f2785811449c904233c5627e9, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5980726342998907677, guid: 57692e5f2785811449c904233c5627e9, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -765,7 +751,6 @@ SceneRoots:
   - {fileID: 519420032}
   - {fileID: 619394802}
   - {fileID: 62296974}
-  - {fileID: 906287193}
   - {fileID: 77320046}
   - {fileID: 6932855482325357220}
   - {fileID: 1460109567}

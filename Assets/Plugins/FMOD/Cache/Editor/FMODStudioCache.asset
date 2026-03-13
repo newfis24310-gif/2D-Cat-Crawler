@@ -51,7 +51,7 @@ MonoBehaviour:
   StringsBanks:
   - {fileID: 3043381683058450486}
   cacheVersion: 131858
-  cacheTime: 639088660675634955
+  cacheTime: 639090010570366193
   SerializableEventsDict:
   - key: event:/Ambience/Lab
     index: 0
@@ -70,7 +70,7 @@ MonoBehaviour:
   Path: FMOD/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639088660665363145
+  lastModified: 639090010570366193
   FileSizes:
   - Name: 
     Value: 824
@@ -90,7 +90,7 @@ MonoBehaviour:
   Path: FMOD/Desktop/Ambience.bank
   Name: Ambience
   StudioPath: bank:/Ambience
-  lastModified: 639088660675634955
+  lastModified: 639090010570204370
   FileSizes: []
   Exists: 1
 --- !u!114 &6062927433946371482
@@ -108,6 +108,6 @@ MonoBehaviour:
   Path: FMOD/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 639088660665343142
+  lastModified: 639090010570366193
   FileSizes: []
   Exists: 1
