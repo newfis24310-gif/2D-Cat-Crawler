@@ -1,9 +1,11 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class BaseTile : MonoBehaviour
 {
     public int x,y; // Συντεταγμένες του πλακιδίου στον πίνακα
     public bool isRevealed = false; // Κατάσταση αν το πλακίδιο έχει αποκαλυφθεί ή όχι
+    public List<BaseTile> neighbors = new List<BaseTile>(); // Λίστα με τα έγκυρα γειτονικά tiles (Πάνω, κάτω, δεξία, αριστερά)
     
     public Sprite hiddenSprite; // Το sprite που θα εμφανίζεται όταν το πλακίδιο δεν είναι αποκαλυμμένο
     public Sprite revealedSprite; // Το sprite που θα εμφανίζεται όταν το πλακίδιο είναι αποκαλυμμένο

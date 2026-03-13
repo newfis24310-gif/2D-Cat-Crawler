@@ -16,6 +16,19 @@ public class Player : MonoBehaviour
     {
         currentHealth = maxHealth; // Αρχικοποίηση της τρέχουσας υγείας με τη μέγιστη υγεία
         targetPosition = transform.position; // Αρχικά, η τρέχουσα θέση είναι και o στόχος
+
+        BaseTile startTile = gridManager.GetStartTile(); // Λαμβάνουμε το αρχικό tile από τον GridManager
+        if (startTile != null)
+        {
+            x = startTile.x; // Ορίζουμε τις συντεταγμένες του παίκτη σύμφωνα με το αρχικό tile
+            y = startTile.y;
+            transform.position = new Vector3(startTile.transform.position.x, startTile.transform.position.y, -1f); // Τοποθετούμε τον παίκτη στη θέση του αρχικού tile
+            gridManager.RevealTile(x, y); // Αποκαλύπτουμε το tile που βρίσκεται στις συντεταγμένες του παίκτη
+        }
+        else
+        {
+            Debug.LogError("No starting tile found! Please ensure the GridManager has a valid starting tile.");
+        }
     }
 
     void Update()
@@ -34,16 +47,21 @@ public class Player : MonoBehaviour
 
         BaseTile clickedTile = gridManager.GetTileAtPosition(mousePosition); // Λαμβάνουμε το tile που βρίσκεται στη θέση του κλικ του ποντικιού μέσω του GridManager
 
-        if (clickedTile != null)
+        BaseTile currentTile = gridManager.GetTileAtPosition(transform.position); // Λαμβάνουμε το tile που βρίσκεται ο παίκτης αυτή τη στιγμή
+        if (clickedTile != null && currentTile != null)
         {
-            targetPosition = clickedTile.transform.position; // Ορίζουμε τη νέα θέση στόχο ως τη θέση του tile που κλικάραμε
-            transform.position = new Vector3(targetPosition.x, targetPosition.y, transform.position.z); // Μετακίνηση του παίκτη στη νέα θέση
-            x = clickedTile.x; // Ενημέρωση των συντεταγμένων του παίκτη
-            y = clickedTile.y;
-            Debug.Log($"Player moved to tile at ({clickedTile.name}) with coordinates ({clickedTile.x}, {clickedTile.y})");
-    
-            gridManager.RevealTile(x, y); // Αποκαλύπτουμε το tile που βρίσκεται στις συντεταγμένες του παίκτη
+            // Ελέγχουμε αν το tile που κλικάραμε είναι γειτονικό με το tile που βρίσκεται ο παίκτης αυτή τη στιγμή
+            if (currentTile.neighbors.Contains(clickedTile))
+            {
+                targetPosition = clickedTile.transform.position; // Ορίζουμε τη νέα θέση στόχο ως τη θέση του tile που κλικάραμε
+                transform.position = new Vector3(targetPosition.x, targetPosition.y, transform.position.z); // Μετακίνηση του παίκτη στη νέα θέση
+                x = clickedTile.x; // Ενημέρωση των συντεταγμένων του παίκτη
+                y = clickedTile.y;
+                Debug.Log($"Player moved to tile at ({clickedTile.name}) with coordinates ({clickedTile.x}, {clickedTile.y})");
+        
+                gridManager.RevealTile(x, y); // Αποκαλύπτουμε το tile που βρίσκεται στις συντεταγμένες του παίκτη
 
+            }
         }
     }
 

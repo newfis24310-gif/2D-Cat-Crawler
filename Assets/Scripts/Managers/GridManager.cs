@@ -14,6 +14,8 @@ public class GridManager : MonoBehaviour
     void Start()
     {
         GenerateGrid();
+        SetUpNeighbors();
+        GetStartTile();
     }
 
     // Μέθοδος για τη δημιουργία του grid και την τοποθέτηση των tiles
@@ -88,5 +90,30 @@ public class GridManager : MonoBehaviour
         grid[x, y].RevealTile(true); // Αποκαλύπτουμε το tile που βρίσκεται στις συντεταγμένες (x, y)
 
 
+    }
+
+    // Μέθοδος για να ρυθμίσουμε τους γείτονες κάθε tile μετά τη δημιουργία του grid
+    private void SetUpNeighbors()
+    {
+        for (int x = 0; x < width; x++)
+        {
+            for (int y = 0; y < height; y++)
+            {
+                BaseTile currentTile = grid[x, y];
+
+                // Προσθέτουμε τους γείτονες (πάνω, κάτω, δεξιά, αριστερά) αν είναι εντός ορίων
+                if (y < height - 1) currentTile.neighbors.Add(grid[x, y + 1]); // Πάνω
+                if (y > 0) currentTile.neighbors.Add(grid[x, y - 1]); // Κάτω
+                if (x < width - 1) currentTile.neighbors.Add(grid[x + 1, y]); // Δεξιά
+                if (x > 0) currentTile.neighbors.Add(grid[x - 1, y]); // Αριστερά
+            }
+        }
+    }
+
+    //Μέθοδος για τον ορισμό του αρχικού tile
+    public BaseTile GetStartTile()
+    {
+        int randomY = Random.Range(0, 3); // Επιλέγουμε τυχαία μια γραμμή για το αρχικό tile
+        return grid[0, randomY]; // Επιστρέφουμε το tile στην πρώτη στήλη και στη τυχαία γραμμή
     }
 }
