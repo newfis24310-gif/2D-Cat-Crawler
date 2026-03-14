@@ -78,7 +78,7 @@ public class GridManager : MonoBehaviour
 
     // Μέθοδος για να αποκαλύπτουμε το tile που έχει μπει ο  παίκτης/
     //  Θα καλείται από τον Player όταν μετακινείται σε ένα νέο tile;;;;
-    public void RevealTile(int x, int y)
+    public void UpdateGridVisibility(int x, int y)
     {
         // Έλεγχος οριών πίνακα
         if (x < 00 || x >= width || y < 0 || y >= height)
