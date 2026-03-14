@@ -1,10 +1,14 @@
 using UnityEngine;
-
-public class ExitTile : BaseTile
+/*
+ * Κλάση για ένα απλό, κενό tile.
+ * Δεν έχει κάποιο ειδικό effect πάνω στον παίκτη.
+ * Απλώς καταγράφουμε ότι ο παίκτης μπήκε σε αυτό.
+ */
+public class EmptyTile : BaseTile
 {
-    public new void onPlayerEnter()
+    // Καλείται όταν ο παίκτης εισέρχεται στο συγκεκριμένο tile
+        public override void OnPlayerEnter()
     {
-        RevealTile(true);
-        Debug.Log($"Player reached ExitTile at ({x}, {y})");
+        Debug.Log($"Player entered EmptyTile at ({x}, {y})");
     }
 }

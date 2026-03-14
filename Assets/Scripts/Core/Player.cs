@@ -5,6 +5,7 @@ public class Player : MonoBehaviour
     [Header("References")]
     public GridManager gridManager; // Αναφορά στον GridManager για να μπορούμε να αλληλεπιδράσουμε με τα tiles
     private Vector3 targetPosition; // Η θέση που θέλουμε να μετακινηθεί ο παίκτης
+    public GameManager gameManager; // Αναφορά στον GameManager για να μπορούμε να διαχειριστούμε την κατάσταση του παιχνιδιού
 
     [Header("Player Stats")]
     public int x, y; // Συντεταγμένες του παίκτη στον πίνακα

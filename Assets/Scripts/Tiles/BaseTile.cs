@@ -17,7 +17,7 @@ public class BaseTile : MonoBehaviour
         spriteRenderer.sprite = hiddenSprite; // Αρχικά, το πλακίδιο εμφανίζει το κρυφό sprite
     }
 
-    public void onPlayerEnter(){} // Μέθοδος που θα καλείται όταν ο παίκτης μπει σε αυτό το πλακίδιο, μπορεί να επεκταθεί για να προσθέσει εφέ ή αλληλεπιδράσεις
+    public virtual void OnPlayerEnter() {} // Μέθοδος που θα καλείται όταν ο παίκτης μπει σε αυτό το πλακίδιο, μπορεί να επεκταθεί για να προσθέσει εφέ ή αλληλεπιδράσεις
     public void SetUp(int x, int y)
     {
         // Ορίζουμε τις συντεταγμένες του πλακιδίου στον πίνακα
