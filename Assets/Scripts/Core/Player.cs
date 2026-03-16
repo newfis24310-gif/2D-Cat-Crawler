@@ -12,6 +12,7 @@ public class Player : MonoBehaviour
     public int maxHealth = 100; // Υγεία του παίκτη (έβαλα 100 αυθαίρετα, το βλέπουμε)
     public int currentHealth;
     public bool isAlive = true; // Κατάσταση ζωής του παίκτη
+    public bool canMove = true; // Δυνατότητα κίνησης του παίκτη (μπορεί να απενεργοποιηθεί όταν ο παίκτης πεθάνει)
     
     void Start()
     {
@@ -43,6 +44,8 @@ public class Player : MonoBehaviour
     // Μέθοδος για να χειριστούμε την κίνηση του παίκτη προς το tile που κλικάραμε
     private void HandleMovement()
     {
+        if (!canMove) return;
+        
         Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition); // Μετατροπή της θέσης του ποντικιού σε συντεταγμένες κόσμου
         mousePosition.z = 0; // Διασφαλίζουμε ότι ο στόχος είναι στο ίδιο επίπεδο με τον παίκτη
 
@@ -65,7 +68,9 @@ public class Player : MonoBehaviour
                 if (clickedTile is ExitTile)
                 {
                     Debug.Log("Player has reached the exit tile!");
-                    gameManager.OnPlayerReachedExit(isAlive); // Ενημερώνουμε τον GameManager ότι ο παίκτης έφτασε στο tile εξόδου
+                    //gameManager.OnPlayerReachedExit(isAlive); // Ενημερώνουμε τον GameManager ότι ο παίκτης έφτασε στο tile εξόδου
+                    // ΓΙΑ ΤΕΣΤ: o παίκτης είναι νεκρός, για να δούμε πως δουλεύει η αλλαγή των γύρων
+                    gameManager.OnPlayerReachedExit(false); // Ενημερώνουμε τον GameManager ότι ο παίκτης έφτασε στο tile εξόδου αλλά είναι νεκρός
                 }
             }
         }

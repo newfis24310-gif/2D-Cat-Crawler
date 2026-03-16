@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -61,7 +62,8 @@ public class GameManager : MonoBehaviour
         if (currentAttempt < maxAttempts)
         {
             currentAttempt++; // Αύξηση του αριθμού των προσπαθειών
-            NextAttempt(); // Προετοιμασία για την επόμενη προσπάθεια
+            //NextAttempt(); // Προετοιμασία για την επόμενη προσπάθεια
+            StartCoroutine(NextAttemptCoroutine()); // Χρήση Coroutine για να έχουμε μια μικρή καθυστέρηση πριν την επόμενη προσπάθεια
         }
         else
         {
@@ -78,7 +80,15 @@ public class GameManager : MonoBehaviour
             BaseTile newStartTile = gridManager.GetStartTile(); // Λαμβάνουμε το αρχικό tile από τον GridManager
             player.ResetPlayer(newStartTile);
             newStartTile.RevealTile(true); // Αποκαλύπτουμε το tile που βρίσκεται στις συντεταγμένες του παίκτη
+            player.canMove = true; // Ενεργοποιούμε ξανά την κίνηση του παίκτη
         }
+    }
+
+    private IEnumerator NextAttemptCoroutine()
+    {
+        player.canMove = false; // Απενεργοποιούμε την κίνηση του παίκτη κατά τη διάρκεια της μετάβασης
+        yield return new WaitForSeconds(2f); // Μικρή καθυστέρηση πριν την επόμενη προσπάθεια
+        NextAttempt();
     }
 }
 
