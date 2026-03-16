@@ -317,8 +317,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   width: 5
   height: 4
-  tilePrefab: {fileID: 8994755127399401231, guid: 7f48bc889c0e4cd488e18646223d9adc, type: 3}
   tileSpacing: 1.5
+  emptyTilePrefab: {fileID: 0}
+  exitTilePrefab: {fileID: 0}
+  actionTilePrefab: {fileID: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -663,6 +665,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gridManager: {fileID: 77320047}
+  gameManager: {fileID: 0}
   x: 0
   y: 0
   maxHealth: 100

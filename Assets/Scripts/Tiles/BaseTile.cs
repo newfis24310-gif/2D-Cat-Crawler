@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BaseTile : MonoBehaviour
+public abstract class BaseTile : MonoBehaviour
 {
     public int x,y; // Συντεταγμένες του πλακιδίου στον πίνακα
     public bool isRevealed = false; // Κατάσταση αν το πλακίδιο έχει αποκαλυφθεί ή όχι
@@ -17,7 +17,7 @@ public class BaseTile : MonoBehaviour
         spriteRenderer.sprite = hiddenSprite; // Αρχικά, το πλακίδιο εμφανίζει το κρυφό sprite
     }
 
-    public virtual void OnPlayerEnter() {} // Μέθοδος που θα καλείται όταν ο παίκτης μπει σε αυτό το πλακίδιο, μπορεί να επεκταθεί για να προσθέσει εφέ ή αλληλεπιδράσεις
+    public abstract void OnPlayerEnter(); // Μέθοδος που θα καλείται όταν ο παίκτης μπει σε αυτό το πλακίδιο, πρέπει να υλοποιηθεί από τις υποκλάσεις
     public void SetUp(int x, int y)
     {
         // Ορίζουμε τις συντεταγμένες του πλακιδίου στον πίνακα
