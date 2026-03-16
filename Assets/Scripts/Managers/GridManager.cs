@@ -153,10 +153,9 @@ public class GridManager : MonoBehaviour
         int x = Mathf.RoundToInt((position.x - startX) / tileSpacing); 
         int y = Mathf.RoundToInt((position.y - startY) / tileSpacing);
 
-        if (x >= 0 && x < width && y >= 0 && y < height) // Ελέγχουμε αν οι συντεταγμένες είναι εντός των ορίων του grid
-        {
-            return grid[x, y]; // Επιστρέφουμε το tile που βρίσκεται στη θέση του κλικ του ποντικιού
-        }
+       // Ελέγχουμε αν οι συντεταγμένες είναι εντός των ορίων του grid
+        if (x >= 0 && x < width && y >= 0 && y < height)  return grid[x, y];
+
         return null; // Επιστρέφει null αν οι συντεταγμένες είναι εκτός ορίων
     }
 
@@ -198,5 +197,18 @@ public class GridManager : MonoBehaviour
     public BaseTile GetStartTile()
     {
         return grid[startTilePosition.x, startTilePosition.y]; // Επιστρέφουμε το tile που βρίσκεται στη θέση του αρχικού tile
+    }
+
+    public void ResetGrid()
+    {
+        foreach (BaseTile tile in grid)
+        {
+            if (tile != null) Destroy(tile.gameObject); // Καταστρέφουμε κάθε tile που υπάρχει στο grid
+        }
+
+        grid = null; // Αδειάζουμε τον πίνακα grid
+        CalculateGridOffsets(); // Υπολογίζουμε ξανά τις αρχικές συντεταγμένες για το νέο grid
+        GenerateGrid(); // Δημιουργούμε ένα νέο grid
+        SetUpNeighbors();
     }
 }

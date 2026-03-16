@@ -61,7 +61,12 @@ public class Player : MonoBehaviour
                 Debug.Log($"Player moved to tile at ({clickedTile.name}) with coordinates ({clickedTile.x}, {clickedTile.y})");
         
                 gridManager.UpdateGridVisibility(x, y); // Αποκαλύπτουμε το tile που βρίσκεται στις συντεταγμένες του παίκτη
-
+                
+                if (clickedTile is ExitTile)
+                {
+                    Debug.Log("Player has reached the exit tile!");
+                    gameManager.OnPlayerReachedExit(isAlive); // Ενημερώνουμε τον GameManager ότι ο παίκτης έφτασε στο tile εξόδου
+                }
             }
         }
     }
@@ -72,10 +77,8 @@ public class Player : MonoBehaviour
         currentHealth -= damage; // Μείωση της τρέχουσας υγείας κατά το ποσό της ζημιάς
         Debug.Log($"Player took {damage} damage. Current health: {currentHealth}");
 
-        if (currentHealth <= 0)
-        {
-            Die(); // Αν η υγεία πέσει στο μηδέν ή κάτω, ο παίκτης πεθαίνει
-        }
+        if (currentHealth <= 0) Die(); // Αν η υγεία πέσει στο μηδέν ή κάτω, ο παίκτης πεθαίνει
+
     }
 
     // Μέθοδος για να χειριστούμε το θάνατο του παίκτη
@@ -92,11 +95,19 @@ public class Player : MonoBehaviour
     public void Heal(int amount)
     {
         currentHealth += amount; // Αύξηση της τρέχουσας υγείας κατά το ποσό της θεραπείας
-        if (currentHealth > maxHealth)
-        {
-            currentHealth = maxHealth; // Διασφάλιση ότι η υγεία δεν υπερβαίνει τη μέγιστη υγεία
-        }
+        if (currentHealth > maxHealth) currentHealth = maxHealth;
         Debug.Log($"Player healed by {amount}. Current health: {currentHealth}");
+    }
+
+    public void ResetPlayer(BaseTile startTile)
+    {
+        currentHealth = maxHealth; // Επαναφορά της υγείας στην μέγιστη τιμή
+        isAlive = true; // Ο παίκτης είναι ξανά ζωντανός
+        x = startTile.x; // Ενημέρωση των συντεταγμένων του παίκτη σύμφωνα με το αρχικό tile
+        y = startTile.y;
+        transform.position = new Vector3(startTile.transform.position.x, startTile.transform.position.y, -1f); // Τοποθετούμε τον παίκτη στη θέση του αρχικού tile
+        targetPosition = transform.position; // Ενημέρωση της θέσης στόχου στην τρέχουσα θέση
+        Debug.Log("Player has been reset to the starting position with full health.");
     }
 
 }
