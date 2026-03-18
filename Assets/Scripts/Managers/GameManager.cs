@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour
 
     [Header("Game Settings")]
     public int maxAttempts = 7;
-    private int currentAttempt = 1;
+    [SerializeField] private int currentAttempt = 1;
     private bool gameOver = false;
 
     [Header("References")]

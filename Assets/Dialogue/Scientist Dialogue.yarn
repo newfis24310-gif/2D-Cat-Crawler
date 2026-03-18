@@ -3,15 +3,18 @@ position: -120,-168
 ---
 <<declare $eatenFish = false>>
 <<declare $deathOnce = false>>
+<<notmove Cat>>
 Ok, here kitty kitty!
 The wild cat has sharpened her deadly claws.
 She follows her animalistic insticts. She sees red!
 Will she catch her prey or will she settle for substitute cat food? I wonder...
+<<move Cat>>
 ===
 
 title: WinFirstRound
 position: -124,-27
 ---
+<<notmove Cat>>
 Ok... wow...
 that was unexpected
 <<wait  1>>
@@ -22,6 +25,7 @@ Yeah.
 title: Win
 position: -125,110
 ---
+<<notmove Cat>>
 Clark: ...Ok, that was a lucky guess
 Steve: So... that's it?
 Clark: We did it! The experiment is complete.
@@ -45,6 +49,7 @@ Clark: I'll call my dad's insurance company.
 title: EndRound1
 position: 110,-41
 ---
+<<notmove Cat>>
 Hmm... I guess she is not coming out
 So, this must mean that she is dead. She will never know the taste. Rest in peace kitty.
 Not yet. Remember, she can't be either unless we check.
@@ -63,11 +68,13 @@ position: 110,-41
 ---
 Steve: Ok, the mouse is ready.
 Clark: Here kitty kitty. Show it who's boss!
+<<move Cat>>
 ===
 
 title: EndRound2
 position: 110,-41
 ---
+<<notmove Cat>>
 Clark: Another one probably bites the dust.
 Steve: Good, I am allergic to cats.
 Clark: And the cats are allergic to poison. So, you don't have to worry.
@@ -82,6 +89,7 @@ Clark: No Steve, this is science!
     Steve: The what?
     Clark: Steve... just... be quiet.
 <<endif>>
+<<move Cat>>
 ===
 
 title: HasFoundFishBefore
@@ -97,6 +105,7 @@ Steve: Oh yeah yeah...
 title: EndRound3
 position: 110,-41
 ---
+<<notmove Cat>>
 <<wait  2>>
 Steve: Well, here we go again.
 Clark: We really need to automate corpse disposal
@@ -112,11 +121,13 @@ Clark: Well, yes.
     Steve: Wait, I feel like something is missing.
     <<jump HasFoundFishBefore>>
 <<endif>>
+<<move Cat>>
 ===
 
 title: EndRound4
 position: 114,-39
 ---
+<<notmove Cat>>
 <<wait  2>>
 Clark: There goes another one.
 Steve: Hey Clark. I have a question?
@@ -132,11 +143,13 @@ Steve: No.
 <<wait  1>>
 Clark: How did you survive this long?
 Steve: I'm on that keto.
+<<move Cat>>
 ===
 
 title: EndRound5
 position: 114,-39
 ---
+<<notmove Cat>>
 <<wait  2>>
 Steve: I'm kind of bored
 Clark: I know.
@@ -149,11 +162,13 @@ Steve: So...
 Steve: The cat is dead
 <<wait  1>>
 Steve: Well, anyway. Let's bring in the next specimen.
+<<move Cat>>
 ===
 
 title: EndRound6
 position: 114,-39
 ---
+<<notmove Cat>>
 <<wait  2>>
 Steve: ...Are you mad?
 Clark: ...No.
@@ -164,11 +179,13 @@ Steve: Well then, I guess you mentally prepare for Schrödinger's test then.
 Clark: ...Well, I can't stay mad at you forever.
 Steve: Of course, I pay for-
 Clark: You pay for the rent. I know.
+<<move Cat>>
 ===
 
 title: EndRound7
 position: 114,-39
 ---
+<<notmove Cat>>
 <<wait  2>>
 Clark: Too bad. Welp, thank you next.
 Steve: Clark, there is no next.
@@ -186,4 +203,5 @@ Clark: ...I spent so much money on this
 Clark: ...my dad is gonna kill me
 <<wait  1>>
 Clark: Welp, time to flee the country.
+<<move Cat>>
 ===
