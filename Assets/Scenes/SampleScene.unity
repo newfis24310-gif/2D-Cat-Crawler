@@ -1402,6 +1402,7 @@ MonoBehaviour:
   maxAttempts: 7
   currentAttempt: 1
   feedbackManager: {fileID: 1988554828}
+  soundManager: {fileID: 1460109568}
 --- !u!4 &1223221771
 Transform:
   m_ObjectHideFlags: 0
@@ -1427,8 +1428,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1460109567}
   - component: {fileID: 1460109566}
+  - component: {fileID: 1460109568}
   m_Layer: 0
-  m_Name: FMOD Sound
+  m_Name: FMODSoundManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1449,13 +1451,13 @@ MonoBehaviour:
   CollisionTag: 
   EventReference:
     Guid:
-      Data1: 1676992655
-      Data2: 1103679115
-      Data3: -838348400
-      Data4: 1985478938
-    Path: event:/Ambience/Lab
+      Data1: 457648760
+      Data2: 1178382284
+      Data3: -1131490666
+      Data4: 660003524
+    Path: event:/Music/First Round
   Event: 
-  EventPlayTrigger: 1
+  EventPlayTrigger: 0
   EventStopTrigger: 0
   AllowFadeout: 1
   TriggerOnce: 0
@@ -1480,6 +1482,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1460109568
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1460109565}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a524a11b3bb9f440a967515dd55db6d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sfxLibrary: {fileID: 11400000, guid: 23a811e0fcdf00540ab7e98505d5e530, type: 2}
+  musicLibrary: {fileID: 11400000, guid: 1c7f878b3fe7b9b4e8bb803f3eb72486, type: 2}
 --- !u!1 &1672362913
 GameObject:
   m_ObjectHideFlags: 0
