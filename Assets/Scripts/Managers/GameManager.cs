@@ -1,6 +1,5 @@
 using System.Collections;
 using UnityEngine;
-using Yarn.Unity;
 
 public class GameManager : MonoBehaviour
 {
@@ -12,11 +11,11 @@ public class GameManager : MonoBehaviour
     private bool gameOver = false;
 
     [Header("References")]
-    //public FeebackManager feebackManager; // Αναφορά στον FeedbackManager για να μπορούμε να εμφανίζουμε μηνύματα στον παίκτη
+    public FeedBackManager feedbackManager; // Αναφορά στον FeedbackManager για να μπορούμε να εμφανίζουμε μηνύματα στον παίκτη
 
     private Player player; // Αναφορά στον Player για να μπορούμε να διαχειριστούμε την κατάσταση του παίκτη
     private GridManager gridManager; // Αναφορά στον GridManager για να μπορούμε να διαχειριστούμε το grid
-    public DialogueRunner dialogueRunner;
+  
 
     void Awake()
     {
@@ -45,46 +44,20 @@ public class GameManager : MonoBehaviour
     public void WinGame()
     {
         gameOver = true; // Ορίζουμε το παιχνίδι ως τελειωμένο
-        //feebackManager.ShowWinMessage(); // Εμφανίζουμε μήνυμα νίκης στον παίκτη
+        feedbackManager.ShowWinMessage(currentAttempt); // Εμφανίζουμε μήνυμα νίκης στον παίκτη
         Debug.Log("Player has won the game!");
-        if(currentAttempt == 1){dialogueRunner.StartDialogue("WinFirstRound");}
-        else{dialogueRunner.StartDialogue("Win");}
     }
 
     public void LoseGame()
     {
         gameOver = true; // Ορίζουμε το παιχνίδι ως τελειωμένο
-        //feebackManager.ShowGameOverMessage(); // Εμφανίζουμε μήνυμα ήττας στον παίκτη
         Debug.Log("Game Over! Player has failed all attempts.");
-        switch(currentAttempt)
-        {
-            case 1:
-                dialogueRunner.StartDialogue("EndRound1");
-                break;
-            case 2:
-                dialogueRunner.StartDialogue("EndRound2");
-                break;
-            case 3:
-                dialogueRunner.StartDialogue("EndRound3");
-                break;
-            case 4:
-                dialogueRunner.StartDialogue("EndRound4");
-                break;
-            case 5:
-                dialogueRunner.StartDialogue("EndRound5");
-                break;
-            case 6:
-                dialogueRunner.StartDialogue("EndRound6");
-                break;
-            case 7:
-                dialogueRunner.StartDialogue("EndRound7");
-                break;
-        }
+      
     }
     
     private void FailAttemptProcessing()
     {
-        //if (feebackManager != null) feebackManager.ShowFailAttemptMessage(currentAttempt); // Εμφανίζουμε μήνυμα αποτυχίας για την τρέχουσα προσπάθεια
+        if (feedbackManager != null) feedbackManager.ShowFailAttemptMessage(currentAttempt); // Εμφανίζουμε μήνυμα αποτυχίας για την τρέχουσα προσπάθεια
         Debug.Log($"Player failed attempt {currentAttempt}.");
 
         if (currentAttempt < maxAttempts)
@@ -118,6 +91,8 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(2f); // Μικρή καθυστέρηση πριν την επόμενη προσπάθεια
         NextAttempt();
     }
+
+    
 }
 
 

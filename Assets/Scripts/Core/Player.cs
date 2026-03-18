@@ -116,4 +116,14 @@ public class Player : MonoBehaviour
         Debug.Log("Player has been reset to the starting position with full health.");
     }
 
+    public void EnableMovement()
+    {
+        canMove = true; // Ενεργοποιούμε την κίνηση του παίκτη
+    }
+
+    public void DisableMovement()
+    {
+        canMove = false; // Απενεργοποιούμε την κίνηση του παίκτη
+    }
+
 }
