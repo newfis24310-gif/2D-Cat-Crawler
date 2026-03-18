@@ -1,0 +1,189 @@
+﻿title: StartRound1
+position: -120,-168
+---
+<<declare $eatenFish = false>>
+<<declare $deathOnce = false>>
+Ok, here kitty kitty!
+The wild cat has sharpened her deadly claws.
+She follows her animalistic insticts. She sees red!
+Will she catch her prey or will she settle for substitute cat food? I wonder...
+===
+
+title: WinFirstRound
+position: -124,-27
+---
+Ok... wow...
+that was unexpected
+<<wait  1>>
+Yeah.
+<<wait  2>>
+===
+
+title: Win
+position: -125,110
+---
+Clark: ...Ok, that was a lucky guess
+Steve: So... that's it?
+Clark: We did it! The experiment is complete.
+Steve: Yeah! Oh man, Schrödinger would be so proud.
+<<wait  1>>
+Steve: Wait. What was the experiment again?
+Clark: ...
+Steve: That's... wait a minute, so... what did we find exactly?
+Steve: How did the maze contribute again? Why did we even root for the cat to die? Actually, why cats to begin with?
+Clark: Because they're... cute?
+<<wait  1>>
+Clark: Steve... I think we screwed up. I think we got lost along the way. Mostly between the maze and the death traps.
+Steve: Soooo... should I get the gas tank or...?
+Clark: I'll call my dad's insurance company.
+<<if $deathOnce>>
+<<else>>
+    Clark: I may take the cat with me though. Lucky paws!
+<<endif>>
+===
+
+title: EndRound1
+position: 110,-41
+---
+Hmm... I guess she is not coming out
+So, this must mean that she is dead. She will never know the taste. Rest in peace kitty.
+Not yet. Remember, she can't be either unless we check.
+So, if I have the honor. Let's see...
+<<wait  2>>
+Yep, couldn't be deader.
+She probably didn't understand a thing. Such naive creatures.
+<<wait  1>>
+Anyway, should we continue?
+Indubitably dear Clarkson.
+Don't ever say that again Steve. Anyway...
+===
+
+title: StartRound2
+position: 110,-41
+---
+Steve: Ok, the mouse is ready.
+Clark: Here kitty kitty. Show it who's boss!
+===
+
+title: EndRound2
+position: 110,-41
+---
+Clark: Another one probably bites the dust.
+Steve: Good, I am allergic to cats.
+Clark: And the cats are allergic to poison. So, you don't have to worry.
+<<wait  2>>
+Steve: Hey, do you think we should change the poison gas? I mean 4 boxes of it seems like a lot.
+Clark: No Steve, this is science!
+<<wait  1>>
+<<if $eatenFish>>
+    <<jump HasFoundFishBefore>>
+<<else>>
+    Clark: I wonder when they will find our tasty treat.
+    Steve: The what?
+    Clark: Steve... just... be quiet.
+<<endif>>
+===
+
+title: HasFoundFishBefore
+---
+Steve: Why did we have the fish again?
+Clark: I mean... we have to spice things up. This is about uncertainty.
+Steve: Huh... why?
+Clark: Come on Steve, we've been over this.
+Clark: This fish is special. You remember? The abnormal antidote we developed?
+Steve: Oh yeah yeah...
+===
+
+title: EndRound3
+position: 110,-41
+---
+<<wait  2>>
+Steve: Well, here we go again.
+Clark: We really need to automate corpse disposal
+<<wait  1>>
+Clark: You know, it's crazy to think that the cat could survive this.
+Steve: What do you mean?
+Clark: I mean, a cat can survive 1 exposure. It's the 2nd one that seals the deal actually.
+Steve: Really!?
+Clark: Yeah. Are you deaf? I'm telling you. Any of these cats can survive with a single dose in their lungs. The only problem is that they would need medical attention for the rest of their life.
+Steve: So, that means that anything after the 2nd exposure is like beating a dead horse.
+Clark: Well, yes.
+<<if !$eatenFish>>
+    Steve: Wait, I feel like something is missing.
+    <<jump HasFoundFishBefore>>
+<<endif>>
+===
+
+title: EndRound4
+position: 114,-39
+---
+<<wait  2>>
+Clark: There goes another one.
+Steve: Hey Clark. I have a question?
+Clark: Yeees?
+Steve: What was the fish again?
+Clark: COME ON. FOCUS.
+Clark: Don't remember when we tested for an antidote to the poison?
+Steve: Yea...
+Clark: Don't remember that the antidote had different effects depending on the exposure to the poison?
+Steve: Yes?
+Clark: It is only good if the poison has full effect. Remmeber when you tried to eat it and I told you no because you were not poisoned enough and I said that it would kill you?
+Steve: No.
+<<wait  1>>
+Clark: How did you survive this long?
+Steve: I'm on that keto.
+===
+
+title: EndRound5
+position: 114,-39
+---
+<<wait  2>>
+Steve: I'm kind of bored
+Clark: I know.
+Steve: I just wish that the cat would know better. 
+Clark: I know. If only they could recognise the gas indication. And then realise if they are dead or not. And, based on that, if there was an open path to the end, make the decision to consume or not the fish depending on their status. And then manage to escape from the cruel hands of fate that brought them to this place.
+Steve: True true true.
+Clark: Yeah...
+<<wait  1>>
+Steve: So...
+Steve: The cat is dead
+<<wait  1>>
+Steve: Well, anyway. Let's bring in the next specimen.
+===
+
+title: EndRound6
+position: 114,-39
+---
+<<wait  2>>
+Steve: ...Are you mad?
+Clark: ...No.
+Steve: ...Are you sure?
+Clark: ...
+Clark: No.
+Steve: Well then, I guess you mentally prepare for Schrödinger's test then. 
+Clark: ...Well, I can't stay mad at you forever.
+Steve: Of course, I pay for-
+Clark: You pay for the rent. I know.
+===
+
+title: EndRound7
+position: 114,-39
+---
+<<wait  2>>
+Clark: Too bad. Welp, thank you next.
+Steve: Clark, there is no next.
+Clark: Waht do you mean dear collegue?
+Steve: We are out of cats
+<<wait  1>>
+Clark: So, this experiment-
+Steve: Is a failure.
+<<wait  1>>
+Steve: Welp, I'm off to gather my stuff from the office. If you need me, I will be tearing up my degree next door.
+Steve: I WILL be crying and I WILL go after my second career choice. I will become an artist! 
+<<wait  1>>
+Clark: ...I spent so much money on this
+<<wait  1>>
+Clark: ...my dad is gonna kill me
+<<wait  1>>
+Clark: Welp, time to flee the country.
+===
