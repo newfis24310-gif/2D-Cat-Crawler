@@ -31,6 +31,7 @@ public class Player : MonoBehaviour
         {
             Debug.LogError("No starting tile found! Please ensure the GridManager has a valid starting tile.");
         }
+
     }
 
     void Update()

@@ -377,9 +377,9 @@ MonoBehaviour:
   width: 5
   height: 4
   tileSpacing: 1.5
-  emptyTilePrefab: {fileID: 0}
-  exitTilePrefab: {fileID: 0}
-  actionTilePrefab: {fileID: 0}
+  emptyTilePrefab: {fileID: 7194001703915276125, guid: 6f220b068321a5b47987e1c0bd78a182, type: 3}
+  exitTilePrefab: {fileID: 4598244920451989479, guid: 31b1e638ccfc6624996f083d14e6b8b1, type: 3}
+  actionTilePrefab: {fileID: 4277172272164017041, guid: 7f48bc889c0e4cd488e18646223d9adc, type: 3}
 --- !u!1 &164237013
 GameObject:
   m_ObjectHideFlags: 0
@@ -519,8 +519,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Congratulations! The kitty proved smarter than the humans!
 
-    Such
-    an priviledged cat knows her way around danger.
+    Such an
+    priviledged cat knows her way around danger.
 
     Now, to destroy the world!'
   m_isRightToLeft: 0
@@ -1038,8 +1038,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Congratulations! The cat indeed ate the mouse!
 
-    Even if it was a
-    metal one.
+    Even if it was a metal
+    one.
 
     Now, there are magnetic powers involved.'
   m_isRightToLeft: 0
@@ -1408,7 +1408,7 @@ GameObject:
   - component: {fileID: 1223221771}
   - component: {fileID: 1223221770}
   m_Layer: 0
-  m_Name: GameManager
+  m_Name: _GameManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1599,7 +1599,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gridManager: {fileID: 77320047}
-  gameManager: {fileID: 0}
+  gameManager: {fileID: 1223221770}
   x: 0
   y: 0
   maxHealth: 100
@@ -1693,6 +1693,18 @@ PrefabInstance:
       value: Cat
       objectReference: {fileID: 0}
     - target: {fileID: 3618564259006924693, guid: 57692e5f2785811449c904233c5627e9, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3618564259006924693, guid: 57692e5f2785811449c904233c5627e9, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3618564259006924693, guid: 57692e5f2785811449c904233c5627e9, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3618564259006924693, guid: 57692e5f2785811449c904233c5627e9, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -1732,10 +1744,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3618564259006924693, guid: 57692e5f2785811449c904233c5627e9, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5980726342998907677, guid: 57692e5f2785811449c904233c5627e9, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 2078166861265284774, guid: aa957ef6606fd6d4a9af4bdf53a162ac, type: 3}
+      objectReference: {fileID: -6305768519627699287, guid: 357d39aab1250f74fb35d78bed46c288, type: 3}
     - target: {fileID: 5980726342998907677, guid: 57692e5f2785811449c904233c5627e9, type: 3}
       propertyPath: m_Color.b
       value: 1
