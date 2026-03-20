@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-8665667233541498409
+--- !u!114 &-7674390091180928563
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -9,16 +9,25 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Master.bank
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Box Movement
   m_EditorClassIdentifier: 
-  Path: FMOD/Desktop/Master.bank
-  Name: Master
-  StudioPath: bank:/Master
-  lastModified: 639094542579692527
-  FileSizes: []
-  Exists: 1
---- !u!114 &-6272015730749086621
+  Path: event:/SFX/Box Movement
+  Guid:
+    Data1: -1315329154
+    Data2: 1226848186
+    Data3: -1104888443
+    Data4: 418245276
+  Banks:
+  - {fileID: 4719461743043850785}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &-6379055165384499487
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -27,16 +36,52 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Ambience.bank
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Music/First Round
   m_EditorClassIdentifier: 
-  Path: FMOD/Desktop/Ambience.bank
-  Name: Ambience
-  StudioPath: bank:/Ambience
-  lastModified: 639088660675634955
-  FileSizes: []
-  Exists: 1
---- !u!114 &-6215045956311787893
+  Path: event:/Music/First Round
+  Guid:
+    Data1: 457648760
+    Data2: 1178382284
+    Data3: -1131490666
+    Data4: 660003524
+  Banks:
+  - {fileID: 7263680671375127278}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 41142
+--- !u!114 &-4031275904818200138
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Music/Second Round
+  m_EditorClassIdentifier: 
+  Path: event:/Music/Second Round
+  Guid:
+    Data1: -1781645593
+    Data2: 1293483264
+    Data3: -1300231291
+    Data4: -1929595352
+  Banks:
+  - {fileID: 7263680671375127278}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 54000
+--- !u!114 &-1673203196797686820
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -55,7 +100,7 @@ MonoBehaviour:
     Data3: -838348400
     Data4: 1985478938
   Banks:
-  - {fileID: -6272015730749086621}
+  - {fileID: 3125613184010522690}
   IsStream: 1
   Is3D: 0
   IsOneShot: 1
@@ -63,7 +108,46 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
---- !u!114 &-2079005855750021687
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d32cf7c32a3ed8347bac48ef5ed56d82, type: 3}
+  m_Name: FMODStudioCache
+  m_EditorClassIdentifier: 
+  EditorBanks:
+  - {fileID: 3043381683058450486}
+  - {fileID: 3125613184010522690}
+  - {fileID: 6062927433946371482}
+  - {fileID: 7263680671375127278}
+  - {fileID: 4719461743043850785}
+  EditorEvents:
+  - {fileID: -1673203196797686820}
+  - {fileID: -6379055165384499487}
+  - {fileID: -4031275904818200138}
+  - {fileID: -7674390091180928563}
+  EditorParameters: []
+  MasterBanks:
+  - {fileID: 6062927433946371482}
+  StringsBanks:
+  - {fileID: 3043381683058450486}
+  cacheVersion: 131858
+  cacheTime: 639096001064322773
+  SerializableEventsDict:
+  - key: event:/Ambience/Lab
+    index: 0
+  - key: event:/Music/First Round
+    index: 1
+  - key: event:/Music/Second Round
+    index: 2
+  - key: event:/SFX/Box Movement
+    index: 3
+--- !u!114 &3043381683058450486
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -78,12 +162,12 @@ MonoBehaviour:
   Path: FMOD/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639096142279650707
+  lastModified: 639096001063912689
   FileSizes:
   - Name: 
-    Value: 824
+    Value: 1068
   Exists: 1
---- !u!114 &11400000
+--- !u!114 &3125613184010522690
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -95,19 +179,63 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d32cf7c32a3ed8347bac48ef5ed56d82, type: 3}
   m_Name: FMODStudioCache
   m_EditorClassIdentifier: 
-  EditorBanks:
-  - {fileID: -2079005855750021687}
-  - {fileID: -6272015730749086621}
-  - {fileID: -8665667233541498409}
-  EditorEvents:
-  - {fileID: -6215045956311787893}
-  EditorParameters: []
-  MasterBanks:
-  - {fileID: -8665667233541498409}
-  StringsBanks:
-  - {fileID: -2079005855750021687}
-  cacheVersion: 131858
-  cacheTime: 639096142279650707
-  SerializableEventsDict:
-  - key: event:/Ambience/Lab
-    index: 0
+  Path: FMOD/Desktop/Ambience.bank
+  Name: Ambience
+  StudioPath: bank:/Ambience
+  lastModified: 639090010570204370
+  FileSizes: []
+  Exists: 1
+--- !u!114 &4719461743043850785
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/SFX.bank
+  m_EditorClassIdentifier: 
+  Path: FMOD/Desktop/SFX.bank
+  Name: SFX
+  StudioPath: bank:/SFX
+  lastModified: 639096001064322773
+  FileSizes: []
+  Exists: 1
+--- !u!114 &6062927433946371482
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: FMOD/Desktop/Master.bank
+  Name: Master
+  StudioPath: bank:/Master
+  lastModified: 639090010570366193
+  FileSizes: []
+  Exists: 1
+--- !u!114 &7263680671375127278
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Music.bank
+  m_EditorClassIdentifier: 
+  Path: FMOD/Desktop/Music.bank
+  Name: Music
+  StudioPath: bank:/Music
+  lastModified: 639096001064192756
+  FileSizes: []
+  Exists: 1

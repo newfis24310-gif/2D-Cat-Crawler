@@ -28,14 +28,14 @@ public class Player : MonoBehaviour
             }
         }
 
-         dialogueRunner.AddCommandHandler<string>("notmove", (target) => {
+        dialogueRunner.AddCommandHandler<string>("notmove", (target) => {
             canMove = false; // Απενεργοποιούμε την κίνηση του παίκτη όταν εκτελείται η εντολή "notmove" στον Yarn
-            Debug.Log("Player movement has been disabled by Yarn command.");
+            Debug.Log($"{target} movement has been disabled by Yarn command.");
         });
 
         dialogueRunner.AddCommandHandler<string>("move", (target) => {
             canMove = true; // Ενεργοποιούμε την κίνηση του παίκτη όταν εκτελείται η εντολή "move" στον Yarn
-            Debug.Log("Player movement has been enabled by Yarn command.");
+            Debug.Log($"{target} movement has been enabled by Yarn command.");
         });
     }
 

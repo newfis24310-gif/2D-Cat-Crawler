@@ -44,6 +44,7 @@ Clark: I'll call my dad's insurance company.
 <<else>>
     Clark: I may take the cat with me though. Lucky paws!
 <<endif>>
+<<move Cat>>
 ===
 
 title: EndRound1
@@ -61,6 +62,7 @@ She probably didn't understand a thing. Such naive creatures.
 Anyway, should we continue?
 Indubitably dear Clarkson.
 Don't ever say that again Steve. Anyway...
+<<move Cat>>
 ===
 
 title: StartRound2
