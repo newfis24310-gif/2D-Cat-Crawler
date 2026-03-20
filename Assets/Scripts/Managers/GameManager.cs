@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
 
     [Header("References")]
     public FeedBackManager feedbackManager; // Αναφορά στον FeedbackManager για να μπορούμε να εμφανίζουμε μηνύματα στον παίκτη
-
+    public SoundManager soundManager; // Αναφορά στον SoundManager για να ρυθμίζουμε τον ήχο ανά περιπτώσεις
     private Player player; // Αναφορά στον Player για να μπορούμε να διαχειριστούμε την κατάσταση του παίκτη
     private GridManager gridManager; // Αναφορά στον GridManager για να μπορούμε να διαχειριστούμε το grid
   
@@ -96,6 +96,10 @@ public class GameManager : MonoBehaviour
             player.ResetPlayer(newStartTile);
             newStartTile.RevealTile(true); // Αποκαλύπτουμε το tile που βρίσκεται στις συντεταγμένες του παίκτη
             player.canMove = true; // Ενεργοποιούμε ξανά την κίνηση του παίκτη
+        }
+        if(currentAttempt == 2)
+        {
+            soundManager.PlayMusic2ndRound();
         }
     }
 

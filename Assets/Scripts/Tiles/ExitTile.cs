@@ -18,7 +18,7 @@ public class ExitTile : BaseTile
 
         if (player != null && gameManager != null)
         {
-            gameManager.OnPlayerReachedExit(player.isAlive); // Ενημερώνουμε τον GameManager ότι ο παίκτης έφτασε στο tile εξόδου
+            gameManager.OnPlayerReachedExit(false); // Ενημερώνουμε τον GameManager ότι ο παίκτης έφτασε στο tile εξόδου
         }
     }
 }

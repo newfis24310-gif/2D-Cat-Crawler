@@ -14,6 +14,7 @@ Will she catch her prey or will she settle for substitute cat food? I wonder...
 title: WinFirstRound
 position: -124,-27
 ---
+<<stopmusic FMODSoundManager>>
 <<notmove Cat>>
 Ok... wow...
 that was unexpected
@@ -25,6 +26,7 @@ Yeah.
 title: Win
 position: -125,110
 ---
+<<stopmusic FMODSoundManager>>
 <<notmove Cat>>
 Clark: ...Ok, that was a lucky guess
 Steve: So... that's it?
@@ -50,6 +52,7 @@ Clark: I'll call my dad's insurance company.
 title: EndRound1
 position: 110,-41
 ---
+<<stopmusic FMODSoundManager>>
 <<notmove Cat>>
 Hmm... I guess she is not coming out
 So, this must mean that she is dead. She will never know the taste. Rest in peace kitty.
@@ -192,6 +195,7 @@ position: 114,-39
 Clark: Too bad. Welp, thank you next.
 Steve: Clark, there is no next.
 Clark: Waht do you mean dear collegue?
+<<stopmusic FMODSoundManager>>
 Steve: We are out of cats
 <<wait  1>>
 Clark: So, this experiment-
