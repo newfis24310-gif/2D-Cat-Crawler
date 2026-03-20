@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
     public SoundManager soundManager; // Αναφορά στον SoundManager για να ρυθμίζουμε τον ήχο ανά περιπτώσεις
     private Player player; // Αναφορά στον Player για να μπορούμε να διαχειριστούμε την κατάσταση του παίκτη
     private GridManager gridManager; // Αναφορά στον GridManager για να μπορούμε να διαχειριστούμε το grid
-  
+    public Mouse mouse; // Αναφορά στο Mouse για να μπορούμε να το ελέγχουμε από το GameManager
 
     void Awake()
     {
@@ -30,6 +30,8 @@ public class GameManager : MonoBehaviour
 
         if (player == null) Debug.LogError("Player not found in the scene! Please ensure there is a Player object.");
         if (gridManager == null) Debug.LogError("GridManager not found in the scene! Please ensure there is a GridManager object.");
+        
+        StartCoroutine(RoundSequence()); // Ξεκινάμε την ακολουθία του πρώτου γύρου
     }
 
     // Kαλείται από το ExitTile όταν ο παίκτης φτάσει στο tile εξόδου.
@@ -92,29 +94,59 @@ public class GameManager : MonoBehaviour
         {
             gridManager.ResetGrid(); // Επαναφορά του grid στην αρχική κατάσταση
             gridManager.AssignItemsToTiles();
-            BaseTile newStartTile = gridManager.GetStartTile(); // Λαμβάνουμε το αρχικό tile από τον GridManager
-            player.ResetPlayer(newStartTile);
-            newStartTile.RevealTile(true); // Αποκαλύπτουμε το tile που βρίσκεται στις συντεταγμένες του παίκτη
-            player.canMove = true; // Ενεργοποιούμε ξανά την κίνηση του παίκτη
+            //BaseTile newStartTile = gridManager.GetStartTile(); // Λαμβάνουμε το αρχικό tile από τον GridManager
+            //player.ResetPlayer(newStartTile);
+            //newStartTile.RevealTile(true); // Αποκαλύπτουμε το tile που βρίσκεται στις συντεταγμένες του παίκτη
+            //player.canMove = true; // Ενεργοποιούμε ξανά την κίνηση του παίκτη
+            StartCoroutine(RoundSequence());
+        
         }
-        if(currentAttempt == 2)
-        {
-            soundManager.PlayMusic2ndRound();
-        }
+        if(currentAttempt == 2) soundManager.PlayMusic2ndRound();
     }
 
-    public void OnDialogueComplete()
+    private IEnumerator RoundSequence()
     {
-        if (!gameOver)
+        // H γατα δεν κουνιέται
+        player.canMove = false;
+        SpriteRenderer playerSprite = player.GetComponent<SpriteRenderer>();
+        if (playerSprite != null) playerSprite.enabled = false;
+
+        if (feedbackManager != null && feedbackManager.dialogueRunner != null)
         {
-            NextAttempt(); // Πηγαίνουμε στην επόμενη προσπάθεια μετά το τέλος του διαλόγου
+            yield return null;
+            while (feedbackManager.dialogueRunner.IsDialogueRunning)
+            {
+                yield return null; // Περίμενε το επόμενο frame
+            }
         }
+
+        // To ποντίκι ξεκινάει την διαδρομή του
+        BaseTile startTile = gridManager.GetStartTile();
+        BaseTile exitTile = FindAnyObjectByType<ExitTile>(); // Λαμβάνουμε το tile εξόδου από τη σκηνή
+
+        if(mouse != null && startTile != null && exitTile != null)
+        {
+            Vector3 startPosition = new Vector3(startTile.transform.position.x, startTile.transform.position.y, -1f); // Θέτουμε το z σε -1 για να είναι πάνω από τα tiles
+            Vector3 exitPosition = new Vector3(exitTile.transform.position.x, exitTile.transform.position.y, -1f); // Θέτουμε το z σε -1 για να είναι πάνω από τα tiles
+
+            yield return StartCoroutine(mouse.MoveMouse(startPosition, exitPosition)); // Ξεκινάμε την κίνηση του ποντικιού
+        }
+
+        // Aφού τελειώσει η κίνηση του ποντικιού, ξεκινάει η κίνηση της γατας προς το startTile
+        if (startTile != null)
+        {
+            yield return StartCoroutine(player.MoveToStartTile(startTile));
+        }
+       
     }
 
     public void PlayBoxOpen()
     {
         soundManager.PlayBoxOpen();
     }
+ 
+
+
 }
 
 

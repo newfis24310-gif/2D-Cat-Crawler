@@ -1,5 +1,6 @@
 using UnityEngine;
 using Yarn.Unity;
+using System.Collections;
 
 public class Player : MonoBehaviour
 {   
@@ -167,5 +168,53 @@ public class Player : MonoBehaviour
         Debug.Log("Player has been reset to the starting position with full health.");
     }
 
+    public IEnumerator MoveToStartTile(BaseTile startTile)
+    {
+        // Γατα εκτος grid
+        Vector3 offGridPostion = startTile.transform.position + new Vector3(-4f, -1f, 0f); // Θέση εκτός grid κάτω από το startTile
+        transform.position = new Vector3(offGridPostion.x, offGridPostion.y, -1f); // Τοποθετούμε τον παίκτη
+
+        SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
+        if (spriteRenderer != null) spriteRenderer.enabled = true; 
+
+        // Kίνηση προς το StartTile
+        float elapsedTime = 0f;
+        float moveDuration = 2f; // Διάρκεια κίνησης προς το startTile
+        Vector3 initialPosition = new Vector3(startTile.transform.position.x, startTile.transform.position.y, -1f); // Θέτουμε το z σε -1 για να είναι πάνω από τα tiles    
+
+        while (elapsedTime < moveDuration)
+        {
+            transform.position = Vector3.Lerp(offGridPostion, initialPosition, elapsedTime / moveDuration);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        transform.position = initialPosition; // Βεβαιωνόμαστε ότι φτάσαμε ακριβώς στο startTile
+
+        // Ενημέρωση των στοιχείων του παίκτη σύμφωνα με το startTile
+        x = startTile.x;
+        y = startTile.y;
+        isAlive = true; // Ο παίκτης είναι ζωντανός όταν φτάνει στο startTile
+        gasItemCount = 0; // Επαναφορά του μετρητή gas items
+        fishItem = null; // Αφαίρεση της αναφοράς στο ψάρι
+
+        startTile.RevealTile(true); // Αποκαλύπτουμε το tile που βρίσκεται στις συντεταγμένες του παίκτη
+        canMove = true; // Ενεργοποιούμε ξανά την κίνηση του παίκτη
+        gridManager.UpdateGridVisibility(x, y); // Ενημερώνουμε την ορατότητα του grid με βάση τις νέες συντεταγμένες του παίκτη
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    }
 
 }
