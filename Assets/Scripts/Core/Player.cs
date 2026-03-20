@@ -133,15 +133,8 @@ public class Player : MonoBehaviour
     {
         isAlive = false; // Ο παίκτης δεν είναι πλέον ζωντανός
         Debug.Log("Player has died!");
-        // Εδώ μπορούμε να προσθέσουμε λογική για το τι συμβαίνει όταν ο παίκτης πεθαίνει 
-        // π.χ. να αλλάζει το sprite της γάτας σε σκελετό.
-        // Οτι αλλο γινεται αν δεν βγει από τον γύρο ζωντανή.
-        // TEST ΑΛΛΑΓΗ ΧΡΩΜΑΤΟΣ
         SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
-        if (spriteRenderer != null)
-        {
-            spriteRenderer.color = Color.gray; // Αλλάζουμε το χρώμα του παίκτη σε γκρι για να δείξουμε ότι είναι νεκρός
-        }
+        
     }
 
     // Μέθοδος για να θεραπεύεται ο παίκτης
@@ -149,10 +142,7 @@ public class Player : MonoBehaviour
     {
         isAlive = true; // Ο παίκτης είναι ξανά ζωντανός
         SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
-        if (spriteRenderer != null)
-        {
-            spriteRenderer.color = Color.white; // Επαναφέρουμε το χρώμα του παίκτη σε λευκό για να δείξουμε ότι είναι ζωντανός
-        }
+       
     }
 
     public void ResetPlayer(BaseTile startTile)

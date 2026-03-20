@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -48,13 +49,15 @@ public class GameManager : MonoBehaviour
         gameOver = true; // Ορίζουμε το παιχνίδι ως τελειωμένο
         player.canMove = false; // Απενεργοποιούμε την κίνηση του παίκτη
         Debug.Log("Player has won the game!");
+        feedbackManager.ShowWinMessage(currentAttempt); // Εμφανίζουμε το μήνυμα νίκης ανάλογα με την τρέχουσα προσπάθεια
+        PlayWinMusic(); // Παίζουμε τη μουσική νίκης
     }
 
     public void LoseGame()
     {
         gameOver = true; // Ορίζουμε το παιχνίδι ως τελειωμένο
         Debug.Log("Game Over! Player has failed all attempts.");
-      
+        feedbackManager.ShowFailAttemptMessage(currentAttempt); // Εμφανίζουμε το μήνυμα αποτυχίας ανάλογα με την τρέχουσα προσπάθεια
     }
     
     private IEnumerator FailAttemptProcessing()
@@ -94,10 +97,6 @@ public class GameManager : MonoBehaviour
         {
             gridManager.ResetGrid(); // Επαναφορά του grid στην αρχική κατάσταση
             gridManager.AssignItemsToTiles();
-            //BaseTile newStartTile = gridManager.GetStartTile(); // Λαμβάνουμε το αρχικό tile από τον GridManager
-            //player.ResetPlayer(newStartTile);
-            //newStartTile.RevealTile(true); // Αποκαλύπτουμε το tile που βρίσκεται στις συντεταγμένες του παίκτη
-            //player.canMove = true; // Ενεργοποιούμε ξανά την κίνηση του παίκτη
             StartCoroutine(RoundSequence());
         
         }
@@ -144,7 +143,18 @@ public class GameManager : MonoBehaviour
     {
         soundManager.PlayBoxOpen();
     }
- 
+
+    // Restart game
+    public void ReloadGame()
+    {
+        string currentSceneName = SceneManager.GetActiveScene().name;
+        SceneManager.LoadScene(currentSceneName);    
+    }
+    
+    public void PlayWinMusic()
+    {
+        // soundManager.PlayMusic(soundManager.musicLibrary.win, 0.5f);
+    }
 
 
 }
