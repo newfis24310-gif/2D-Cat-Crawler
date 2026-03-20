@@ -17,6 +17,7 @@ public class SoundManager : MonoBehaviour
     public void PlayBoxOpen()
     {
         RuntimeManager.PlayOneShot(sfxLibrary.boxOpen);
+        Debug.Log("Played box open sound effect.");
     }
     
     public void PlayMusic2ndRound()

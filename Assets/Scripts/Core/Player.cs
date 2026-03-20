@@ -10,13 +10,13 @@ public class Player : MonoBehaviour
 
     [Header("Player Stats")]
     public int x, y; // Συντεταγμένες του παίκτη στον πίνακα
-    public int maxHealth = 100; // Υγεία του παίκτη (έβαλα 100 αυθαίρετα, το βλέπουμε)
-    public int currentHealth;
     public bool isAlive = true; // Κατάσταση ζωής του παίκτη
     public bool canMove = true; // Δυνατότητα κίνησης του παίκτη (μπορεί να απενεργοποιηθεί όταν ο παίκτης πεθάνει)
 
     public DialogueRunner dialogueRunner; // Αναφορά στον DialogueRunner για να μπορούμε να ξεκινάμε διαλόγους
 
+    public int gasItemCount = 0; // Μετρητής για τα gas items 
+    public FishItem fishItem; // Αναφορά στο FishItem για να μπορούμε να το χρησιμοποιήσουμε όταν ο παίκτης το έχει συλλέξει
     void Awake()
     {
         if (dialogueRunner == null)
@@ -41,7 +41,7 @@ public class Player : MonoBehaviour
 
     void Start()
     {
-        currentHealth = maxHealth; // Αρχικοποίηση της τρέχουσας υγείας με τη μέγιστη υγεία
+        
         targetPosition = transform.position; // Αρχικά, η τρέχουσα θέση είναι και o στόχος
         isAlive = true; //  Ο παίκτης ξεκινάει ζωντανός για να δοκιμάσουμε το σύστημα αλλαγής γύρων
 
@@ -57,8 +57,6 @@ public class Player : MonoBehaviour
         {
             Debug.LogError("No starting tile found! Please ensure the GridManager has a valid starting tile.");
         }
-
-
     }
 
     void Update()
@@ -78,12 +76,29 @@ public class Player : MonoBehaviour
             }
             HandleMovement();
         }
+
+        if (Input.GetKeyDown(KeyCode.E)) 
+        {
+            if (fishItem != null) 
+            {
+                Debug.Log("Player is using the fish item.");
+                fishItem.EatFish(this); // Καλούμε τη μέθοδο αλληλεπίδρασης του ψαριού, περνώντας τον παίκτη ως παράμετρο
+                fishItem = null; // Αφαιρούμε την αναφορά στο ψάρι αφού το χρησιμοποιήσουμε
+            } 
+            else
+            {
+                Debug.Log("Player tried to use the fish item, but does not have it.");
+            }
+        }
     }
 
     // Μέθοδος για να χειριστούμε την κίνηση του παίκτη προς το tile που κλικάραμε
     private void HandleMovement()
     {
         if (!canMove) return;
+
+        // Οταν ο παίκτης κάνει κλικ για να παει σε αλλο tile αφαιρουμε τηην αναφορα στο ψάρι για αν μην μπορεί να το φάει από απόσταση
+        fishItem = null;
         
         Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition); // Μετατροπή της θέσης του ποντικιού σε συντεταγμένες κόσμου
         mousePosition.z = 0; // Διασφαλίζουμε ότι ο στόχος είναι στο ίδιο επίπεδο με τον παίκτη
@@ -103,45 +118,48 @@ public class Player : MonoBehaviour
                 Debug.Log($"Player moved to tile at ({clickedTile.name}) with coordinates ({clickedTile.x}, {clickedTile.y})");
 
                 clickedTile.OnPlayerEnter(); // Καλούμε τη μέθοδο που χειρίζεται την είσοδο του παίκτη στο tile 
-                gridManager.UpdateGridVisibility(x, y); // Αποκαλύπτουμε το tile που βρίσκεται στις συντεταγμένες του παίκτη
+                if (!clickedTile.isRevealed) gridManager.UpdateGridVisibility(x, y); // Αποκαλύπτουμε το tile που βρίσκεται στις συντεταγμένες του παίκτη μονο αν δεν είναι ήδη αποκαλυμμένο
+                    
                 
         
             }
         }
     }
-
-    // Μέθοδος για να λαμβάνει ζημιά ο παίκτης
-    public void TakeDamage(int damage)
-    {
-        currentHealth -= damage; // Μείωση της τρέχουσας υγείας κατά το ποσό της ζημιάς
-        Debug.Log($"Player took {damage} damage. Current health: {currentHealth}");
-
-        if (currentHealth <= 0) Die(); // Αν η υγεία πέσει στο μηδέν ή κάτω, ο παίκτης πεθαίνει
-
-    }
+ 
 
     // Μέθοδος για να χειριστούμε το θάνατο του παίκτη
-    private void Die()
+    public void Die()
     {
         isAlive = false; // Ο παίκτης δεν είναι πλέον ζωντανός
         Debug.Log("Player has died!");
         // Εδώ μπορούμε να προσθέσουμε λογική για το τι συμβαίνει όταν ο παίκτης πεθαίνει 
         // π.χ. να αλλάζει το sprite της γάτας σε σκελετό.
         // Οτι αλλο γινεται αν δεν βγει από τον γύρο ζωντανή.
+        // TEST ΑΛΛΑΓΗ ΧΡΩΜΑΤΟΣ
+        SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
+        if (spriteRenderer != null)
+        {
+            spriteRenderer.color = Color.gray; // Αλλάζουμε το χρώμα του παίκτη σε γκρι για να δείξουμε ότι είναι νεκρός
+        }
     }
 
     // Μέθοδος για να θεραπεύεται ο παίκτης
-    public void Heal(int amount)
+    public void Heal()
     {
-        currentHealth += amount; // Αύξηση της τρέχουσας υγείας κατά το ποσό της θεραπείας
-        if (currentHealth > maxHealth) currentHealth = maxHealth;
-        Debug.Log($"Player healed by {amount}. Current health: {currentHealth}");
+        isAlive = true; // Ο παίκτης είναι ξανά ζωντανός
+        SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
+        if (spriteRenderer != null)
+        {
+            spriteRenderer.color = Color.white; // Επαναφέρουμε το χρώμα του παίκτη σε λευκό για να δείξουμε ότι είναι ζωντανός
+        }
     }
 
     public void ResetPlayer(BaseTile startTile)
     {
-        currentHealth = maxHealth; // Επαναφορά της υγείας στην μέγιστη τιμή
-        isAlive = true; // TEST: Ο παίκτης είναι ξανά ζωντανός
+        
+        isAlive = true; // Ο παίκτης είναι ξανά ζωντανός
+        gasItemCount = 0; // Επαναφορά του μετρητή gas items
+        fishItem = null; // Αφαίρεση της αναφοράς στο ψάρι
         x = startTile.x; // Ενημέρωση των συντεταγμένων του παίκτη σύμφωνα με το αρχικό tile
         y = startTile.y;
         transform.position = new Vector3(startTile.transform.position.x, startTile.transform.position.y, -1f); // Τοποθετούμε τον παίκτη στη θέση του αρχικού tile

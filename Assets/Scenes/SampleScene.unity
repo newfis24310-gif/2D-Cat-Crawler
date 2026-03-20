@@ -1580,11 +1580,11 @@ MonoBehaviour:
   gameManager: {fileID: 1223221770}
   x: 0
   y: 0
-  maxHealth: 100
-  currentHealth: 0
   isAlive: 1
   canMove: 1
-  dialogueRunner: {fileID: 0}
+  dialogueRunner: {fileID: 342320442}
+  gasItemCount: 0
+  fishItem: {fileID: 0}
 --- !u!1 &1914169654
 GameObject:
   m_ObjectHideFlags: 0
@@ -1803,8 +1803,8 @@ SceneRoots:
   - {fileID: 519420032}
   - {fileID: 619394802}
   - {fileID: 77320046}
-  - {fileID: 6932855482325357220}
   - {fileID: 1460109567}
+  - {fileID: 6932855482325357220}
   - {fileID: 1223221771}
   - {fileID: 1988554829}
   - {fileID: 277979555}

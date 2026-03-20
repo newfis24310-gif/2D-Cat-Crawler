@@ -28,13 +28,21 @@ public abstract class BaseTile : MonoBehaviour
 
     public void RevealTile(bool state)
     {
+        if (isRevealed == state) return; // Αν η κατάσταση είναι ήδη αυτή που θέλουμε, δεν κάνουμε τίποτα
         isRevealed = state; // Ενημερώνουμε την κατάσταση αποκαλυμμένου του πλακιδίου
 
         // Αλλάζουμε το sprite ανάλογα με την κατάσταση αποκαλυμμένου
         spriteRenderer.sprite = isRevealed ? revealedSprite : hiddenSprite;
 
-        // Κλήση της μεθόδου του sound manager για να παίξει τον ήχο αποκάλυψης
-        GameManager.Instance.PlayBoxOpen();
+        // Κλήση της μεθόδου για τον ήχο όταν το πλακίδιο αποκαλύπτεται
+        if (isRevealed && GameManager.Instance != null) 
+        {
+            GameManager.Instance.PlayBoxOpen(); // Παίζουμε τον ήχο ανοίγματος κουτιού όταν το πλακίδιο αποκαλύπτεται
+        }
+        
+            
+        
+        
     }
 
 }

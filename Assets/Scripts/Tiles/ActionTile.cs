@@ -34,7 +34,7 @@ public class ActionTile : BaseTile
             if (player != null)
             {
                 item.OnInteract(player); // Καλούμε τη μέθοδο αλληλεπίδρασης του αντικειμένου, περνώντας τον παίκτη ως παράμετρο
-                actionDone = true;
+                if (!(item is FishItem)) actionDone = true;
             }
         }
         else

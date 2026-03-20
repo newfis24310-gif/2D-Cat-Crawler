@@ -174,7 +174,7 @@ public class GridManager : MonoBehaviour
         }
 
         grid[x, y].RevealTile(true); // Αποκαλύπτουμε το tile που βρίσκεται στις συντεταγμένες (x, y)
-
+        
 
     }
 
