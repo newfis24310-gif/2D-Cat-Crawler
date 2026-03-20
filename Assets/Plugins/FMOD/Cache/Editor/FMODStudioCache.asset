@@ -1,6 +1,42 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-1673203196797686820
+--- !u!114 &-8665667233541498409
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: FMOD/Desktop/Master.bank
+  Name: Master
+  StudioPath: bank:/Master
+  lastModified: 639094542579692527
+  FileSizes: []
+  Exists: 1
+--- !u!114 &-6272015730749086621
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Ambience.bank
+  m_EditorClassIdentifier: 
+  Path: FMOD/Desktop/Ambience.bank
+  Name: Ambience
+  StudioPath: bank:/Ambience
+  lastModified: 639088660675634955
+  FileSizes: []
+  Exists: 1
+--- !u!114 &-6215045956311787893
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -19,7 +55,7 @@ MonoBehaviour:
     Data3: -838348400
     Data4: 1985478938
   Banks:
-  - {fileID: 3125613184010522690}
+  - {fileID: -6272015730749086621}
   IsStream: 1
   Is3D: 0
   IsOneShot: 1
@@ -27,35 +63,7 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
---- !u!114 &11400000
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d32cf7c32a3ed8347bac48ef5ed56d82, type: 3}
-  m_Name: FMODStudioCache
-  m_EditorClassIdentifier: 
-  EditorBanks:
-  - {fileID: 3043381683058450486}
-  - {fileID: 3125613184010522690}
-  - {fileID: 6062927433946371482}
-  EditorEvents:
-  - {fileID: -1673203196797686820}
-  EditorParameters: []
-  MasterBanks:
-  - {fileID: 6062927433946371482}
-  StringsBanks:
-  - {fileID: 3043381683058450486}
-  cacheVersion: 131858
-  cacheTime: 639088660675634955
-  SerializableEventsDict:
-  - key: event:/Ambience/Lab
-    index: 0
---- !u!114 &3043381683058450486
+--- !u!114 &-2079005855750021687
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -70,12 +78,12 @@ MonoBehaviour:
   Path: FMOD/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639088660665363145
+  lastModified: 639096142279650707
   FileSizes:
   - Name: 
     Value: 824
   Exists: 1
---- !u!114 &3125613184010522690
+--- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -84,30 +92,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Ambience.bank
+  m_Script: {fileID: 11500000, guid: d32cf7c32a3ed8347bac48ef5ed56d82, type: 3}
+  m_Name: FMODStudioCache
   m_EditorClassIdentifier: 
-  Path: FMOD/Desktop/Ambience.bank
-  Name: Ambience
-  StudioPath: bank:/Ambience
-  lastModified: 639088660675634955
-  FileSizes: []
-  Exists: 1
---- !u!114 &6062927433946371482
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Master.bank
-  m_EditorClassIdentifier: 
-  Path: FMOD/Desktop/Master.bank
-  Name: Master
-  StudioPath: bank:/Master
-  lastModified: 639088660665343142
-  FileSizes: []
-  Exists: 1
+  EditorBanks:
+  - {fileID: -2079005855750021687}
+  - {fileID: -6272015730749086621}
+  - {fileID: -8665667233541498409}
+  EditorEvents:
+  - {fileID: -6215045956311787893}
+  EditorParameters: []
+  MasterBanks:
+  - {fileID: -8665667233541498409}
+  StringsBanks:
+  - {fileID: -2079005855750021687}
+  cacheVersion: 131858
+  cacheTime: 639096142279650707
+  SerializableEventsDict:
+  - key: event:/Ambience/Lab
+    index: 0

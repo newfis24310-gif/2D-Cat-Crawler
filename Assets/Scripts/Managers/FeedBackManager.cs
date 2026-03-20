@@ -2,11 +2,25 @@ using UnityEngine;
 using Yarn.Unity;
 
 public class FeedBackManager : MonoBehaviour
-{
+{   
     public DialogueRunner dialogueRunner;
     public void ShowFailAttemptMessage(int currentAttempt)
     {  
-        switch(currentAttempt)
+
+        string nodeName = "EndRound" + currentAttempt;
+
+        if (dialogueRunner != null)
+        {
+            dialogueRunner.StartDialogue(nodeName);
+        }
+        else
+        {
+            Debug.LogError("DialogueRunner reference is missing in FeedBackManager! Please assign it in the inspector.");
+        }
+    }
+
+
+/*        switch(currentAttempt)
         {
             case 1:
                 dialogueRunner.StartDialogue("EndRound1");
@@ -31,7 +45,7 @@ public class FeedBackManager : MonoBehaviour
                 break;
         }
         
-    }
+    }*/
 
     public void ShowWinMessage(int currentAttempt)
     {
