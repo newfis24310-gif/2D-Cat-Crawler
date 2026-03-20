@@ -43,6 +43,7 @@ public class Player : MonoBehaviour
     {
         currentHealth = maxHealth; // Αρχικοποίηση της τρέχουσας υγείας με τη μέγιστη υγεία
         targetPosition = transform.position; // Αρχικά, η τρέχουσα θέση είναι και o στόχος
+        isAlive = true; //  Ο παίκτης ξεκινάει ζωντανός για να δοκιμάσουμε το σύστημα αλλαγής γύρων
 
         BaseTile startTile = gridManager.GetStartTile(); // Λαμβάνουμε το αρχικό tile από τον GridManager
         if (startTile != null)
@@ -104,13 +105,7 @@ public class Player : MonoBehaviour
                 clickedTile.OnPlayerEnter(); // Καλούμε τη μέθοδο που χειρίζεται την είσοδο του παίκτη στο tile 
                 gridManager.UpdateGridVisibility(x, y); // Αποκαλύπτουμε το tile που βρίσκεται στις συντεταγμένες του παίκτη
                 
-                if (clickedTile is ExitTile)
-                {
-                    Debug.Log("Player has reached the exit tile!");
-                    //gameManager.OnPlayerReachedExit(isAlive); // Ενημερώνουμε τον GameManager ότι ο παίκτης έφτασε στο tile εξόδου
-                    // ΓΙΑ ΤΕΣΤ: o παίκτης είναι νεκρός, για να δούμε πως δουλεύει η αλλαγή των γύρων
-                    gameManager.OnPlayerReachedExit(false); // Ενημερώνουμε τον GameManager ότι ο παίκτης έφτασε στο tile εξόδου αλλά είναι νεκρός
-                }
+        
             }
         }
     }
@@ -146,7 +141,7 @@ public class Player : MonoBehaviour
     public void ResetPlayer(BaseTile startTile)
     {
         currentHealth = maxHealth; // Επαναφορά της υγείας στην μέγιστη τιμή
-        isAlive = true; // Ο παίκτης είναι ξανά ζωντανός
+        isAlive = true; // TEST: Ο παίκτης είναι ξανά ζωντανός
         x = startTile.x; // Ενημέρωση των συντεταγμένων του παίκτη σύμφωνα με το αρχικό tile
         y = startTile.y;
         transform.position = new Vector3(startTile.transform.position.x, startTile.transform.position.y, -1f); // Τοποθετούμε τον παίκτη στη θέση του αρχικού tile

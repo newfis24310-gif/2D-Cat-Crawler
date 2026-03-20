@@ -63,14 +63,16 @@ public class GameManager : MonoBehaviour
 
         Debug.Log("Waiting for feedback dialogue to complete...");
 
+         yield return new WaitForSeconds(2f); // Προσωρινή αναμονή για να δώσουμε χρόνο στον παίκτη να διαβάσει το μήνυμα (μπορεί να αφαιρεθεί όταν έχουμε έτοιμο το σύστημα διαλόγων)
+
+
         while (feedbackManager.dialogueRunner.IsDialogueRunning)
         {
             // Περιμένουμε μέχρι να τελειώσει ο διάλογος
             yield return null;
         }
 
-        //yield return new WaitForSeconds(5f); // Προσωρινή αναμονή για να δώσουμε χρόνο στον παίκτη να διαβάσει το μήνυμα (μπορεί να αφαιρεθεί όταν έχουμε έτοιμο το σύστημα διαλόγων)
-
+       
         // Aφου τελειώσει ο διάλογος, ελέγχουμε αν έχουμε φτάσει στο μέγιστο αριθμό προσπαθειών
         if (currentAttempt < maxAttempts)
         {
