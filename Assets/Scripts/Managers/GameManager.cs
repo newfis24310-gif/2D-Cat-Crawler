@@ -44,7 +44,7 @@ public class GameManager : MonoBehaviour
     public void WinGame()
     {
         gameOver = true; // Ορίζουμε το παιχνίδι ως τελειωμένο
-        feedbackManager.ShowWinMessage(currentAttempt); // Εμφανίζουμε μήνυμα νίκης στον παίκτη
+        player.canMove = false; // Απενεργοποιούμε την κίνηση του παίκτη
         Debug.Log("Player has won the game!");
     }
 
@@ -57,18 +57,18 @@ public class GameManager : MonoBehaviour
     
     private void FailAttemptProcessing()
     {
-        if (feedbackManager != null) feedbackManager.ShowFailAttemptMessage(currentAttempt); // Εμφανίζουμε μήνυμα αποτυχίας για την τρέχουσα προσπάθεια
-        Debug.Log($"Player failed attempt {currentAttempt}.");
+        // Εμφανίζουμε το κατάλληλο μήνυμα αποτυχίας στον παίκτη ανάλογα με την τρέχουσα προσπάθεια
+        feedbackManager.ShowFailAttemptMessage(currentAttempt);
 
+        player.canMove = false; // Απενεργοποιούμε την κίνηση του παίκτη κατά τη διάρκεια της μετάβασης    
+        
         if (currentAttempt < maxAttempts)
         {
-            currentAttempt++; // Αύξηση του αριθμού των προσπαθειών
-            //NextAttempt(); // Προετοιμασία για την επόμενη προσπάθεια
-            StartCoroutine(NextAttemptCoroutine()); // Χρήση Coroutine για να έχουμε μια μικρή καθυστέρηση πριν την επόμενη προσπάθεια
+            currentAttempt++; // Αυξάνουμε την τρέχουσα προσπάθεια
         }
         else
         {
-            LoseGame(); // Αν ο παίκτης έχει εξαντλήσει όλες τις προσπάθειες, τελειώνει το παιχνίδι
+            LoseGame(); // Αν έχουμε φτάσει στο μέγιστο αριθμό προσπαθειών, ο παίκτης χάνει το παιχνίδι
         }
     }
 
@@ -89,11 +89,12 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private IEnumerator NextAttemptCoroutine()
+    public void OnDialogueComplete()
     {
-        player.canMove = false; // Απενεργοποιούμε την κίνηση του παίκτη κατά τη διάρκεια της μετάβασης
-        yield return new WaitForSeconds(2f); // Μικρή καθυστέρηση πριν την επόμενη προσπάθεια
-        NextAttempt();
+        if (!gameOver)
+        {
+            NextAttempt(); // Πηγαίνουμε στην επόμενη προσπάθεια μετά το τέλος του διαλόγου
+        }
     }
 
     

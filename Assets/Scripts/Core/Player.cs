@@ -14,7 +14,31 @@ public class Player : MonoBehaviour
     public int currentHealth;
     public bool isAlive = true; // Κατάσταση ζωής του παίκτη
     public bool canMove = true; // Δυνατότητα κίνησης του παίκτη (μπορεί να απενεργοποιηθεί όταν ο παίκτης πεθάνει)
-    
+
+    public DialogueRunner dialogueRunner; // Αναφορά στον DialogueRunner για να μπορούμε να ξεκινάμε διαλόγους
+
+    void Awake()
+    {
+        if (dialogueRunner == null)
+        {
+            dialogueRunner = FindObjectOfType<DialogueRunner>(); // Βρίσκουμε τον DialogueRunner στο σκηνικό αν δεν έχει ανατεθεί
+            if (dialogueRunner == null)
+            {
+                Debug.LogError("No DialogueRunner found in the scene! Please ensure there is a DialogueRunner object.");
+            }
+        }
+
+         dialogueRunner.AddCommandHandler<string>("notmove", (target) => {
+            canMove = false; // Απενεργοποιούμε την κίνηση του παίκτη όταν εκτελείται η εντολή "notmove" στον Yarn
+            Debug.Log("Player movement has been disabled by Yarn command.");
+        });
+
+        dialogueRunner.AddCommandHandler<string>("move", (target) => {
+            canMove = true; // Ενεργοποιούμε την κίνηση του παίκτη όταν εκτελείται η εντολή "move" στον Yarn
+            Debug.Log("Player movement has been enabled by Yarn command.");
+        });
+    }
+
     void Start()
     {
         currentHealth = maxHealth; // Αρχικοποίηση της τρέχουσας υγείας με τη μέγιστη υγεία
@@ -33,13 +57,25 @@ public class Player : MonoBehaviour
             Debug.LogError("No starting tile found! Please ensure the GridManager has a valid starting tile.");
         }
 
+
     }
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0)) // Όταν ο χρήστης κάνει κλικ με το ποντίκι
+        // ΠΡΟΣΩΡΙΝΟ: Πατώντας το πλήκτρο 'K' ξεκλειδώνεις τον παίκτη χειροκίνητα
+        if (Input.GetKeyDown(KeyCode.K)) 
         {
-           HandleMovement();
+            canMove = true;
+            Debug.Log("MANUAL UNLOCK: canMove is now TRUE");
+        }
+
+        if (Input.GetMouseButtonDown(0)) 
+        {
+            if (!canMove) {
+                Debug.Log("Click ignored because canMove is FALSE");
+                return;
+            }
+            HandleMovement();
         }
     }
 
@@ -117,16 +153,5 @@ public class Player : MonoBehaviour
         Debug.Log("Player has been reset to the starting position with full health.");
     }
 
-    [YarnCommand("move")]
-    public void EnableMovement()
-    {
-        canMove = true; // Ενεργοποιούμε την κίνηση του παίκτη
-    }
-
-    [YarnCommand("notmove")]
-    public void DisableMovement()
-    {
-        canMove = false; // Απενεργοποιούμε την κίνηση του παίκτη
-    }
 
 }
