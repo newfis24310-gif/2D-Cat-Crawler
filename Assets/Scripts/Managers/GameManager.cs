@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
 
     [Header("References")]
     public FeedBackManager feedbackManager; // Αναφορά στον FeedbackManager για να μπορούμε να εμφανίζουμε μηνύματα στον παίκτη
-    public SoundManager soundManager; // Αναφορά στον SoundManager για να ρυθμίζουμε τον ήχο ανά περιπτώσεις
+
     private Player player; // Αναφορά στον Player για να μπορούμε να διαχειριστούμε την κατάσταση του παίκτη
     private GridManager gridManager; // Αναφορά στον GridManager για να μπορούμε να διαχειριστούμε το grid
   
@@ -38,7 +38,7 @@ public class GameManager : MonoBehaviour
         if (gameOver) return; // Αν το παιχνίδι έχει τελειώσει, δεν κάνουμε τίποτα
 
         if (isPlayerAlive) WinGame();
-        else FailAttemptProcessing();
+        else StartCoroutine(FailAttemptProcessing());
     }
 
     public void WinGame()
@@ -55,20 +55,31 @@ public class GameManager : MonoBehaviour
       
     }
     
-    private void FailAttemptProcessing()
+    private IEnumerator FailAttemptProcessing()
     {
+        Debug.Log($"Player failed attempt {currentAttempt}. Processing feedback...");
         // Εμφανίζουμε το κατάλληλο μήνυμα αποτυχίας στον παίκτη ανάλογα με την τρέχουσα προσπάθεια
         feedbackManager.ShowFailAttemptMessage(currentAttempt);
 
-        player.canMove = false; // Απενεργοποιούμε την κίνηση του παίκτη κατά τη διάρκεια της μετάβασης    
-        
+        Debug.Log("Waiting for feedback dialogue to complete...");
+
+        while (feedbackManager.dialogueRunner.IsDialogueRunning)
+        {
+            // Περιμένουμε μέχρι να τελειώσει ο διάλογος
+            yield return null;
+        }
+
+        //yield return new WaitForSeconds(5f); // Προσωρινή αναμονή για να δώσουμε χρόνο στον παίκτη να διαβάσει το μήνυμα (μπορεί να αφαιρεθεί όταν έχουμε έτοιμο το σύστημα διαλόγων)
+
+        // Aφου τελειώσει ο διάλογος, ελέγχουμε αν έχουμε φτάσει στο μέγιστο αριθμό προσπαθειών
         if (currentAttempt < maxAttempts)
         {
-            currentAttempt++; // Αυξάνουμε την τρέχουσα προσπάθεια
-        }
+            currentAttempt++;
+            NextAttempt();
+        } 
         else
         {
-            LoseGame(); // Αν έχουμε φτάσει στο μέγιστο αριθμό προσπαθειών, ο παίκτης χάνει το παιχνίδι
+            LoseGame();
         }
     }
 
@@ -82,10 +93,6 @@ public class GameManager : MonoBehaviour
             player.ResetPlayer(newStartTile);
             newStartTile.RevealTile(true); // Αποκαλύπτουμε το tile που βρίσκεται στις συντεταγμένες του παίκτη
             player.canMove = true; // Ενεργοποιούμε ξανά την κίνηση του παίκτη
-        }
-        if(currentAttempt == 2)
-        {
-            soundManager.PlayMusic2ndRound();
         }
     }
 
