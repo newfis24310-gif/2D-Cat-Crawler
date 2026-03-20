@@ -111,7 +111,10 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    
+    public void PlayBoxOpen()
+    {
+        soundManager.PlayBoxOpen();
+    }
 }
 
 

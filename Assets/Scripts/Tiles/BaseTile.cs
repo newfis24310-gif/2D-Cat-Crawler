@@ -34,7 +34,7 @@ public abstract class BaseTile : MonoBehaviour
         spriteRenderer.sprite = isRevealed ? revealedSprite : hiddenSprite;
 
         // Κλήση της μεθόδου του sound manager για να παίξει τον ήχο αποκάλυψης
-        //SoundManager.Instance.PlaySound("tile_reveal");
+        GameManager.Instance.PlayBoxOpen();
     }
 
 }
