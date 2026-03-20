@@ -28,7 +28,7 @@ position: -125,110
 ---
 <<stopmusic FMODSoundManager>>
 <<notmove Cat>>
-Clark: ...Ok, that was a lucky guess
+Clark: ...Ok, that was a lucky guess.
 Steve: So... that's it?
 Clark: We did it! The experiment is complete.
 Steve: Yeah! Oh man, Schrödinger would be so proud.
@@ -54,12 +54,12 @@ position: 110,-41
 ---
 <<stopmusic FMODSoundManager>>
 <<notmove Cat>>
-Hmm... I guess she is not coming out
-So, this must mean that she is dead. She will never know the taste. Rest in peace kitty.
+Hmm... I guess she is not coming out.
+So, this must mean that she is <color=red>dead</color>. She will never know the taste. Rest in peace kitty.
 Not yet. Remember, she can't be either unless we check.
 So, if I have the honor. Let's see...
 <<wait  2>>
-Yep, couldn't be deader.
+Yep, couldn't be <color=red>deader</color>.
 She probably didn't understand a thing. Such naive creatures.
 <<wait  1>>
 Anyway, should we continue?
@@ -82,15 +82,15 @@ position: 110,-41
 <<notmove Cat>>
 Clark: Another one probably bites the dust.
 Steve: Good, I am allergic to cats.
-Clark: And the cats are allergic to poison. So, you don't have to worry.
+Clark: And the cats are allergic to <color=green>poison</color>. So, you don't have to worry.
 <<wait  2>>
-Steve: Hey, do you think we should change the poison gas? I mean 4 boxes of it seems like a lot.
+Steve: Hey, do you think we should change the <color=green>poison gas</color>? I mean <color=green>4</color> boxes of it seem like a lot.
 Clark: No Steve, this is science!
 <<wait  1>>
 <<if $eatenFish>>
     <<jump HasFoundFishBefore>>
 <<else>>
-    Clark: I wonder when they will find our tasty treat.
+    Clark: I wonder when they will find our <color=yellow>tasty treat</color>.
     Steve: The what?
     Clark: Steve... just... be quiet.
 <<endif>>
@@ -99,11 +99,11 @@ Clark: No Steve, this is science!
 
 title: HasFoundFishBefore
 ---
-Steve: Why did we have the fish again?
+Steve: Why did we have the <color=yellow>fish</color> again?
 Clark: I mean... we have to spice things up. This is about uncertainty.
 Steve: Huh... why?
 Clark: Come on Steve, we've been over this.
-Clark: This fish is special. You remember? The abnormal antidote we developed?
+Clark: This fish is special. You remember? The abnormal <color=yellow>antidote</color> we developed?
 Steve: Oh yeah yeah...
 ===
 
@@ -113,14 +113,14 @@ position: 110,-41
 <<notmove Cat>>
 <<wait  2>>
 Steve: Well, here we go again.
-Clark: We really need to automate corpse disposal
+Clark: We really need to automate corpse disposal.
 <<wait  1>>
-Clark: You know, it's crazy to think that the cat could survive this.
+Clark: You know, it's crazy to think that a cat could survive this.
 Steve: What do you mean?
-Clark: I mean, a cat can survive 1 exposure. It's the 2nd one that seals the deal actually.
+Clark: I mean, a cat can survive <color=green>1</color> exposure. It's the <color=red>2nd</color> one that seals the deal actually.
 Steve: Really!?
-Clark: Yeah. Are you deaf? I'm telling you. Any of these cats can survive with a single dose in their lungs. The only problem is that they would need medical attention for the rest of their life.
-Steve: So, that means that anything after the 2nd exposure is like beating a dead horse.
+Clark: Yeah. Are you deaf? I'm telling you. Any of these cats can survive with a <color=green>single dose</color> in their lungs. The only problem is that they would need medical attention for the rest of their life.
+Steve: So, that means that anything after the <color=red>2nd</color> exposure is like beating a dead horse.
 Clark: Well, yes.
 <<if !$eatenFish>>
     Steve: Wait, I feel like something is missing.
@@ -137,13 +137,13 @@ position: 114,-39
 Clark: There goes another one.
 Steve: Hey Clark. I have a question?
 Clark: Yeees?
-Steve: What was the fish again?
+Steve: What was the <color=yellow>fish</color> again?
 Clark: COME ON. FOCUS.
-Clark: Don't remember when we tested for an antidote to the poison?
+Clark: Don't you remember when we tested for an <color=yellow>antidote</color> to the <color=green>poison</color>?
 Steve: Yea...
-Clark: Don't remember that the antidote had different effects depending on the exposure to the poison?
+Clark: Don't you remember that the <color=yellow>antidote</color> had different effects depending on the exposure to the <color=green>poison</color>?
 Steve: Yes?
-Clark: It is only good if the poison has full effect. Remmeber when you tried to eat it and I told you no because you were not poisoned enough and I said that it would kill you?
+Clark: It is only good if the <color=green>poison</color> has full effect. Remmeber when you tried to eat it and I told you NO because you were <color=green>not poisoned enough</color> and I said that it would <color=red>kill</color> you?
 Steve: No.
 <<wait  1>>
 Clark: How did you survive this long?
@@ -156,15 +156,15 @@ position: 114,-39
 ---
 <<notmove Cat>>
 <<wait  2>>
-Steve: I'm kind of bored
+Steve: I'm kind of bored.
 Clark: I know.
 Steve: I just wish that the cat would know better. 
-Clark: I know. If only they could recognise the gas indication. And then realise if they are dead or not. And, based on that, if there was an open path to the end, make the decision to consume or not the fish depending on their status. And then manage to escape from the cruel hands of fate that brought them to this place.
+Clark: I know. If only they could recognise the <color=green>gas indication</color>. And then realise if they are <color=red>dead or not</color>. And, based on that, if there was an open path to the end, make the decision to consume or not the <color=yellow>fish</color> depending on their <color=red>status</color>. And then manage to escape from the cruel hands of fate that brought them to this place.
 Steve: True true true.
 Clark: Yeah...
 <<wait  1>>
 Steve: So...
-Steve: The cat is dead
+Steve: The cat is <color=red>dead</color>.
 <<wait  1>>
 Steve: Well, anyway. Let's bring in the next specimen.
 <<move Cat>>
@@ -180,7 +180,7 @@ Clark: ...No.
 Steve: ...Are you sure?
 Clark: ...
 Clark: No.
-Steve: Well then, I guess you mentally prepare for Schrödinger's test then. 
+Steve: Well then, I guess you are mentally prepared for Schrödinger's test then. 
 Clark: ...Well, I can't stay mad at you forever.
 Steve: Of course, I pay for-
 Clark: You pay for the rent. I know.
@@ -194,9 +194,9 @@ position: 114,-39
 <<wait  2>>
 Clark: Too bad. Welp, thank you next.
 Steve: Clark, there is no next.
-Clark: Waht do you mean dear collegue?
+Clark: What do you mean dear collegue?
 <<stopmusic FMODSoundManager>>
-Steve: We are out of cats
+Steve: We are out of cats.
 <<wait  1>>
 Clark: So, this experiment-
 Steve: Is a failure.
@@ -204,9 +204,9 @@ Steve: Is a failure.
 Steve: Welp, I'm off to gather my stuff from the office. If you need me, I will be tearing up my degree next door.
 Steve: I WILL be crying and I WILL go after my second career choice. I will become an artist! 
 <<wait  1>>
-Clark: ...I spent so much money on this
+Clark: ...I spent so much money on this.
 <<wait  1>>
-Clark: ...my dad is gonna kill me
+Clark: ...my dad is gonna kill me.
 <<wait  1>>
 Clark: Welp, time to flee the country.
 <<move Cat>>
