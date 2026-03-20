@@ -5,8 +5,7 @@ public class FeedBackManager : MonoBehaviour
 {   
     public DialogueRunner dialogueRunner;
     public void ShowFailAttemptMessage(int currentAttempt)
-    {  
-
+    { 
         string nodeName = "EndRound" + currentAttempt;
 
         if (dialogueRunner != null)

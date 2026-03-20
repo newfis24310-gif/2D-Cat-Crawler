@@ -32,6 +32,9 @@ public abstract class BaseTile : MonoBehaviour
 
         // Αλλάζουμε το sprite ανάλογα με την κατάσταση αποκαλυμμένου
         spriteRenderer.sprite = isRevealed ? revealedSprite : hiddenSprite;
+
+        // Κλήση της μεθόδου του sound manager για να παίξει τον ήχο αποκάλυψης
+        //SoundManager.Instance.PlaySound("tile_reveal");
     }
 
 }
