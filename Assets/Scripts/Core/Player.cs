@@ -100,7 +100,8 @@ public class Player : MonoBehaviour
                 x = clickedTile.x; // Ενημέρωση των συντεταγμένων του παίκτη
                 y = clickedTile.y;
                 Debug.Log($"Player moved to tile at ({clickedTile.name}) with coordinates ({clickedTile.x}, {clickedTile.y})");
-        
+
+                clickedTile.OnPlayerEnter(); // Καλούμε τη μέθοδο που χειρίζεται την είσοδο του παίκτη στο tile 
                 gridManager.UpdateGridVisibility(x, y); // Αποκαλύπτουμε το tile που βρίσκεται στις συντεταγμένες του παίκτη
                 
                 if (clickedTile is ExitTile)

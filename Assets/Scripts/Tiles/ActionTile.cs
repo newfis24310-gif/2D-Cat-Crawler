@@ -22,26 +22,24 @@ public class ActionTile : BaseTile
             Debug.Log("Action on this tile has already been completed.");
             return;
         }
-        // Βρίσκουμε τον παίκτη μέσα στη σκηνή
-        Player player = FindObjectOfType<Player>();
-
-        // Έλεγχος αν βρέθηκε ο παίκτης
-        if (player == null)
+        
+        if (item == null)
         {
-            Debug.LogError("Player not found in scene.");
-            return;
+            item = GetComponentInChildren<Item>(); // Προσπαθούμε να βρούμε ένα Item που είναι συνδεδεμένο με αυτό το tile
         }
 
-        // Αν υπάρχει Item συνδεδεμένο σε αυτό το tile, το ενεργοποιούμε
         if (item != null)
         {
-            item.OnInteract(player);  // Εκτέλεση της δράσης πάνω στον παίκτη
-            actionDone = true;   // Σημειώνουμε ότι η δράση ολοκληρώθηκε
+            Player player = FindObjectOfType<Player>(); // Βρίσκουμε τον παίκτη στη σκηνή
+            if (player != null)
+            {
+                item.OnInteract(player); // Καλούμε τη μέθοδο αλληλεπίδρασης του αντικειμένου, περνώντας τον παίκτη ως παράμετρο
+                actionDone = true;
+            }
         }
         else
         {
-             // Προειδοποίηση αν δεν έχει οριστεί αντικείμενο στο tile
-            Debug.LogWarning("No Item assigned to this ActionTile.");
+            Debug.LogWarning("No item found on this ActionTile.");
         }
     }
 }

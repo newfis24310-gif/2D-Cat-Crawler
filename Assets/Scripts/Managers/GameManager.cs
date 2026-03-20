@@ -89,6 +89,7 @@ public class GameManager : MonoBehaviour
         if (gridManager != null)
         {
             gridManager.ResetGrid(); // Επαναφορά του grid στην αρχική κατάσταση
+            gridManager.AssignItemsToTiles();
             BaseTile newStartTile = gridManager.GetStartTile(); // Λαμβάνουμε το αρχικό tile από τον GridManager
             player.ResetPlayer(newStartTile);
             newStartTile.RevealTile(true); // Αποκαλύπτουμε το tile που βρίσκεται στις συντεταγμένες του παίκτη

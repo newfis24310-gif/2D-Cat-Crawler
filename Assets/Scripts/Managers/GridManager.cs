@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using UnityEditor.Search;
 using UnityEngine;
 /*
 * Κλάση που θα διαχειρίζεται το grid και τα tiles. 
@@ -14,12 +15,13 @@ public class GridManager : MonoBehaviour
     public BaseTile emptyTilePrefab; // Το prefab που θα χρησιμοποιηθεί για τη δημιουργία των tiles
     public BaseTile exitTilePrefab; // Το prefab για το tile εξόδου
     public BaseTile actionTilePrefab; // Το prefab για τα tiles με ενέργεια/αντικείμενο
+
+    [Header("Items Prefabs")]
+    public Item fishPrefab;
+    public Item gasPrefab;
     
     private BaseTile[,] grid; // Διδιάστατος πίνακας για να αποθηκεύουμε τις αναφορές στα tiles, ώστε να μπορούμε εύκολα να τα διαχειριστούμε
     float startX, startY; // Μεταβλητές για να κρατάμε τις αρχικές συντεταγμένες του grid για τον υπολογισμό των θέσεων των tiles
-    
-
-    
     private Vector2Int startTilePosition; // Η θέση του αρχικού tile στο grid, για να μπορούμε να τοποθετήσουμε τον παίκτη εκεί στην αρχή του παιχνιδιού
     
     void Awake()
@@ -27,6 +29,7 @@ public class GridManager : MonoBehaviour
         CalculateGridOffsets();
         GenerateGrid();
         SetUpNeighbors();
+        AssignItemsToTiles();
         
     }
 
@@ -210,5 +213,47 @@ public class GridManager : MonoBehaviour
         CalculateGridOffsets(); // Υπολογίζουμε ξανά τις αρχικές συντεταγμένες για το νέο grid
         GenerateGrid(); // Δημιουργούμε ένα νέο grid
         SetUpNeighbors();
+    }
+
+    // Μέθοδος για να βάλουμε τα items σε actionTiles
+    public void AssignItemsToTiles()
+    {
+        // Βρίσκουμε τα actionTiles που υπάρχουν στο grid
+        List<ActionTile> actionTiles = new List<ActionTile>();
+        for (int x = 0; x < width; x++)
+        {
+            for (int y = 0; y < height; y++)
+            {
+                if(grid[x, y] is ActionTile actionTile)
+                {
+                    actionTiles.Add(actionTile);
+                    actionTile.item = null; // Καθαρίζουμε τυχόν παλία items
+                    actionTile.actionDone = false;
+                }
+            }
+        }
+        if (actionTiles.Count == 0) return; // Αν δεν υπάρχουν action tiles, δεν κάνουμε τίποτα
+
+        // Ανακατεύουμε τη λίστα των action tiles για να έχουμε τυχαία κατανομή των items
+        for (int i = 0; i < actionTiles.Count; i++)
+        {
+            ActionTile temp = actionTiles[i];
+            int randomIndex = Random.Range(0, actionTiles.Count); 
+            actionTiles[i] = actionTiles[randomIndex];
+            actionTiles[randomIndex] = temp;
+        }
+
+        // To πρώτο tile της λίστας θα πάρει το fish
+        Item fish = Instantiate(fishPrefab, actionTiles[0].transform.position, Quaternion.identity);
+        fish.transform.parent = actionTiles[0].transform; // Κάνουμε το item παιδί του tile για καλύτερη οργάνωση στην ιεραρχία
+        actionTiles[0].item = fish;
+
+        // Τα υπόλοιπα tiles θα πάρουν το gas
+        for (int i = 1; i < actionTiles.Count; i++)
+        {
+            Item gas = Instantiate(gasPrefab, actionTiles[i].transform.position, Quaternion.identity);
+            gas.transform.parent = actionTiles[i].transform; // Κάνουμε το item παιδί του tile για καλύτερη οργάνωση στην ιεραρχία
+            actionTiles[i].item = gas;
+        }
     }
 }
