@@ -189,19 +189,6 @@ public class Player : MonoBehaviour
         startTile.RevealTile(true); // Αποκαλύπτουμε το tile που βρίσκεται στις συντεταγμένες του παίκτη
         
         gridManager.UpdateGridVisibility(x, y); // Ενημερώνουμε την ορατότητα του grid με βάση τις νέες συντεταγμένες του παίκτη
-
-
-
-
-
-
-
-
-
-
-
-
-
     
     }
 

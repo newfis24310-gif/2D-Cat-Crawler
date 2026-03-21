@@ -1447,7 +1447,7 @@ Transform:
   m_GameObject: {fileID: 605041656}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 7.36, y: -0.3, z: 0}
+  m_LocalPosition: {x: 7.36, y: -3.45, z: 0}
   m_LocalScale: {x: 9.11, y: 9.11, z: 9.11}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -2268,8 +2268,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -7.2, y: -0.05, z: -1}
-  m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
-  m_ConstrainProportionsScale: 1
+  m_LocalScale: {x: 0.8, y: 0.8, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2822,7 +2822,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 397, y: -231}
+  m_AnchoredPosition: {x: 397, y: -370.9}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1700334686
@@ -3298,15 +3298,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3618564259006924693, guid: 57692e5f2785811449c904233c5627e9, type: 3}
       propertyPath: m_LocalScale.x
-      value: 5
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 3618564259006924693, guid: 57692e5f2785811449c904233c5627e9, type: 3}
       propertyPath: m_LocalScale.y
-      value: 5
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 3618564259006924693, guid: 57692e5f2785811449c904233c5627e9, type: 3}
       propertyPath: m_LocalScale.z
-      value: 5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3618564259006924693, guid: 57692e5f2785811449c904233c5627e9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3350,7 +3350,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3618564259006924693, guid: 57692e5f2785811449c904233c5627e9, type: 3}
       propertyPath: m_ConstrainProportionsScale
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5980726342998907677, guid: 57692e5f2785811449c904233c5627e9, type: 3}
       propertyPath: m_Sprite

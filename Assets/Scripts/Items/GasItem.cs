@@ -24,7 +24,7 @@ public class GasItem : Item
         player.canMove = false; // Απενεργοποιούμε την κίνηση του παίκτη κατά τη διάρκεια της animation
         player.gasItemCount++; // Αυξάνουμε τον μετρητή των gas items του παίκτη κατά 1
 
-        yield return new WaitForSeconds(2.5f); // Περιμένουμε για τη διάρκεια της animation (προσαρμόστε το χρόνο ανάλογα με τη διάρκεια της animation)
+        yield return new WaitForSeconds(1.5f); // Περιμένουμε για τη διάρκεια της animation (προσαρμόστε το χρόνο ανάλογα με τη διάρκεια της animation)
         
         if (player.gasItemCount >= 2)
         {
