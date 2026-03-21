@@ -35,15 +35,15 @@ public class Player : MonoBehaviour
         });
 
         dialogueRunner.AddCommandHandler<string>("move", (target) => {
-            canMove = true; // Ενεργοποιούμε την κίνηση του παίκτη όταν εκτελείται η εντολή "move" στον Yarn
+            //canMove = true; // Ενεργοποιούμε την κίνηση του παίκτη όταν εκτελείται η εντολή "move" στον Yarn
             Debug.Log($"{target} movement has been enabled by Yarn command.");
-        });
+        }); 
     }
 
     void Start()
     {
         
-        targetPosition = transform.position; // Αρχικά, η τρέχουσα θέση είναι και o στόχος
+        /*targetPosition = transform.position; // Αρχικά, η τρέχουσα θέση είναι και o στόχος
         isAlive = true; //  Ο παίκτης ξεκινάει ζωντανός για να δοκιμάσουμε το σύστημα αλλαγής γύρων
 
         BaseTile startTile = gridManager.GetStartTile(); // Λαμβάνουμε το αρχικό tile από τον GridManager
@@ -57,7 +57,7 @@ public class Player : MonoBehaviour
         else
         {
             Debug.LogError("No starting tile found! Please ensure the GridManager has a valid starting tile.");
-        }
+        }*/
     }
 
     void Update()
@@ -189,7 +189,7 @@ public class Player : MonoBehaviour
         fishItem = null; // Αφαίρεση της αναφοράς στο ψάρι
 
         startTile.RevealTile(true); // Αποκαλύπτουμε το tile που βρίσκεται στις συντεταγμένες του παίκτη
-        canMove = true; // Ενεργοποιούμε ξανά την κίνηση του παίκτη
+        
         gridManager.UpdateGridVisibility(x, y); // Ενημερώνουμε την ορατότητα του grid με βάση τις νέες συντεταγμένες του παίκτη
 
 

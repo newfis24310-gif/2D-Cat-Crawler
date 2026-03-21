@@ -98,6 +98,7 @@ public class GameManager : MonoBehaviour
     private void NextAttempt()
     {
         Debug.Log($"Preparing for attempt {currentAttempt}...");
+        player.canMove = false; // Απενεργοποιούμε την κίνηση του παίκτη κατά τη διάρκεια της προετοιμασίας για τον επόμενο γύρο
 
         ClearSkeletons(); // Καθαρίζουμε τα skeletons sprites από την προηγούμενη προσπάθεια
         deathPoints.Clear(); // Καθαρίζουμε τα σημεία θανάτου από την προηγούμενη προσπάθεια
@@ -116,6 +117,8 @@ public class GameManager : MonoBehaviour
     {
         // H γατα δεν κουνιέται
         player.canMove = false;
+        player.isAlive = true; // Ο παίκτης είναι ζωντανός στην αρχή κάθε γύρου
+
         SpriteRenderer playerSprite = player.GetComponent<SpriteRenderer>();
         if (playerSprite != null) playerSprite.enabled = false;
 
@@ -145,6 +148,9 @@ public class GameManager : MonoBehaviour
         {
             yield return StartCoroutine(player.MoveToStartTile(startTile));
         }
+
+        yield return new WaitForSeconds(0.5f); // Μικρή καθυστέρηση πριν ενεργοποιηθεί η κίνηση του παίκτη
+        player.canMove = true; // Ενεργοποιούμε την κίνηση του παίκτη
        
     }
 
