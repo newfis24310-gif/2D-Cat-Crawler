@@ -24,6 +24,13 @@ public class GasItem : Item
         player.gasItemCount++; // Αυξάνουμε τον μετρητή των gas items του παίκτη κατά 1
 
         yield return new WaitForSeconds(5f); // Περιμένουμε για τη διάρκεια της animation (προσαρμόστε το χρόνο ανάλογα με τη διάρκεια της animation)
+        
+        if (player.gasItemCount >= 2)
+        {
+            player.Die(); // Ο παίκτης πεθαίνει αν συλλέξει 2 ή περισσότερα gas items
+            Debug.Log("Player has collected 2 or more gas items and has died!");
+        }
+        
         player.canMove = true; // Ενεργοποιούμε ξανά την κίνηση του παίκτη μετά την animation
         Debug.Log($"Player has collected {player.gasItemCount} gas item(s).");
     
