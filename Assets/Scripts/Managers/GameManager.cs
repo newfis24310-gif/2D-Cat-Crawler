@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
     private Player player; // Αναφορά στον Player για να μπορούμε να διαχειριστούμε την κατάσταση του παίκτη
     private GridManager gridManager; // Αναφορά στον GridManager για να μπορούμε να διαχειριστούμε το grid
     public Mouse mouse; // Αναφορά στο Mouse για να μπορούμε να το ελέγχουμε από το GameManager
+    public GameObject background;
 
     public GameObject skeletonPrefab;
     private List<Vector3> deathPoints = new List<Vector3>(); // Λίστα για να αποθηκεύουμε τα σημεία θανάτου του παίκτη
@@ -34,6 +35,7 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        background.SetActive(true); // Ενεργοποιούμε το background στην αρχή του παιχνιδιού
         player = FindObjectOfType<Player>(); // Βρίσκουμε τον Player στο σκηνικό
         gridManager = FindObjectOfType<GridManager>(); // Βρίσκουμε τον GridManager στο σκηνικό
 
