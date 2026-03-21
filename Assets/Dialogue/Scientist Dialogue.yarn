@@ -1,4 +1,4 @@
-﻿title: StartRound1
+title: StartRound1
 position: -120,-168
 ---
 <<declare $eatenFish = false>>
@@ -17,10 +17,11 @@ position: -124,-27
 <<stopmusic FMODSoundManager>>
 <<notmove Cat>>
 Ok... wow...
-that was unexpected
+That was unexpected.
 <<wait  1>>
 Yeah.
 <<wait  2>>
+<<winluck Canvas>>
 ===
 
 title: Win
@@ -46,6 +47,7 @@ Clark: I'll call my dad's insurance company.
 <<else>>
     Clark: I may take the cat with me though. Lucky paws!
 <<endif>>
+<<winskill Canvas>>
 <<move Cat>>
 ===
 
@@ -143,7 +145,7 @@ Clark: Don't you remember when we tested for an <color=yellow>antidote</color> t
 Steve: Yea...
 Clark: Don't you remember that the <color=yellow>antidote</color> had different effects depending on the exposure to the <color=green>poison</color>?
 Steve: Yes?
-Clark: It is only good if the <color=green>poison</color> has full effect. Remmeber when you tried to eat it and I told you NO because you were <color=green>not poisoned enough</color> and I said that it would <color=red>kill</color> you?
+Clark: It is only good if the <color=green>poison</color> has full effect. Remeber when you tried to eat it and I told you NO because you were <color=green>not poisoned enough</color> and I said that it would <color=red>kill</color> you?
 Steve: No.
 <<wait  1>>
 Clark: How did you survive this long?
@@ -200,14 +202,15 @@ Steve: We are out of cats.
 <<wait  1>>
 Clark: So, this experiment-
 Steve: Is a failure.
-<<wait  1>>
+<<wait  3>>
 Steve: Welp, I'm off to gather my stuff from the office. If you need me, I will be tearing up my degree next door.
 Steve: I WILL be crying and I WILL go after my second career choice. I will become an artist! 
 <<wait  1>>
 Clark: ...I spent so much money on this.
 <<wait  1>>
 Clark: ...my dad is gonna kill me.
-<<wait  1>>
+<<wait  2>>
 Clark: Welp, time to flee the country.
+<<lose Canvas>>
 <<move Cat>>
 ===
