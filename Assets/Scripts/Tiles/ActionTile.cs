@@ -25,7 +25,7 @@ public class ActionTile : BaseTile
         
         if (item == null)
         {
-            item = GetComponentInChildren<Item>(); // Προσπαθούμε να βρούμε ένα Item που είναι συνδεδεμένο με αυτό το tile
+            item = GetComponentInChildren<Item>(true); // Προσπαθούμε να βρούμε ένα Item που είναι συνδεδεμένο με αυτό το tile
         }
 
         if (item != null)
@@ -33,6 +33,7 @@ public class ActionTile : BaseTile
             Player player = FindObjectOfType<Player>(); // Βρίσκουμε τον παίκτη στη σκηνή
             if (player != null)
             {
+                item.Reveal(); // Αποκαλύπτουμε το αντικείμενο/ενέργεια στο tile
                 item.OnInteract(player); // Καλούμε τη μέθοδο αλληλεπίδρασης του αντικειμένου, περνώντας τον παίκτη ως παράμετρο
                 if (!(item is FishItem)) actionDone = true;
             }

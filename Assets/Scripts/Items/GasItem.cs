@@ -9,7 +9,7 @@ public class GasItem : Item
         player.gasItemCount++; // Αυξάνουμε τον μετρητή των gas items του παίκτη κατά 1
         Debug.Log($"Player has collected {player.gasItemCount} gas item(s).");
 
-        if(player.gasItemCount >= 2)
+        if(player.gasItemCount >= 2) 
         {
             player.Die();
         }
@@ -17,6 +17,6 @@ public class GasItem : Item
         {
             // Ισως βαλουμε καποιο εφε δεν ξερω
         }
-        Destroy(gameObject); // Καταστρέφουμε το αντικείμενο του gas item αφού ο παίκτης το συλλέξει
+        Destroy(gameObject,2f); // Καταστρέφουμε το αντικείμενο του gas item αφού ο παίκτης το συλλέξει
     }
 }

@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -18,6 +19,8 @@ public class GameManager : MonoBehaviour
     private GridManager gridManager; // Αναφορά στον GridManager για να μπορούμε να διαχειριστούμε το grid
     public Mouse mouse; // Αναφορά στο Mouse για να μπορούμε να το ελέγχουμε από το GameManager
 
+    public GameObject skeletonPrefab;
+    private List<Vector3> deathPoints = new List<Vector3>(); // Λίστα για να αποθηκεύουμε τα σημεία θανάτου του παίκτη
     void Awake()
     {
         if (Instance == null) Instance = this;
@@ -39,6 +42,8 @@ public class GameManager : MonoBehaviour
     public void OnPlayerReachedExit(bool isPlayerAlive)
     {
         if (gameOver) return; // Αν το παιχνίδι έχει τελειώσει, δεν κάνουμε τίποτα
+
+        SpawnSkeletonsAtDeathPoints(); // Δημιουργούμε skeletons στα σημεία θανάτου του παίκτη
 
         if (isPlayerAlive) WinGame();
         else StartCoroutine(FailAttemptProcessing());
@@ -93,6 +98,10 @@ public class GameManager : MonoBehaviour
     private void NextAttempt()
     {
         Debug.Log($"Preparing for attempt {currentAttempt}...");
+
+        ClearSkeletons(); // Καθαρίζουμε τα skeletons sprites από την προηγούμενη προσπάθεια
+        deathPoints.Clear(); // Καθαρίζουμε τα σημεία θανάτου από την προηγούμενη προσπάθεια
+
         if (gridManager != null)
         {
             gridManager.ResetGrid(); // Επαναφορά του grid στην αρχική κατάσταση
@@ -156,7 +165,33 @@ public class GameManager : MonoBehaviour
         // soundManager.PlayMusic(soundManager.musicLibrary.win, 0.5f);
     }
 
+    public void RecordDeathPoint(Vector3 position)
+    {
+        deathPoints.Add(position); // Προσθέτουμε το σημείο θανάτου στη λίστα
+    }
 
+    private void SpawnSkeletonsAtDeathPoints()
+    {
+        foreach (Vector3 deathPoint in deathPoints)
+        {
+            Vector3 spawnDeathPoint = new Vector3(deathPoint.x, deathPoint.y, -1f); // Θέτουμε το z σε -1 για να είναι πάνω από τα tiles
+            Instantiate(skeletonPrefab, spawnDeathPoint, Quaternion.identity); // Δημιουργούμε ένα skeleton prefab σε κάθε σημείο θανάτου
+        }
+    }
+
+    private void ClearSkeletons()
+    {
+        // Βρίσκει όλα τα GameObjects στη σκηνή που έχουν το Tag "Skeleton"
+        GameObject[] skeletons = GameObject.FindGameObjectsWithTag("Skeleton");
+    
+        foreach (GameObject skeleton in skeletons)
+        {
+            Destroy(skeleton); // Τα διαγράφει από τη σκηνή
+        }
+    }
 }
+
+
+
 
 

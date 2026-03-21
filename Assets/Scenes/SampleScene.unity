@@ -1597,12 +1597,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: 4596024344892014084, guid: 7761f19e37a64e64b8103b4499303e68, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1.12, y: 0.82}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -1618,7 +1618,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -7.2, y: -0.05, z: -1}
-  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
+  m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -1657,6 +1657,7 @@ MonoBehaviour:
   feedbackManager: {fileID: 1988554828}
   soundManager: {fileID: 1460109568}
   mouse: {fileID: 1145766236}
+  skeletonPrefab: {fileID: 4207684873929495311, guid: 1aae20159d7023d47a803f8c0418d61e, type: 3}
 --- !u!4 &1223221771
 Transform:
   m_ObjectHideFlags: 0

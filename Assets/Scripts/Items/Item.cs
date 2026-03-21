@@ -9,6 +9,25 @@ using UnityEngine;
  */
 public abstract class Item : MonoBehaviour
 {
+    protected SpriteRenderer spriteRenderer;
+
+    protected virtual void Awake()
+    {
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        // Ξεκινάει πάντα κρυφό
+        if (spriteRenderer != null) spriteRenderer.enabled = false;
+    }
+
+    // Μέθοδος για να εμφανίζεται το item
+    public void Reveal()
+    {
+        if (spriteRenderer == null) 
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer.enabled = true;
+
+        Debug.Log($"REVEALED: {gameObject.name} at {transform.position}");
+    }
+
     // Αφηρημένη μέθοδος αλληλεπίδρασης με τον παίκτη
     public abstract void OnInteract(Player player);
 }

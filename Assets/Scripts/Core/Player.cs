@@ -131,10 +131,10 @@ public class Player : MonoBehaviour
     // Μέθοδος για να χειριστούμε το θάνατο του παίκτη
     public void Die()
     {
+        if (!isAlive) return; // Αν ο παίκτης είναι ήδη νεκρός, μην κάνεις τίποτα
         isAlive = false; // Ο παίκτης δεν είναι πλέον ζωντανός
+        GameManager.Instance.RecordDeathPoint(transform.position); // Καταγράφουμε το σημείο θανάτου του παίκτη στο GameManager
         Debug.Log("Player has died!");
-        SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
-        
     }
 
     // Μέθοδος για να θεραπεύεται ο παίκτης
