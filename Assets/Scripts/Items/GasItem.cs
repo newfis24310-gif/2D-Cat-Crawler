@@ -1,3 +1,4 @@
+using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -5,18 +6,27 @@ public class GasItem : Item
 {
     public override void OnInteract(Player player)
     {
-        Debug.Log("Cat found the gas");
-        player.gasItemCount++; // Αυξάνουμε τον μετρητή των gas items του παίκτη κατά 1
-        Debug.Log($"Player has collected {player.gasItemCount} gas item(s).");
-
-        if(player.gasItemCount >= 2) 
-        {
-            player.Die();
-        }
-        else
-        {
-            // Ισως βαλουμε καποιο εφε δεν ξερω
-        }
-        Destroy(gameObject,2f); // Καταστρέφουμε το αντικείμενο του gas item αφού ο παίκτης το συλλέξει
+        StartCoroutine(PlayGasAnimation(player));
     }
+
+    public override void Reveal()
+    {
+        base.Reveal();
+        Debug.Log("Gas item revealed! Be careful, collecting 2 will be fatal for the player.");
+        
+        Animator animator = GetComponent<Animator>();
+        if(animator != null) animator.Play("Gas_animetion", 0, 0f); // Παίζουμε την animation του gas item όταν αποκαλύπτεται
+    }
+
+    private IEnumerator PlayGasAnimation(Player player)
+    {
+        player.canMove = false; // Απενεργοποιούμε την κίνηση του παίκτη κατά τη διάρκεια της animation
+        player.gasItemCount++; // Αυξάνουμε τον μετρητή των gas items του παίκτη κατά 1
+
+        yield return new WaitForSeconds(5f); // Περιμένουμε για τη διάρκεια της animation (προσαρμόστε το χρόνο ανάλογα με τη διάρκεια της animation)
+        player.canMove = true; // Ενεργοποιούμε ξανά την κίνηση του παίκτη μετά την animation
+        Debug.Log($"Player has collected {player.gasItemCount} gas item(s).");
+    
+    }
+    
 }

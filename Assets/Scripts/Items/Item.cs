@@ -19,7 +19,7 @@ public abstract class Item : MonoBehaviour
     }
 
     // Μέθοδος για να εμφανίζεται το item
-    public void Reveal()
+    public virtual void Reveal()
     {
         if (spriteRenderer == null) 
         spriteRenderer = GetComponent<SpriteRenderer>();
