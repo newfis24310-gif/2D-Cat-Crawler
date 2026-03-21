@@ -1,7 +1,7 @@
 title: StartRound1
 position: -120,-168
 ---
-<<declare $eatenFish = false>>
+<<declare $foundFish = false>>
 <<declare $deathOnce = false>>
 <<notmove Cat>>
 Ok, here kitty kitty!
@@ -65,8 +65,8 @@ Yep, couldn't be <color=red>deader</color>.
 She probably didn't understand a thing. Such naive creatures.
 <<wait  1>>
 Anyway, should we continue?
-Indubitably dear Clarkson.
-Don't ever say that again Steve. Anyway...
+Indubitably dear <b>Clarkson</b>.
+Don't ever say that again <b>Steve</b>. Anyway...
 <<move Cat>>
 ===
 
@@ -89,7 +89,7 @@ Clark: And the cats are allergic to <color=green>poison</color>. So, you don't h
 Steve: Hey, do you think we should change the <color=green>poison gas</color>? I mean <color=green>4</color> boxes of it seem like a lot.
 Clark: No Steve, this is science!
 <<wait  1>>
-<<if $eatenFish>>
+<<if $foundFish>>
     <<jump HasFoundFishBefore>>
 <<else>>
     Clark: I wonder when they will find our <color=blue>tasty treat</color>.
@@ -124,7 +124,7 @@ Steve: Really!?
 Clark: Yeah. Are you deaf? I'm telling you. Any of these cats can survive with a <color=green>single dose</color> in their lungs. The only problem is that they would need medical attention for the rest of their life.
 Steve: So, that means that anything after the <color=red>2nd</color> exposure is like beating a dead horse.
 Clark: Well, yes.
-<<if !$eatenFish>>
+<<if !$foundFish>>
     Steve: Wait, I feel like something is missing.
     <<jump HasFoundFishBefore>>
 <<endif>>

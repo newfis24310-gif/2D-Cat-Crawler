@@ -77,6 +77,7 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log($"Player failed attempt {currentAttempt}. Processing feedback...");
         // Εμφανίζουμε το κατάλληλο μήνυμα αποτυχίας στον παίκτη ανάλογα με την τρέχουσα προσπάθεια
+        if(currentAttempt > 1){soundManager.currentAmbient.setParameterByName("Cat ambience", 1);} //Αλλάζω παράμετρο στο FMOD 
         PlayVacantBox();
         feedbackManager.ShowFailAttemptMessage(currentAttempt);
 
@@ -108,6 +109,7 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log($"Preparing for attempt {currentAttempt}...");
         player.canMove = false; // Απενεργοποιούμε την κίνηση του παίκτη κατά τη διάρκεια της προετοιμασίας για τον επόμενο γύρο
+        YarnDeathOnceFalse(); //Αρχικοποιώ μεταβλητή στο Yarn
 
         ClearSkeletons(); // Καθαρίζουμε τα skeletons sprites από την προηγούμενη προσπάθεια
         deathPoints.Clear(); // Καθαρίζουμε τα σημεία θανάτου από την προηγούμενη προσπάθεια
@@ -124,7 +126,7 @@ public class GameManager : MonoBehaviour
             PlayMusic2ndRound();
             PlayAmbienceLab();
         }
-        
+        if(currentAttempt > 1){soundManager.currentAmbient.setParameterByName("Cat ambience", 0);} 
     }
 
     private IEnumerator RoundSequence()
@@ -153,6 +155,7 @@ public class GameManager : MonoBehaviour
         {
             Vector3 startPosition = new Vector3(startTile.transform.position.x, startTile.transform.position.y, -1f); // Θέτουμε το z σε -1 για να είναι πάνω από τα tiles
             Vector3 exitPosition = new Vector3(exitTile.transform.position.x, exitTile.transform.position.y, -1f); // Θέτουμε το z σε -1 για να είναι πάνω από τα tiles
+            PlayCatRobotMouseMovement();
 
             yield return StartCoroutine(mouse.MoveMouse(startPosition, exitPosition)); // Ξεκινάμε την κίνηση του ποντικιού
         }
@@ -160,6 +163,7 @@ public class GameManager : MonoBehaviour
         // Aφού τελειώσει η κίνηση του ποντικιού, ξεκινάει η κίνηση της γατας προς το startTile
         if (startTile != null)
         {
+            PlayCatEntrance();
             yield return StartCoroutine(player.MoveToStartTile(startTile));
         }
 
@@ -208,6 +212,27 @@ public class GameManager : MonoBehaviour
     public void PlayMusic2ndRound()
     {
         soundManager.PlayMusic2ndRound();
+    }
+
+    //YARN VARIABLE CALLS
+    public void YarnDeathOnceTrue()
+    {
+        feedbackManager.YarnDeathOnceTrue();
+    }
+
+    public void YarnDeathOnceFalse()
+    {
+        feedbackManager.YarnDeathOnceFalse();
+    }
+
+    public void YarnFoundFishTrue()
+    {
+        feedbackManager.YarnFoundFishTrue();
+    }
+
+    public void YarnFoundFishFalse()
+    {
+        feedbackManager.YarnFoundFishFalse();
     }
 
 

@@ -24,5 +24,23 @@ public class FeedBackManager : MonoBehaviour
         else{dialogueRunner.StartDialogue("Win");}
     }
 
+    public void YarnDeathOnceTrue()
+    {
+        dialogueRunner.VariableStorage.SetValue("$deathOnce", true);
+    }
 
+    public void YarnDeathOnceFalse()
+    {
+        dialogueRunner.VariableStorage.SetValue("$deathOnce", false);
+    }
+
+    public void YarnFoundFishTrue()
+    {
+        dialogueRunner.VariableStorage.SetValue("$foundFish", true);
+    }
+
+    public void YarnFoundFishFalse()
+    {
+        dialogueRunner.VariableStorage.SetValue("$foundFish", false);
+    }
 }

@@ -7,7 +7,7 @@ public class SoundManager : MonoBehaviour
 {
     [SerializeField] private SFXLibrary sfxLibrary;
     [SerializeField] private MusicLibrary musicLibrary;
-    private EventInstance currentMusic, currentAmbient;
+    public EventInstance currentMusic, currentAmbient;
 
     void Start()
     {

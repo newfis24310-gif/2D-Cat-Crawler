@@ -133,6 +133,7 @@ public class Player : MonoBehaviour
         isAlive = false; // Ο παίκτης δεν είναι πλέον ζωντανός
         GameManager.Instance.RecordDeathPoint(transform.position); // Καταγράφουμε το σημείο θανάτου του παίκτη στο GameManager
         Debug.Log("Player has died!");
+        GameManager.Instance.YarnDeathOnceTrue();
     }
 
     // Μέθοδος για να θεραπεύεται ο παίκτης

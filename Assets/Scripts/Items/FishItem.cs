@@ -9,6 +9,7 @@ public class FishItem : Item
         // Λογικη θα προστεθει αργοτερα
         player.fishItem = this; // Αποθηκεύουμε την αναφορά στο αντικείμενο του ψαριού που βρήκε ο παίκτης
         GameManager.Instance.PlayFindFish();
+         GameManager.Instance.YarnFoundFishTrue();
     }
 
     public void EatFish(Player player)
