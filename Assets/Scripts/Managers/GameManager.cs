@@ -77,6 +77,7 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log($"Player failed attempt {currentAttempt}. Processing feedback...");
         // Εμφανίζουμε το κατάλληλο μήνυμα αποτυχίας στον παίκτη ανάλογα με την τρέχουσα προσπάθεια
+        PlayVacantBox();
         feedbackManager.ShowFailAttemptMessage(currentAttempt);
 
         Debug.Log("Waiting for feedback dialogue to complete...");
@@ -118,7 +119,11 @@ public class GameManager : MonoBehaviour
             StartCoroutine(RoundSequence());
         
         }
-        if(currentAttempt == 2) PlayMusic2ndRound();
+        if(currentAttempt == 2)
+        {
+            PlayMusic2ndRound();
+            PlayAmbienceLab();
+        }
         
     }
 
@@ -179,6 +184,10 @@ public class GameManager : MonoBehaviour
     public void PlayBoxOpen()
     {
         soundManager.PlayBoxOpen();
+    }
+    public void PlayVacantBox()
+    {
+        soundManager.PlayVacantBox();
     }
     public void PlayGas()
     {

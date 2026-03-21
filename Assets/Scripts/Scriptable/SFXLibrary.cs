@@ -6,6 +6,7 @@ public class SFXLibrary : ScriptableObject
 {
     public EventReference boxMovement;
     public EventReference boxOpen;
+    public EventReference vacantBox;
     public EventReference catEntrance;
     public EventReference eatFish;
     public EventReference findFish;

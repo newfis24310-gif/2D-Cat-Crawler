@@ -26,6 +26,13 @@ MonoBehaviour:
       Data3: -1104888443
       Data4: 418245276
     Path: event:/SFX/Box Open
+  vacantBox:
+    Guid:
+      Data1: 684280385
+      Data2: 1191421434
+      Data3: -2047049322
+      Data4: 915376956
+    Path: event:/SFX/Vacant Box
   catEntrance:
     Guid:
       Data1: -168686028

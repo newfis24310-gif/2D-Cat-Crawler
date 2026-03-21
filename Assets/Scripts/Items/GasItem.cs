@@ -16,6 +16,7 @@ public class GasItem : Item
         
         Animator animator = GetComponent<Animator>();
         if(animator != null) animator.Play("Gas_animetion", 0, 0f); // Παίζουμε την animation του gas item όταν αποκαλύπτεται
+        GameManager.Instance.PlayGas();
     }
 
     private IEnumerator PlayGasAnimation(Player player)

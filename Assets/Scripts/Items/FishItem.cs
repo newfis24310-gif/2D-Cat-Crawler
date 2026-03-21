@@ -8,13 +8,15 @@ public class FishItem : Item
         Debug.Log("The cat found the fish");
         // Λογικη θα προστεθει αργοτερα
         player.fishItem = this; // Αποθηκεύουμε την αναφορά στο αντικείμενο του ψαριού που βρήκε ο παίκτης
+        GameManager.Instance.PlayFindFish();
     }
 
     public void EatFish(Player player)
     {
         ActionTile parentTile = GetComponentInParent<ActionTile>(); // Προσπαθούμε να βρούμε το ActionTile που είναι γονέας αυτού του αντικειμένου
         if (parentTile != null) parentTile.actionDone = true; // Αν βρούμε το ActionTile, ορίζουμε ότι η ενέργεια του έχει ολοκληρωθεί
-        
+        GameManager.Instance.PlayEatFish();
+
         if (player.isAlive)
         {
             player.Die(); // Ο παίκτης πεθαίνει όταν τρώει το ψάρι

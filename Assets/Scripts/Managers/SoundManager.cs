@@ -35,6 +35,11 @@ public class SoundManager : MonoBehaviour
         RuntimeManager.PlayOneShot(sfxLibrary.boxOpen);
     }
 
+    public void PlayVacantBox()
+    {
+        RuntimeManager.PlayOneShot(sfxLibrary.vacantBox);
+    }
+
     public void PlayGas()
     {
         RuntimeManager.PlayOneShot(sfxLibrary.gas);
