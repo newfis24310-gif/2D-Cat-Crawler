@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -21,6 +22,10 @@ public class GameManager : MonoBehaviour
 
     public GameObject skeletonPrefab;
     private List<Vector3> deathPoints = new List<Vector3>(); // Λίστα για να αποθηκεύουμε τα σημεία θανάτου του παίκτη
+
+    [Header("UI Reference")]
+    public TextMeshProUGUI attemptsText;
+
     void Awake()
     {
         if (Instance == null) Instance = this;
@@ -36,6 +41,7 @@ public class GameManager : MonoBehaviour
         if (gridManager == null) Debug.LogError("GridManager not found in the scene! Please ensure there is a GridManager object.");
         
         StartCoroutine(RoundSequence()); // Ξεκινάμε την ακολουθία του πρώτου γύρου
+        UpdateAttempText();
     }
 
     // Kαλείται από το ExitTile όταν ο παίκτης φτάσει στο tile εξόδου.
@@ -102,7 +108,7 @@ public class GameManager : MonoBehaviour
 
         ClearSkeletons(); // Καθαρίζουμε τα skeletons sprites από την προηγούμενη προσπάθεια
         deathPoints.Clear(); // Καθαρίζουμε τα σημεία θανάτου από την προηγούμενη προσπάθεια
-
+        if(currentAttempt < maxAttempts) UpdateAttempText();
         if (gridManager != null)
         {
             gridManager.ResetGrid(); // Επαναφορά του grid στην αρχική κατάσταση
@@ -111,6 +117,7 @@ public class GameManager : MonoBehaviour
         
         }
         if(currentAttempt == 2) soundManager.PlayMusic2ndRound();
+        
     }
 
     private IEnumerator RoundSequence()
@@ -194,6 +201,11 @@ public class GameManager : MonoBehaviour
         {
             Destroy(skeleton); // Τα διαγράφει από τη σκηνή
         }
+    }
+
+    private void UpdateAttempText()
+    {
+        if (attemptsText != null) attemptsText.text = $"{currentAttempt} | {maxAttempts}";
     }
 }
 
