@@ -1,5 +1,32 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-8343166134967843458
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Gas Decompression
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Gas Decompression
+  Guid:
+    Data1: 1079409106
+    Data2: 1203467237
+    Data3: -1038146413
+    Data4: -345679081
+  Banks:
+  - {fileID: -8267530407672619839}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
 --- !u!114 &-8267530407672619839
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15,9 +42,36 @@ MonoBehaviour:
   Path: FMOD/Desktop/SFX.bank
   Name: SFX
   StudioPath: bank:/SFX
-  lastModified: 639096876602170848
+  lastModified: 639097125849427923
   FileSizes: []
   Exists: 1
+--- !u!114 &-7367807750982205816
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Fish found
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Fish found
+  Guid:
+    Data1: 1324280086
+    Data2: 1307442383
+    Data3: -2016067410
+    Data4: 839388378
+  Banks:
+  - {fileID: -8267530407672619839}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
 --- !u!114 &-6406599102053422420
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -40,11 +94,38 @@ MonoBehaviour:
   - {fileID: 7825583601522845866}
   IsStream: 1
   Is3D: 0
-  IsOneShot: 1
-  Parameters: []
+  IsOneShot: 0
+  Parameters:
+  - {fileID: -5133925230975547996}
   MinDistance: 1
   MaxDistance: 20
   Length: 0
+--- !u!114 &-5133925230975547996
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Lab/Cat ambience
+  m_EditorClassIdentifier: 
+  Name: Cat ambience
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 1370657041
+    data2: 3485265114
+  Type: 2
+  IsGlobal: 0
+  Labels:
+  - Cat ON
+  - Cat Off
+  Exists: 1
 --- !u!114 &-4859007745056222795
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -72,6 +153,60 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 41142
+--- !u!114 &-4409274780437727970
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Eat Fish
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Eat Fish
+  Guid:
+    Data1: -99894467
+    Data2: 1131559925
+    Data3: -1349725281
+    Data4: -164661159
+  Banks:
+  - {fileID: -8267530407672619839}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &-3397076456084828473
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Vacant Box
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Vacant Box
+  Guid:
+    Data1: 684280385
+    Data2: 1191421434
+    Data3: -2047049322
+    Data4: 915376956
+  Banks:
+  - {fileID: -8267530407672619839}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
 --- !u!114 &-2788446124983595481
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -122,13 +257,20 @@ MonoBehaviour:
   - {fileID: -4859007745056222795}
   - {fileID: -2788446124983595481}
   - {fileID: 2211510748948423278}
+  - {fileID: -7367807750982205816}
+  - {fileID: 7585106698877530275}
+  - {fileID: -4409274780437727970}
+  - {fileID: -3397076456084828473}
+  - {fileID: 8096550280406566718}
+  - {fileID: 414472175836317742}
+  - {fileID: -8343166134967843458}
   EditorParameters: []
   MasterBanks:
   - {fileID: 6973405291668156389}
   StringsBanks:
   - {fileID: 5697697245624104443}
   cacheVersion: 131858
-  cacheTime: 639096876602170848
+  cacheTime: 639097125849427923
   SerializableEventsDict:
   - key: event:/Ambience/Lab
     index: 0
@@ -138,6 +280,47 @@ MonoBehaviour:
     index: 2
   - key: event:/SFX/Box Movement
     index: 3
+  - key: event:/SFX/Fish found
+    index: 4
+  - key: event:/SFX/Cat Entrance
+    index: 5
+  - key: event:/SFX/Eat Fish
+    index: 6
+  - key: event:/SFX/Vacant Box
+    index: 7
+  - key: event:/SFX/Box Open
+    index: 8
+  - key: event:/SFX/Robot Movement
+    index: 9
+  - key: event:/SFX/Gas Decompression
+    index: 10
+--- !u!114 &414472175836317742
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Robot Movement
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Robot Movement
+  Guid:
+    Data1: -131805751
+    Data2: 1157868829
+    Data3: -707978052
+    Data4: -31326425
+  Banks:
+  - {fileID: -8267530407672619839}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
 --- !u!114 &2211510748948423278
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -152,10 +335,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: event:/SFX/Box Movement
   Guid:
-    Data1: -1315329154
-    Data2: 1226848186
-    Data3: -1104888443
-    Data4: 418245276
+    Data1: 859465926
+    Data2: 1103823568
+    Data3: -729057378
+    Data4: 1749643117
   Banks:
   - {fileID: -8267530407672619839}
   IsStream: 0
@@ -180,7 +363,7 @@ MonoBehaviour:
   Path: FMOD/Desktop/Music.bank
   Name: Music
   StudioPath: bank:/Music
-  lastModified: 639096876602016001
+  lastModified: 639097125846212354
   FileSizes: []
   Exists: 1
 --- !u!114 &5697697245624104443
@@ -198,10 +381,10 @@ MonoBehaviour:
   Path: FMOD/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639096179359759641
+  lastModified: 639097125842941786
   FileSizes:
   - Name: 
-    Value: 1068
+    Value: 1438
   Exists: 1
 --- !u!114 &6973405291668156389
 MonoBehaviour:
@@ -218,9 +401,36 @@ MonoBehaviour:
   Path: FMOD/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 639090010570366193
+  lastModified: 639097125842926786
   FileSizes: []
   Exists: 1
+--- !u!114 &7585106698877530275
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Cat Entrance
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Cat Entrance
+  Guid:
+    Data1: -168686028
+    Data2: 1181716091
+    Data3: -1781040465
+    Data4: -714220454
+  Banks:
+  - {fileID: -8267530407672619839}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
 --- !u!114 &7825583601522845866
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -236,6 +446,33 @@ MonoBehaviour:
   Path: FMOD/Desktop/Ambience.bank
   Name: Ambience
   StudioPath: bank:/Ambience
-  lastModified: 639090010570204370
+  lastModified: 639097125842881776
   FileSizes: []
   Exists: 1
+--- !u!114 &8096550280406566718
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Box Open
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Box Open
+  Guid:
+    Data1: -1315329154
+    Data2: 1226848186
+    Data3: -1104888443
+    Data4: 418245276
+  Banks:
+  - {fileID: -8267530407672619839}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0

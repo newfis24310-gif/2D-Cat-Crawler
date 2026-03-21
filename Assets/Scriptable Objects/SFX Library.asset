@@ -12,17 +12,59 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d82bf37bbefbee47914c2622d0e2edd, type: 3}
   m_Name: SFX Library
   m_EditorClassIdentifier: 
+  boxMovement:
+    Guid:
+      Data1: 859465926
+      Data2: 1103823568
+      Data3: -729057378
+      Data4: 1749643117
+    Path: event:/SFX/Box Movement
   boxOpen:
     Guid:
       Data1: -1315329154
       Data2: 1226848186
       Data3: -1104888443
       Data4: 418245276
-    Path: event:/SFX/Box Movement
+    Path: event:/SFX/Box Open
+  catEntrance:
+    Guid:
+      Data1: -168686028
+      Data2: 1181716091
+      Data3: -1781040465
+      Data4: -714220454
+    Path: event:/SFX/Cat Entrance
+  eatFish:
+    Guid:
+      Data1: -99894467
+      Data2: 1131559925
+      Data3: -1349725281
+      Data4: -164661159
+    Path: event:/SFX/Eat Fish
+  findFish:
+    Guid:
+      Data1: 1324280086
+      Data2: 1307442383
+      Data3: -2016067410
+      Data4: 839388378
+    Path: event:/SFX/Fish found
+  robotMouseMovement:
+    Guid:
+      Data1: -131805751
+      Data2: 1157868829
+      Data3: -707978052
+      Data4: -31326425
+    Path: event:/SFX/Robot Movement
   gas:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: 1079409106
+      Data2: 1203467237
+      Data3: -1038146413
+      Data4: -345679081
+    Path: event:/SFX/Gas Decompression
+  ambience:
+    Guid:
+      Data1: 1676992655
+      Data2: 1103679115
+      Data3: -838348400
+      Data4: 1985478938
+    Path: event:/Ambience/Lab

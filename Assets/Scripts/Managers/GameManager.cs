@@ -118,7 +118,7 @@ public class GameManager : MonoBehaviour
             StartCoroutine(RoundSequence());
         
         }
-        if(currentAttempt == 2) soundManager.PlayMusic2ndRound();
+        if(currentAttempt == 2) PlayMusic2ndRound();
         
     }
 
@@ -163,10 +163,44 @@ public class GameManager : MonoBehaviour
        
     }
 
+    //SOUNDMANAGER SOUND CALLS
+    public void PlayCatEntrance()
+    {
+        soundManager.PlayCatEntrance();
+    }
+    public void PlayCatRobotMouseMovement()
+    {
+        soundManager.PlayCatRobotMouseMovement();
+    }
+    public void PlayBoxMovement()
+    {
+        soundManager.PlayBoxMovement();
+    }
     public void PlayBoxOpen()
     {
         soundManager.PlayBoxOpen();
     }
+    public void PlayGas()
+    {
+        soundManager.PlayGas();
+    }
+    public void PlayFindFish()
+    {
+        soundManager.PlayFindFish();
+    }
+    public void PlayEatFish()
+    {
+        soundManager.PlayEatFish();
+    }
+    public void PlayAmbienceLab()
+    {
+        soundManager.PlayAmbienceLab();
+    }
+    public void PlayMusic2ndRound()
+    {
+        soundManager.PlayMusic2ndRound();
+    }
+
 
     // Restart game
     public void ReloadGame()
