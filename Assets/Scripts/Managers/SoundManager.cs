@@ -5,61 +5,42 @@ using FMOD.Studio;
 
 public class SoundManager : MonoBehaviour
 {
+    public static SoundManager Instance { get; private set; }
+
+    
     [SerializeField] private SFXLibrary sfxLibrary;
     [SerializeField] private MusicLibrary musicLibrary;
-    public EventInstance currentMusic, currentAmbient;
+    private EventInstance currentMusic;
+    public EventInstance currentAmbient;
+
+    void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject); // Κάνουμε το SoundManager να μην καταστραφεί κατά τη φόρτωση νέας σκηνής
+        } 
+        else Destroy(gameObject);
+    }
 
     void Start()
     {
-        PlayMusic(musicLibrary.round1);
+        PlayMusic(musicLibrary.round1); // Ξεκινάμε με τη μουσική του πρώτου γύρου
     }
 
-    public void PlayCatEntrance()
-    {
-        RuntimeManager.PlayOneShot(sfxLibrary.catEntrance);
-    }
-
-    public void PlayCatRobotMouseMovement()
-    {
-        RuntimeManager.PlayOneShot(sfxLibrary.robotMouseMovement);
-    }
+    public void PlayCatEntrance() => RuntimeManager.PlayOneShot(sfxLibrary.catEntrance);
+    public void PlayCatRobotMouseMovement() => RuntimeManager.PlayOneShot(sfxLibrary.robotMouseMovement);
+    public void PlayBoxMovement() => RuntimeManager.PlayOneShot(sfxLibrary.boxMovement);
+    public void PlayBoxOpen() => RuntimeManager.PlayOneShot(sfxLibrary.boxOpen);
+    public void PlayVacantBox() => RuntimeManager.PlayOneShot(sfxLibrary.vacantBox);
+    public void PlayGas() => RuntimeManager.PlayOneShot(sfxLibrary.gas);
+    public void PlayFindFish() => RuntimeManager.PlayOneShot(sfxLibrary.findFish);
+    public void PlayEatFish() => RuntimeManager.PlayOneShot(sfxLibrary.eatFish);
     
-    public void PlayBoxMovement()
-    {
-        RuntimeManager.PlayOneShot(sfxLibrary.boxMovement);
-        Debug.Log("Played box sound effect.");
-    }
 
-    public void PlayBoxOpen()
-    {
-        RuntimeManager.PlayOneShot(sfxLibrary.boxOpen);
-    }
-
-    public void PlayVacantBox()
-    {
-        RuntimeManager.PlayOneShot(sfxLibrary.vacantBox);
-    }
-
-    public void PlayGas()
-    {
-        RuntimeManager.PlayOneShot(sfxLibrary.gas);
-    }
-
-    public void PlayFindFish()
-    {
-        RuntimeManager.PlayOneShot(sfxLibrary.findFish);
-    }
-
-    public void PlayEatFish()
-    {
-        RuntimeManager.PlayOneShot(sfxLibrary.eatFish);
-    }
-    
-    public void PlayMusic2ndRound()
-    {
-       PlayMusic(musicLibrary.round2, 0.3f);
-    }
-
+    public void PlayMusic2ndRound() => PlayMusic(musicLibrary.round2, 0.3f);
+    public void PlayAmbienceLab() => PlayAmbience(sfxLibrary.ambience, 0.3f);
+   
 
     public void PlayMusic(EventReference musicEvent, float volume = 1f)
     {
@@ -80,12 +61,6 @@ public class SoundManager : MonoBehaviour
             currentMusic.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
             currentMusic.release();
         }
-    }
-
-
-    public void PlayAmbienceLab()
-    {
-       PlayAmbience(sfxLibrary.ambience, 0.3f);
     }
 
     public void PlayAmbience(EventReference ambientEvent, float volume = 1f)

@@ -119,7 +119,7 @@ public class Player : MonoBehaviour
                 Debug.Log($"Player moved to tile at ({clickedTile.name}) with coordinates ({clickedTile.x}, {clickedTile.y})");
 
                 clickedTile.OnPlayerEnter(); // Καλούμε τη μέθοδο που χειρίζεται την είσοδο του παίκτη στο tile 
-                gameManager.PlayBoxMovement(); // Ήχος για κάθε κουτί
+                SoundManager.Instance.PlayBoxMovement(); // Ήχος για κάθε κουτί
                 if (!clickedTile.isRevealed) gridManager.UpdateGridVisibility(x, y); // Αποκαλύπτουμε το tile που βρίσκεται στις συντεταγμένες του παίκτη μονο αν δεν είναι ήδη αποκαλυμμένο
             }
         }

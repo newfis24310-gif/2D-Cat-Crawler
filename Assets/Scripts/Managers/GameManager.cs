@@ -77,8 +77,8 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log($"Player failed attempt {currentAttempt}. Processing feedback...");
         // Εμφανίζουμε το κατάλληλο μήνυμα αποτυχίας στον παίκτη ανάλογα με την τρέχουσα προσπάθεια
-        if(currentAttempt > 1){soundManager.currentAmbient.setParameterByName("Cat ambience", 1);} //Αλλάζω παράμετρο στο FMOD 
-        PlayVacantBox();
+        if(currentAttempt > 1){SoundManager.Instance.currentAmbient.setParameterByName("Cat ambience", 1);} //Αλλάζω παράμετρο στο FMOD 
+        SoundManager.Instance.PlayVacantBox();
         feedbackManager.ShowFailAttemptMessage(currentAttempt);
 
         Debug.Log("Waiting for feedback dialogue to complete...");
@@ -123,10 +123,10 @@ public class GameManager : MonoBehaviour
         }
         if(currentAttempt == 2)
         {
-            PlayMusic2ndRound();
-            PlayAmbienceLab();
+            SoundManager.Instance.PlayMusic2ndRound();
+            SoundManager.Instance.PlayAmbienceLab();
         }
-        if(currentAttempt > 1){soundManager.currentAmbient.setParameterByName("Cat ambience", 0);} 
+        if(currentAttempt > 1){SoundManager.Instance.currentAmbient.setParameterByName("Cat ambience", 0);} 
     }
 
     private IEnumerator RoundSequence()
@@ -151,11 +151,11 @@ public class GameManager : MonoBehaviour
         BaseTile startTile = gridManager.GetStartTile();
         BaseTile exitTile = FindAnyObjectByType<ExitTile>(); // Λαμβάνουμε το tile εξόδου από τη σκηνή
 
-        if(mouse != null && startTile != null && exitTile != null)
+        if(mouse != null && startTile != null && exitTile != null && currentAttempt > 3)
         {
             Vector3 startPosition = new Vector3(startTile.transform.position.x, startTile.transform.position.y, -1f); // Θέτουμε το z σε -1 για να είναι πάνω από τα tiles
             Vector3 exitPosition = new Vector3(exitTile.transform.position.x, exitTile.transform.position.y, -1f); // Θέτουμε το z σε -1 για να είναι πάνω από τα tiles
-            PlayCatRobotMouseMovement();
+            SoundManager.Instance.PlayCatRobotMouseMovement();
 
             yield return StartCoroutine(mouse.MoveMouse(startPosition, exitPosition)); // Ξεκινάμε την κίνηση του ποντικιού
         }
@@ -163,7 +163,7 @@ public class GameManager : MonoBehaviour
         // Aφού τελειώσει η κίνηση του ποντικιού, ξεκινάει η κίνηση της γατας προς το startTile
         if (startTile != null)
         {
-            PlayCatEntrance();
+            SoundManager.Instance.PlayCatEntrance();
             yield return StartCoroutine(player.MoveToStartTile(startTile));
         }
 
@@ -172,68 +172,26 @@ public class GameManager : MonoBehaviour
        
     }
 
-    //SOUNDMANAGER SOUND CALLS
-    public void PlayCatEntrance()
-    {
-        soundManager.PlayCatEntrance();
-    }
-    public void PlayCatRobotMouseMovement()
-    {
-        soundManager.PlayCatRobotMouseMovement();
-    }
-    public void PlayBoxMovement()
-    {
-        soundManager.PlayBoxMovement();
-    }
-    public void PlayBoxOpen()
-    {
-        soundManager.PlayBoxOpen();
-    }
-    public void PlayVacantBox()
-    {
-        soundManager.PlayVacantBox();
-    }
-    public void PlayGas()
-    {
-        soundManager.PlayGas();
-    }
-    public void PlayFindFish()
-    {
-        soundManager.PlayFindFish();
-    }
-    public void PlayEatFish()
-    {
-        soundManager.PlayEatFish();
-    }
-    public void PlayAmbienceLab()
-    {
-        soundManager.PlayAmbienceLab();
-    }
-    public void PlayMusic2ndRound()
-    {
-        soundManager.PlayMusic2ndRound();
-    }
+  /*  //SOUNDMANAGER SOUND CALLS
+    public void PlayCatEntrance() {soundManager.PlayCatEntrance();}
+    
+    public void PlayCatRobotMouseMovement() {soundManager.PlayCatRobotMouseMovement();}
+    public void PlayBoxMovement() {soundManager.PlayBoxMovement();}
+    public void PlayBoxOpen() {soundManager.PlayBoxOpen();}
+    public void PlayVacantBox() {soundManager.PlayVacantBox();}
+    public void PlayGas() {soundManager.PlayGas();}
+    public void PlayFindFish() {soundManager.PlayFindFish();}
+    public void PlayEatFish() {soundManager.PlayEatFish();}
+    public void PlayAmbienceLab() {soundManager.PlayAmbienceLab();}
+    public void PlayMusic2ndRound() {soundManager.PlayMusic2ndRound();}
+*/
 
     //YARN VARIABLE CALLS
-    public void YarnDeathOnceTrue()
-    {
-        feedbackManager.YarnDeathOnceTrue();
-    }
-
-    public void YarnDeathOnceFalse()
-    {
-        feedbackManager.YarnDeathOnceFalse();
-    }
-
-    public void YarnFoundFishTrue()
-    {
-        feedbackManager.YarnFoundFishTrue();
-    }
-
-    public void YarnFoundFishFalse()
-    {
-        feedbackManager.YarnFoundFishFalse();
-    }
+    public void YarnDeathOnceTrue() {feedbackManager.YarnDeathOnceTrue();}
+    public void YarnDeathOnceFalse() {feedbackManager.YarnDeathOnceFalse();}
+    public void YarnFoundFishTrue() {feedbackManager.YarnFoundFishTrue();}
+    public void YarnFoundFishFalse() {feedbackManager.YarnFoundFishFalse();}
+    
 
 
     // Restart game

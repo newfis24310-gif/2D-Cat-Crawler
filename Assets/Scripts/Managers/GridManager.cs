@@ -10,6 +10,7 @@ public class GridManager : MonoBehaviour
     public int width; // Πλάτος του grid (πόσα tiles οριζόντια)
     public int height; // Ύψος του grid (πόσα tiles κάθετα)
     public float tileSpacing = 5.5f; // Η απόσταση μεταξύ των tiles, προσαρμοσμένη για να ταιριάζει με το μέγεθος των sprites
+    [SerializeField] private int actionTileNum = 7; // Ο αριθμός των action tiles που θέλουμε να έχουμε στο grid (θα περιέχουν αντικείμενα ή ενέργειες)
     
     [Header("Tile Prefabs")]
     public BaseTile emptyTilePrefab; // Το prefab που θα χρησιμοποιηθεί για τη δημιουργία των tiles
@@ -81,8 +82,8 @@ public class GridManager : MonoBehaviour
             }
         }
 
-        // Επιλέγουμε τυχαία 5 θέσεις για τα action tiles από τη λίστα των διαθέσιμων θέσεων
-        return RandomPositions(availablePositions, 5); // Επιστρέφουμε τη λίστα με τις επιλεγμένες θέσεις για τα action tiles
+        // Επιλέγουμε τυχαία 7 θέσεις για τα action tiles από τη λίστα των διαθέσιμων θέσεων
+        return RandomPositions(availablePositions, actionTileNum); // Επιστρέφουμε τη λίστα με τις επιλεγμένες θέσεις για τα action tiles
     }
 
     // Μέθοδος για την τυχαία επιλογή θέσεων για τα action tiles

@@ -35,9 +35,9 @@ public abstract class BaseTile : MonoBehaviour
         spriteRenderer.sprite = isRevealed ? revealedSprite : hiddenSprite;
 
         // Κλήση της μεθόδου για τον ήχο όταν το πλακίδιο αποκαλύπτεται
-        if (isRevealed && GameManager.Instance != null) 
+        if (isRevealed && SoundManager.Instance != null) 
         {
-            GameManager.Instance.PlayBoxOpen(); // Παίζουμε τον ήχο ανοίγματος κουτιού όταν το πλακίδιο αποκαλύπτεται
+            SoundManager.Instance.PlayBoxOpen(); // Παίζουμε τον ήχο ανοίγματος κουτιού όταν το πλακίδιο αποκαλύπτεται
         }
         
             
