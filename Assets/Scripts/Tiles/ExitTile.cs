@@ -13,8 +13,8 @@ public class ExitTile : BaseTile
         Debug.Log($"Player entered ExitTile at ({x}, {y})");
 
         // Βρίσκουμε αναφορά στον παίκτη και στον GameManager μέσα στη σκηνή
-        Player player = FindObjectOfType<Player>();
-        GameManager gameManager = FindObjectOfType<GameManager>();
+        Player player = FindAnyObjectByType<Player>();
+        GameManager gameManager = FindAnyObjectByType<GameManager>();
 
         if (player != null && gameManager != null)
         {

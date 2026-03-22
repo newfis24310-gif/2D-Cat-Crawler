@@ -36,8 +36,8 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         background.SetActive(true); // Ενεργοποιούμε το background στην αρχή του παιχνιδιού
-        player = FindObjectOfType<Player>(); // Βρίσκουμε τον Player στο σκηνικό
-        gridManager = FindObjectOfType<GridManager>(); // Βρίσκουμε τον GridManager στο σκηνικό
+        player = FindAnyObjectByType<Player>(); // Βρίσκουμε τον Player στο σκηνικό
+        gridManager = FindAnyObjectByType<GridManager>(); // Βρίσκουμε τον GridManager στο σκηνικό
 
         if (player == null) Debug.LogError("Player not found in the scene! Please ensure there is a Player object.");
         if (gridManager == null) Debug.LogError("GridManager not found in the scene! Please ensure there is a GridManager object.");
@@ -171,20 +171,6 @@ public class GameManager : MonoBehaviour
         player.canMove = true; // Ενεργοποιούμε την κίνηση του παίκτη
        
     }
-
-  /*  //SOUNDMANAGER SOUND CALLS
-    public void PlayCatEntrance() {soundManager.PlayCatEntrance();}
-    
-    public void PlayCatRobotMouseMovement() {soundManager.PlayCatRobotMouseMovement();}
-    public void PlayBoxMovement() {soundManager.PlayBoxMovement();}
-    public void PlayBoxOpen() {soundManager.PlayBoxOpen();}
-    public void PlayVacantBox() {soundManager.PlayVacantBox();}
-    public void PlayGas() {soundManager.PlayGas();}
-    public void PlayFindFish() {soundManager.PlayFindFish();}
-    public void PlayEatFish() {soundManager.PlayEatFish();}
-    public void PlayAmbienceLab() {soundManager.PlayAmbienceLab();}
-    public void PlayMusic2ndRound() {soundManager.PlayMusic2ndRound();}
-*/
 
     //YARN VARIABLE CALLS
     public void YarnDeathOnceTrue() {feedbackManager.YarnDeathOnceTrue();}

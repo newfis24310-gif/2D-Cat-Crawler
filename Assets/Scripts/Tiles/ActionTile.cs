@@ -30,7 +30,7 @@ public class ActionTile : BaseTile
 
         if (item != null)
         {
-            Player player = FindObjectOfType<Player>(); // Βρίσκουμε τον παίκτη στη σκηνή
+            Player player = FindAnyObjectByType<Player>(); // Βρίσκουμε τον παίκτη στη σκηνή
             if (player != null)
             {
                 item.Reveal(); // Αποκαλύπτουμε το αντικείμενο/ενέργεια στο tile

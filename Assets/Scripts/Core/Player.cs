@@ -22,7 +22,7 @@ public class Player : MonoBehaviour
     {
         if (dialogueRunner == null)
         {
-            dialogueRunner = FindObjectOfType<DialogueRunner>(); // Βρίσκουμε τον DialogueRunner στο σκηνικό αν δεν έχει ανατεθεί
+            dialogueRunner = FindAnyObjectByType<DialogueRunner>(); // Βρίσκουμε τον DialogueRunner στο σκηνικό αν δεν έχει ανατεθεί
             if (dialogueRunner == null)
             {
                 Debug.LogError("No DialogueRunner found in the scene! Please ensure there is a DialogueRunner object.");
