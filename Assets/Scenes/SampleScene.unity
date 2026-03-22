@@ -536,6 +536,7 @@ MonoBehaviour:
   width: 5
   height: 4
   tileSpacing: 1.5
+  actionTileNum: 7
   emptyTilePrefab: {fileID: 7194001703915276125, guid: 6f220b068321a5b47987e1c0bd78a182, type: 3}
   exitTilePrefab: {fileID: 4598244920451989479, guid: 31b1e638ccfc6624996f083d14e6b8b1, type: 3}
   actionTilePrefab: {fileID: 4277172272164017041, guid: 7f48bc889c0e4cd488e18646223d9adc, type: 3}
@@ -761,7 +762,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &358663775
 Transform:
   m_ObjectHideFlags: 0
@@ -1467,7 +1468,7 @@ Transform:
   m_GameObject: {fileID: 605041656}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 7.36, y: -3.45, z: 0}
+  m_LocalPosition: {x: 7.36, y: -2.706, z: 0}
   m_LocalScale: {x: 9.11, y: 9.11, z: 9.11}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -2842,7 +2843,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 397, y: -370.9}
+  m_AnchoredPosition: {x: 397, y: -340.3}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1700334686
