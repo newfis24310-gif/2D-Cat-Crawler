@@ -52,11 +52,18 @@ public class GridManager : MonoBehaviour
     {
         // Δημιουργία πίνακα για να κρατάμε τις αναφορές στα tiles,
         // ώστε να μπορούμε εύκολα να τα διαχειριστούμε (π.χ. να αποκαλύπτουμε το tile που βρίσκεται ο παίκτης)
-        grid = new BaseTile[width, height];
+        grid = new BaseTile[width, height]; 
 
-        // Ορισμός συντεταγμένων για τις θέσεις του αρχικού tile και του tile εξόδου
-        startTilePosition = new Vector2Int(0, Random.Range(0, height)); // Επιλέγουμε τυχαία μια θέση στην πρώτη στήλη 
-        Vector2Int exitTilePosition = new Vector2Int(width - 1, Random.Range(0, height)); // Επιλέγουμε τυχαία μια θέση στην τελευταία στήλη για το tile εξόδου
+        //Τυχαία επιλογή θέσης στην πρώτη στήλη για το startTile
+        int startY = Random.Range(0, height);
+        startTilePosition = new Vector2Int(0, startY); 
+
+        int exitY = Random.Range(0, height); // Τυχαία επιλογή θέσης στην τελευταία στήλη για το exitTile
+        if (exitY == startY)
+        {
+            exitY = (exitY + 1) % height; // Αν η θέση του exitTile είναι ίδια με το startTile, μετακινούμε το exitTile σε άλλη θέση
+        }
+        Vector2Int exitTilePosition = new Vector2Int(width - 1, exitY); // Ορισμός της θέσης του exitTile
 
         // Δημιουργία λίστας με όλες τι διαθέσιμες θέσεις για τα action tiles.
         List<Vector2Int> actionTilePositions = GetRandomActionPositions(startTilePosition, exitTilePosition);
