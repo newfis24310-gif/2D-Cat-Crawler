@@ -86,7 +86,7 @@ Clark: Another one probably bites the dust.
 Steve: Good, I am allergic to cats.
 Clark: And the cats are allergic to <color=green>poison</color>. So, you don't have to worry.
 <<wait  2>>
-Steve: Hey, do you think we should change the <color=green>poison gas</color>? I mean <color=green>4</color> boxes of it seem like a lot.
+Steve: Hey, do you think we should change the <color=green>poison gas</color>? I mean <color=green>6</color> boxes of it seem like a lot.
 Clark: No Steve, this is science!
 <<wait  1>>
 <<if $foundFish>>
