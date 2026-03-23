@@ -2,8 +2,8 @@ using UnityEngine;
 
 /*
  * Κλάση για το tile εξόδου.
- * Όταν ο παίκτης φτάσει εδώ, ελέγχεται αν είναι ζωντανός
- * ώστε να ολοκληρωθεί το παιχνίδι με νίκη ή ήττα.
+ * Όταν ο παίκτης φτάσει εδώ, ενημερώνεται ο GameManager
+ * ώστε να ελεγχθεί αν ο παίκτης ολοκλήρωσε επιτυχώς τον γύρο.
  */
 public class ExitTile : BaseTile
 {
@@ -12,13 +12,25 @@ public class ExitTile : BaseTile
     {
         Debug.Log($"Player entered ExitTile at ({x}, {y})");
 
-        // Βρίσκουμε αναφορά στον παίκτη και στον GameManager μέσα στη σκηνή
+        // Βρίσκουμε τον παίκτη και τον GameManager στη σκηνή
         Player player = FindAnyObjectByType<Player>();
         GameManager gameManager = FindAnyObjectByType<GameManager>();
 
-        if (player != null && gameManager != null)
+        // Έλεγχος αν βρέθηκε ο παίκτης
+        if (player == null)
         {
-            gameManager.OnPlayerReachedExit(player.isAlive); // Ενημερώνουμε τον GameManager ότι ο παίκτης έφτασε στο tile εξόδου
+            Debug.LogError("Player not found in scene.");
+            return;
         }
+
+        // Έλεγχος αν βρέθηκε ο GameManager
+        if (gameManager == null)
+        {
+            Debug.LogError("GameManager not found in scene.");
+            return;
+        }
+
+        // Ενημερώνουμε τον GameManager ότι ο παίκτης έφτασε στο exit tile
+        gameManager.OnPlayerReachedExit(player.isAlive);
     }
 }
