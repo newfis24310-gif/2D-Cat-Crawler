@@ -8,8 +8,18 @@ public class UIManager : MonoBehaviour
     public GameObject lose;
     public GameObject resetButton;
     public GameObject background;
+    public GameObject optionsMessage;
+    public GameObject optionsMenu;
 
-    
+    private bool optionsMenuState = false;
+
+    void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            ToggleOptionsMenu();
+        }
+    }
     
     [YarnCommand("winluck")]
     public void WinLuckGame()
@@ -33,5 +43,21 @@ public class UIManager : MonoBehaviour
         lose.SetActive(true);
         resetButton.SetActive(true);
         background.SetActive(true);
+    }
+
+    private void ToggleOptionsMenu()
+    {
+        if(optionsMenuState == false)
+        {
+            optionsMessage.SetActive(false);
+            optionsMenu.SetActive(true);
+            optionsMenuState = true;
+        }
+        else if(optionsMenuState == true)
+        {
+            optionsMessage.SetActive(true);
+            optionsMenu.SetActive(false);
+            optionsMenuState = false;
+        }
     }
 }

@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 using Yarn.Unity;
 using FMODUnity;
 using FMOD.Studio;
@@ -10,8 +11,13 @@ public class SoundManager : MonoBehaviour
     
     [SerializeField] private SFXLibrary sfxLibrary;
     [SerializeField] private MusicLibrary musicLibrary;
+    private VCA musicVCA;
+    private VCA sfxVCA;
+    private VCA ambienceVCA;
+    private VCA masterVCA;
     private EventInstance currentMusic;
     public EventInstance currentAmbient;
+    public Slider masterSlider, musicSlider, sfxSlider, ambienceSlider;
 
     void Awake()
     {
@@ -25,6 +31,10 @@ public class SoundManager : MonoBehaviour
 
     void Start()
     {
+        musicVCA = RuntimeManager.GetVCA("vca:/Music");
+        sfxVCA = RuntimeManager.GetVCA("vca:/SFX");
+        ambienceVCA = RuntimeManager.GetVCA("vca:/Ambience");
+        masterVCA = RuntimeManager.GetVCA("vca:/Master");
         PlayMusic(musicLibrary.round1); // Ξεκινάμε με τη μουσική του πρώτου γύρου
     }
 
@@ -79,5 +89,29 @@ public class SoundManager : MonoBehaviour
             currentAmbient.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
             currentAmbient.release();
         }
+    }
+
+    public void SetMusicVolume()
+    {
+        float adjusted = Mathf.Pow(Mathf.Clamp(musicSlider.value, 0.0001f, 1f), 2.2f);   //BEST METHOD
+        Debug.Log($"Slider: {musicSlider.value} → Adjusted Volume: {adjusted}");
+        musicVCA.setVolume(adjusted);
+    }
+
+    public void SetSFXVolume()
+    {
+        float adjusted = Mathf.Pow(Mathf.Clamp(sfxSlider.value, 0.0001f, 1f), 2.2f);
+        sfxVCA.setVolume(adjusted);
+    }
+    public void SetAmbienceVolume()
+    {
+        float adjusted = Mathf.Pow(Mathf.Clamp(ambienceSlider.value, 0.0001f, 1f), 2.2f);
+        ambienceVCA.setVolume(adjusted);
+    }
+
+    public void SetMasterVolume()
+    {
+        float adjusted = Mathf.Pow(Mathf.Clamp(masterSlider.value, 0.0001f, 1f), 2.2f);
+        masterVCA.setVolume(adjusted);
     }
 }
