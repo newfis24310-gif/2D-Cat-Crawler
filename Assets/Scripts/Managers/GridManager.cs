@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEditor.Search;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 /*
 * Κλάση που θα διαχειρίζεται το grid και τα tiles. 
 */
@@ -127,25 +128,29 @@ public class GridManager : MonoBehaviour
     private void CreateTileAt(int x, int y, List<Vector2Int> actionTilePositions, Vector2Int exitTilePosition)
     {
         BaseTile tileToInstantiate;
+        string tileName;
 
         // Επιλογή prefab για το tile που θα δημιουργηθεί, με βάση τις θέσεις των action tiles και του tile εξόδου
         if (x == exitTilePosition.x && y == exitTilePosition.y) // Ελέγχουμε αν η τρέχουσα θέση είναι για το tile εξόδου
         {
             tileToInstantiate = exitTilePrefab; // Αν ναι, χρησιμοποιούμε το prefab του tile εξόδου
+            tileName = "ExitTile"; // Ονομάζουμε το tile εξόδου για ευκολότερη αναγνώριση στην ιεραρχία
         }
         else if (actionTilePositions.Exists(pos => pos.x == x && pos.y == y)) // Ελέγχουμε αν η τρέχουσα θέση είναι για ένα action tile
         {
             tileToInstantiate = actionTilePrefab; // Αν ναι, χρησιμοποιούμε το prefab του action tile
+            tileName = "ActionTile"; // Ονομάζουμε το action tile για ευκολότερη αναγνώριση στην ιεραρχία
         }
         else
         {
             tileToInstantiate = emptyTilePrefab; // Αν όχι, χρησιμοποιούμε το prefab του κενό tile
+            tileName = "EmptyTile"; // Ονομάζουμε το κενό tile για ευκολότερη αναγνώριση στην ιεραρχία
         }
 
         // Τοποθέτηση του tile στη σκηνή με βάση τις υπολογισμένες αρχικές συντεταγμένες και την απόσταση μεταξύ των tiles
         Vector3 position = new Vector3(startX + (x * tileSpacing), startY + (y * tileSpacing), 0); // Υπολογίζουμε τη θέση του tile με βάση τις αρχικές συντεταγμένες και την απόσταση μεταξύ των tiles
         BaseTile newTile = Instantiate(tileToInstantiate, position, Quaternion.identity); // Δημιουργούμε το tile στη σκηνή
-        newTile.name = $"Tile_{x}_{y}"; // Ονομάζουμε το tile για ευκολότερη αναγνώριση στην ιεραρχία
+        newTile.name = $"{tileName}_{x}_{y}"; // Ονομάζουμε το tile για ευκολότερη αναγνώριση στην ιεραρχία
         newTile.transform.parent =transform; // Ορίζουμε το GridManager ως γονέα του tile για καλύτερη οργάνωση στην ιεραρχία
         newTile.SetUp(x,y); // Ρυθμίζουμε τις συντεταγμένες του tile για να μπορεί να γνωρίζει τη θέση του στο grid
         grid[x, y] = newTile; // Αποθηκεύουμε την αναφορά στο νέο tile στον πίνακα grid

@@ -3,7 +3,13 @@ using Yarn.Unity;
 
 public class UIManager : MonoBehaviour
 {
-    public GameObject winLuck, winSkill, lose, resetButton, background;
+    public GameObject winLuck;
+    public GameObject winSkill;
+    public GameObject lose;
+    public GameObject resetButton;
+    public GameObject background;
+
+    
     
     [YarnCommand("winluck")]
     public void WinLuckGame()
