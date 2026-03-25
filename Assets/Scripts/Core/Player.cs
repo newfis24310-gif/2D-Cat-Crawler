@@ -40,25 +40,6 @@ public class Player : MonoBehaviour
         }); 
     }
 
-    void Start()
-    {
-        
-        /*targetPosition = transform.position; // Αρχικά, η τρέχουσα θέση είναι και o στόχος
-        isAlive = true; //  Ο παίκτης ξεκινάει ζωντανός για να δοκιμάσουμε το σύστημα αλλαγής γύρων
-
-        BaseTile startTile = gridManager.GetStartTile(); // Λαμβάνουμε το αρχικό tile από τον GridManager
-        if (startTile != null)
-        {
-            x = startTile.x; // Ορίζουμε τις συντεταγμένες του παίκτη σύμφωνα με το αρχικό tile
-            y = startTile.y;
-            transform.position = new Vector3(startTile.transform.position.x, startTile.transform.position.y, -1f); // Τοποθετούμε τον παίκτη στη θέση του αρχικού tile
-            gridManager.UpdateGridVisibility(x, y); // Αποκαλύπτουμε το tile που βρίσκεται στις συντεταγμένες του παίκτη
-        }
-        else
-        {
-            Debug.LogError("No starting tile found! Please ensure the GridManager has a valid starting tile.");
-        }*/
-    }
 
     void Update()
     {

@@ -131,6 +131,7 @@ public class GameManager : MonoBehaviour
         {
             SoundManager.Instance.PlayMusic2ndRound();
             SoundManager.Instance.PlayAmbienceLab();
+            // Εδω καλείται το να εμφανιστεί ο συμπληρωματικός τίτλος. 
         }
         if(currentAttempt > 1){SoundManager.Instance.currentAmbient.setParameterByName("Cat ambience", 0);} 
     }

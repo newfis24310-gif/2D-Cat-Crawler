@@ -47,7 +47,7 @@ public class Mouse : MonoBehaviour
 
         // Εμφανίζουμε το ποντίκι στο exitTile
         transform.position = exitPosition;
-        spriteRenderer.enabled = true;
+        spriteRenderer.enabled = true; // Να το κάνουμε μόνο στα 4ο και μετα γυρο 
         
     }
 }
