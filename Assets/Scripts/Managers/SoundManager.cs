@@ -94,7 +94,6 @@ public class SoundManager : MonoBehaviour
     public void SetMusicVolume()
     {
         float adjusted = Mathf.Pow(Mathf.Clamp(musicSlider.value, 0.0001f, 1f), 2.2f);   //BEST METHOD
-        Debug.Log($"Slider: {musicSlider.value} → Adjusted Volume: {adjusted}");
         musicVCA.setVolume(adjusted);
     }
 

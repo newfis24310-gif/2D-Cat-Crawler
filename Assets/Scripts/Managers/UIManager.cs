@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 using Yarn.Unity;
 
 public class UIManager : MonoBehaviour
@@ -10,6 +11,11 @@ public class UIManager : MonoBehaviour
     public GameObject background;
     public GameObject optionsMessage;
     public GameObject optionsMenu;
+    public CanvasGroup titleCard;
+    [SerializeField] float titleAttack = 3f;
+    [Range(0f, 1f)]
+    [SerializeField] float fadeSpeed = 0.5f;
+    [SerializeField] float titleWait = 5f;
 
     private bool optionsMenuState = false;
 
@@ -58,6 +64,28 @@ public class UIManager : MonoBehaviour
             optionsMessage.SetActive(true);
             optionsMenu.SetActive(false);
             optionsMenuState = false;
+        }
+    }
+
+    public IEnumerator TitleCardFade()
+    {  
+        yield return new WaitForSeconds(titleAttack);
+        float t = 0f;
+
+        while(t < 1)
+        {
+            t += Time.deltaTime * fadeSpeed;
+            titleCard.alpha = Mathf.Clamp01(t);
+            yield return null;
+        }
+
+        yield return new WaitForSeconds(titleWait);
+
+        while(t > 0)
+        {
+            t -= Time.deltaTime * fadeSpeed;
+            titleCard.alpha = Mathf.Clamp01(t);
+            yield return null;
         }
     }
 }
