@@ -26,3 +26,17 @@ MonoBehaviour:
       Data3: -1300231291
       Data4: -1929595352
     Path: event:/Music/Second Round
+  winStinger:
+    Guid:
+      Data1: 1987038691
+      Data2: 1283775154
+      Data3: -2104814703
+      Data4: 1401407459
+    Path: event:/Music/Win
+  loseStinger:
+    Guid:
+      Data1: 158309444
+      Data2: 1311594036
+      Data3: 1933450383
+      Data4: 853751398
+    Path: event:/Music/Lose

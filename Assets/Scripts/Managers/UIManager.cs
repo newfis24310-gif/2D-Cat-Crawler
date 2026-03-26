@@ -24,6 +24,7 @@ public class UIManager : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Escape))
         {
             ToggleOptionsMenu();
+            SoundManager.Instance.PlayVolumeButton();
         }
     }
     
@@ -33,6 +34,7 @@ public class UIManager : MonoBehaviour
         winLuck.SetActive(true);
         resetButton.SetActive(true);
         background.SetActive(true);
+        SoundManager.Instance.PlayWinStinger(); // Παίζουμε τη μουσική νίκης
     }
     
     [YarnCommand("winskill")]
@@ -41,6 +43,7 @@ public class UIManager : MonoBehaviour
         winSkill.SetActive(true);
         resetButton.SetActive(true);
         background.SetActive(true);
+        SoundManager.Instance.PlayWinStinger(); // Παίζουμε τη μουσική νίκης
     }
 
     [YarnCommand("lose")]

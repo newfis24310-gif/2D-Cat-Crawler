@@ -1,5 +1,32 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-8829196023310886574
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Music/Win
+  m_EditorClassIdentifier: 
+  Path: event:/Music/Win
+  Guid:
+    Data1: 1987038691
+    Data2: 1283775154
+    Data3: -2104814703
+    Data4: 1401407459
+  Banks:
+  - {fileID: 4277251818640159522}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
 --- !u!114 &-8343166134967843458
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -42,7 +69,7 @@ MonoBehaviour:
   Path: FMOD/Desktop/SFX.bank
   Name: SFX
   StudioPath: bank:/SFX
-  lastModified: 639097799904625425
+  lastModified: 639101477342759472
   FileSizes: []
   Exists: 1
 --- !u!114 &-7367807750982205816
@@ -180,6 +207,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
+--- !u!114 &-4127461291992437570
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Music/Lose
+  m_EditorClassIdentifier: 
+  Path: event:/Music/Lose
+  Guid:
+    Data1: 158309444
+    Data2: 1311594036
+    Data3: 1933450383
+    Data4: 853751398
+  Banks:
+  - {fileID: 4277251818640159522}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
 --- !u!114 &-3397076456084828473
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -234,6 +288,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 114000
+--- !u!114 &-322156585202965305
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/UI/Volume Button
+  m_EditorClassIdentifier: 
+  Path: event:/UI/Volume Button
+  Guid:
+    Data1: -1698449603
+    Data2: 1083656928
+    Data3: 1627188155
+    Data4: -1415993132
+  Banks:
+  - {fileID: -8267530407672619839}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -264,13 +345,16 @@ MonoBehaviour:
   - {fileID: 8096550280406566718}
   - {fileID: 414472175836317742}
   - {fileID: -8343166134967843458}
+  - {fileID: -4127461291992437570}
+  - {fileID: -8829196023310886574}
+  - {fileID: -322156585202965305}
   EditorParameters: []
   MasterBanks:
   - {fileID: 6973405291668156389}
   StringsBanks:
   - {fileID: 5697697245624104443}
   cacheVersion: 131858
-  cacheTime: 639101197907608565
+  cacheTime: 639101477342759472
   SerializableEventsDict:
   - key: event:/Ambience/Lab
     index: 0
@@ -294,6 +378,12 @@ MonoBehaviour:
     index: 9
   - key: event:/SFX/Gas Decompression
     index: 10
+  - key: event:/Music/Lose
+    index: 11
+  - key: event:/Music/Win
+    index: 12
+  - key: event:/UI/Volume Button
+    index: 13
 --- !u!114 &414472175836317742
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -363,7 +453,7 @@ MonoBehaviour:
   Path: FMOD/Desktop/Music.bank
   Name: Music
   StudioPath: bank:/Music
-  lastModified: 639101197907608565
+  lastModified: 639101461343700166
   FileSizes: []
   Exists: 1
 --- !u!114 &5697697245624104443
@@ -381,10 +471,10 @@ MonoBehaviour:
   Path: FMOD/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639099777040142380
+  lastModified: 639101473965234899
   FileSizes:
   - Name: 
-    Value: 1720
+    Value: 1836
   Exists: 1
 --- !u!114 &6973405291668156389
 MonoBehaviour:
@@ -401,7 +491,7 @@ MonoBehaviour:
   Path: FMOD/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 639099777040060527
+  lastModified: 639101473965064867
   FileSizes: []
   Exists: 1
 --- !u!114 &7585106698877530275
@@ -446,7 +536,7 @@ MonoBehaviour:
   Path: FMOD/Desktop/Ambience.bank
   Name: Ambience
   StudioPath: bank:/Ambience
-  lastModified: 639097187629776619
+  lastModified: 639097176528534904
   FileSizes: []
   Exists: 1
 --- !u!114 &8096550280406566718

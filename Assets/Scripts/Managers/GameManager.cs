@@ -46,6 +46,7 @@ public class GameManager : MonoBehaviour
         
         StartCoroutine(RoundSequence()); // Ξεκινάμε την ακολουθία του πρώτου γύρου
         UpdateAttempText();
+        SoundManager.Instance.PlayMusic1stRound();  //Ξεκινάμε την μουσική
     }
 
     // Kαλείται από το ExitTile όταν ο παίκτης φτάσει στο tile εξόδου.
@@ -65,7 +66,6 @@ public class GameManager : MonoBehaviour
         player.canMove = false; // Απενεργοποιούμε την κίνηση του παίκτη
         Debug.Log("Player has won the game!");
         feedbackManager.ShowWinMessage(currentAttempt); // Εμφανίζουμε το μήνυμα νίκης ανάλογα με την τρέχουσα προσπάθεια
-        PlayWinMusic(); // Παίζουμε τη μουσική νίκης
     }
 
     public void LoseGame()
@@ -73,6 +73,7 @@ public class GameManager : MonoBehaviour
         gameOver = true; // Ορίζουμε το παιχνίδι ως τελειωμένο
         Debug.Log("Game Over! Player has failed all attempts.");
         feedbackManager.ShowFailAttemptMessage(currentAttempt); // Εμφανίζουμε το μήνυμα αποτυχίας ανάλογα με την τρέχουσα προσπάθεια
+        SoundManager.Instance.PlayLoseStinger();
     }
     
     private IEnumerator FailAttemptProcessing()
@@ -196,13 +197,9 @@ public class GameManager : MonoBehaviour
     // Restart game
     public void ReloadGame()
     {
+        SoundManager.Instance.ResetFMOD();
         string currentSceneName = SceneManager.GetActiveScene().name;
         SceneManager.LoadScene(currentSceneName);    
-    }
-    
-    public void PlayWinMusic()
-    {
-        // soundManager.PlayMusic(soundManager.musicLibrary.win, 0.5f);
     }
 
     public void RecordDeathPoint(Vector3 position)

@@ -35,9 +35,9 @@ public class SoundManager : MonoBehaviour
         sfxVCA = RuntimeManager.GetVCA("vca:/SFX");
         ambienceVCA = RuntimeManager.GetVCA("vca:/Ambience");
         masterVCA = RuntimeManager.GetVCA("vca:/Master");
-        PlayMusic(musicLibrary.round1); // Ξεκινάμε με τη μουσική του πρώτου γύρου
     }
 
+    //SFX
     public void PlayCatEntrance() => RuntimeManager.PlayOneShot(sfxLibrary.catEntrance);
     public void PlayCatRobotMouseMovement() => RuntimeManager.PlayOneShot(sfxLibrary.robotMouseMovement);
     public void PlayBoxMovement() => RuntimeManager.PlayOneShot(sfxLibrary.boxMovement);
@@ -46,8 +46,16 @@ public class SoundManager : MonoBehaviour
     public void PlayGas() => RuntimeManager.PlayOneShot(sfxLibrary.gas);
     public void PlayFindFish() => RuntimeManager.PlayOneShot(sfxLibrary.findFish);
     public void PlayEatFish() => RuntimeManager.PlayOneShot(sfxLibrary.eatFish);
-    
 
+    //UI
+    public void PlayVolumeButton() => RuntimeManager.PlayOneShot(sfxLibrary.volumeButton);
+
+    //STINGERS
+    public void PlayWinStinger() => RuntimeManager.PlayOneShot(musicLibrary.winStinger);
+    public void PlayLoseStinger() => RuntimeManager.PlayOneShot(musicLibrary.loseStinger);
+    
+    //MUSIC
+    public void PlayMusic1stRound() => PlayMusic(musicLibrary.round1);
     public void PlayMusic2ndRound() => PlayMusic(musicLibrary.round2, 0.3f);
     public void PlayAmbienceLab() => PlayAmbience(sfxLibrary.ambience, 0.3f);
    
@@ -112,5 +120,14 @@ public class SoundManager : MonoBehaviour
     {
         float adjusted = Mathf.Pow(Mathf.Clamp(masterSlider.value, 0.0001f, 1f), 2.2f);
         masterVCA.setVolume(adjusted);
+    }
+
+    public void ResetFMOD()
+    {
+        StopMusic();
+        StopAmbience();
+        Bus masterBus;
+        RuntimeManager.StudioSystem.getBus("bus:/", out masterBus);
+        masterBus.stopAllEvents(FMOD.Studio.STOP_MODE.IMMEDIATE);
     }
 }

@@ -6,4 +6,6 @@ public class MusicLibrary : ScriptableObject
 {
     public EventReference round1;
     public EventReference round2;
+    public EventReference winStinger;
+    public EventReference loseStinger;
 }

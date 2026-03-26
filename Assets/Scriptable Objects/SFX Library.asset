@@ -75,3 +75,10 @@ MonoBehaviour:
       Data3: -838348400
       Data4: 1985478938
     Path: event:/Ambience/Lab
+  volumeButton:
+    Guid:
+      Data1: -1698449603
+      Data2: 1083656928
+      Data3: 1627188155
+      Data4: -1415993132
+    Path: event:/UI/Volume Button

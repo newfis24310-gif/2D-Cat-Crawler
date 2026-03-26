@@ -13,4 +13,5 @@ public class SFXLibrary : ScriptableObject
     public EventReference robotMouseMovement;
     public EventReference gas;
     public EventReference ambience;
+    public EventReference volumeButton;
 }
