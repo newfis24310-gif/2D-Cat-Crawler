@@ -52,13 +52,23 @@ public class FeedBackManager : MonoBehaviour
 
     }
 
-    public void ShowImageSc_1(bool state)
+    // Mέθογος για την ενεργοποίηση της μιας εικόνας και την απενεργοποίηση της άλλης
+    public void ShowSteveImage()
     {
-        ImageSc_1.SetActive(state);
+        ImageSc_1.SetActive(true);
+        ImageSc_2.SetActive(false);
+    }
+    
+    public void ShowClarkImage()
+    {
+        ImageSc_1.SetActive(false);
+        ImageSc_2.SetActive(true);
     }
 
-    public void ShowImageSc_2(bool state)
+    public void HiddeBothImages()
     {
-        ImageSc_2.SetActive(state);
+        ImageSc_1.SetActive(false);
+        ImageSc_2.SetActive(false);
     }
+
 }

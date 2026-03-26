@@ -87,16 +87,16 @@ public class GameManager : MonoBehaviour
 
          yield return new WaitForSeconds(2f); // Προσωρινή αναμονή για να δώσουμε χρόνο στον παίκτη να διαβάσει το μήνυμα (μπορεί να αφαιρεθεί όταν έχουμε έτοιμο το σύστημα διαλόγων)
 
-        feedbackManager.ShowImageSc_1(true);
-        feedbackManager.ShowImageSc_2(true); 
+        //feedbackManager.ShowImageSc_1(true);
+        //feedbackManager.ShowImageSc_2(true); 
         while (feedbackManager.dialogueRunner.IsDialogueRunning)
         {
             // Περιμένουμε μέχρι να τελειώσει ο διάλογος
             yield return null;
         }
 
-        feedbackManager.ShowImageSc_1(false);
-        feedbackManager.ShowImageSc_2(false); 
+        //feedbackManager.ShowImageSc_1(false);
+        //feedbackManager.ShowImageSc_2(false); 
 
         
 
@@ -149,15 +149,15 @@ public class GameManager : MonoBehaviour
 
         if (feedbackManager != null && feedbackManager.dialogueRunner != null)
         {
-            feedbackManager.ShowImageSc_1(true);
-            feedbackManager.ShowImageSc_2(true); 
+            //feedbackManager.ShowImageSc_1(true);
+            //feedbackManager.ShowImageSc_2(true); 
             yield return null;
             while (feedbackManager.dialogueRunner.IsDialogueRunning)
             {
                 yield return null; // Περίμενε το επόμενο frame
             }
-            feedbackManager.ShowImageSc_1(false);
-            feedbackManager.ShowImageSc_2(false);
+            //feedbackManager.ShowImageSc_1(false);
+            //feedbackManager.ShowImageSc_2(false);
         }
 
         // To ποντίκι ξεκινάει την διαδρομή του
