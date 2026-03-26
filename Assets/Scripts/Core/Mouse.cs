@@ -42,6 +42,22 @@ public class Mouse : MonoBehaviour
         yield return new WaitForSeconds(1f); // Μικρή καθυστέρηση πριν εξαφανιστεί το ποντίκι
         spriteRenderer.enabled = false;
 
+        if (GameManager.Instance != null && GameManager.Instance.GetCurrentAttempt() > 3)
+        {
+            yield return new WaitForSeconds(1f); // Μικρή καθυστέρηση πριν εμφανιστεί στο exitTile
+            transform.position = exitPosition;
+            spriteRenderer.enabled = true; // Να το κάνουμε μόνο στα 4ο και μετα γυρο
+
+            Debug.Log("Mouse has reached the exit tile!");
+        } 
+        else
+        {
+            Debug.Log("Mouse has reached the start tile, but will not appear on exit tile yet.");
+        }
+        
+        
+        
+        
         // Περιμένουμε λίγο πριν το εμφανίζουμε στο exitTile
         yield return new WaitForSeconds(1f); // Μικρή καθυστέρηση πριν εμφανιστεί στο exitTile
 

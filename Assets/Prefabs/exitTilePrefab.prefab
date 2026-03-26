@@ -106,3 +106,8 @@ MonoBehaviour:
   neighbors: []
   hiddenSprite: {fileID: 4983260039145824024, guid: 6fd3459b9ec57124c93178016eca2bd2, type: 3}
   revealedSprite: {fileID: -5204988961204057952, guid: 19b2b2a1c8c7495439feb0d451d07b5c, type: 3}
+  openBoxSprite: {fileID: -5204988961204057952, guid: 19b2b2a1c8c7495439feb0d451d07b5c, type: 3}
+  closedBoxSprite: {fileID: 4983260039145824024, guid: 6fd3459b9ec57124c93178016eca2bd2, type: 3}
+  mouseVisibleTime: 1
+  boxClosedTime: 1
+  reopenDelay: 0.4

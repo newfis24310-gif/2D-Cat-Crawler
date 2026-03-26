@@ -27,52 +27,15 @@ public class ExitTile : BaseTile
     {
         tileRenderer = GetComponent<SpriteRenderer>();
 
-        if (tileRenderer == null)
-        {
-            Debug.LogError("ExitTile has no SpriteRenderer on the same GameObject.");
-            return;
-        }
-
-        // Αρχικά το exit tile εμφανίζεται ανοιχτό
-        if (openBoxSprite != null)
-        {
-            tileRenderer.sprite = openBoxSprite;
-        }
-
-        // Κρύβουμε το ποντίκι στην αρχή,
-        // ώστε να μην φαίνεται πριν φτάσει ο παίκτης στο exit
-        Mouse mouse = FindAnyObjectByType<Mouse>();
-        if (mouse != null)
-        {
-            SpriteRenderer mouseRenderer = mouse.GetComponent<SpriteRenderer>();
-            if (mouseRenderer != null)
-            {
-                mouseRenderer.enabled = false;
-            }
-        }
+        SetBoxOpen(false); // Ξεκινάμε με το κουτί ανοιχτό
+        SetMouseVisible(FindAnyObjectByType<Mouse>(), false); // Το ποντίκι είναι κρυφό στην αρχή
     }
 
     // Καλείται όταν ο παίκτης μπαίνει στο tile εξόδου
     public override void OnPlayerEnter()
     {
         if (sequenceStarted) return;
-
-        Player player = FindAnyObjectByType<Player>();
-        GameManager gameManager = FindAnyObjectByType<GameManager>();
-
-        if (player == null)
-        {
-            Debug.LogError("Player not found in scene.");
-            return;
-        }
-
-        if (gameManager == null)
-        {
-            Debug.LogError("GameManager not found in scene.");
-            return;
-        }
-
-        StartCoroutine(PlayExitSequence(player, gameManager));
+        StartCoroutine(PlayExitSequence(GameManager.Instance.player));
     }
 
     /*
@@ -83,7 +46,7 @@ public class ExitTile : BaseTile
      * - εμφανίζεται μόνο η γάτα ή μόνο το ποντίκι
      * - στο τέλος ενημερώνεται ο GameManager
      */
-    private IEnumerator PlayExitSequence(Player player, GameManager gameManager)
+    private IEnumerator PlayExitSequence(Player player)
     {
         sequenceStarted = true;
         player.canMove = false;
@@ -92,107 +55,65 @@ public class ExitTile : BaseTile
         SpriteRenderer playerRenderer = player.GetComponent<SpriteRenderer>();
 
         // 1. Εμφάνιση ποντικιού πάνω στο exit
-        if (mouse != null)
-        {
-            ShowMouse(mouse);
-        }
-
+        SetBoxOpen(true);
+        SetMouseVisible(mouse, true);
         yield return new WaitForSeconds(mouseVisibleTime);
 
         // 2. Κλείσιμο κουτιού
-        CloseBox();
-
+        SetBoxOpen(false);
+        SetMouseVisible(mouse, false);
         // Όσο το κουτί είναι κλειστό, κρύβουμε τη γάτα
         if (playerRenderer != null)
         {
             playerRenderer.enabled = false;
         }
-
         yield return new WaitForSeconds(boxClosedTime);
 
         // 3. Αν η γάτα ζει, κρύβουμε το ποντίκι πριν ξανανοίξει το κουτί
-        if (player.isAlive && mouse != null)
+        SetBoxOpen(true);
+        yield return new WaitForSeconds(reopenDelay);
+
+        if (player.isAlive)
         {
-            HideMouse(mouse);
+            if (playerRenderer != null) playerRenderer.enabled = true; 
+            SetMouseVisible(mouse, false);
+        }
+        else
+        {
+            if (playerRenderer != null) playerRenderer.enabled = false; 
+            SetMouseVisible(mouse, true);
         }
 
         yield return new WaitForSeconds(reopenDelay);
+        GameManager.Instance.OnPlayerReachedExit(player.isAlive);
 
-        // 4. Ξανανοίγουμε το κουτί
-        OpenBox();
-
-        // 5. Τελική εικόνα: μόνο γάτα ή μόνο ποντίκι
-        if (player.isAlive)
-        {
-            if (playerRenderer != null)
-            {
-                playerRenderer.enabled = true; // φαίνεται μόνο η γάτα
-            }
-        }
-        else
-        {
-            if (playerRenderer != null)
-            {
-                playerRenderer.enabled = false; // η γάτα δεν φαίνεται
-            }
-        }
-
-        yield return new WaitForSeconds(0.4f);
-
-        // 6. Ενημέρωση του GameManager για το τελικό αποτέλεσμα.
-        // Εδώ θα γίνει και το SpawnSkeletonsAtDeathPoints() από τον GameManager.
-        gameManager.OnPlayerReachedExit(player.isAlive);
-
-        sequenceStarted = false;
     }
 
-    private void ShowMouse(Mouse mouse)
+    private void SetBoxOpen(bool isOpen)
     {
-        mouse.transform.position = new Vector3(transform.position.x, transform.position.y, -1f);
+        if (tileRenderer == null) return;
+
+        tileRenderer.sprite = isOpen ? openBoxSprite : closedBoxSprite;
+        Debug.Log(isOpen ? "Box is now open." : "Box is now closed.");
+    }
+
+    private void SetMouseVisible(Mouse mouse, bool isVisible)
+    {
+        if (mouse == null) return;
+
+        // Μεταφέρουμε το ποντίκι στο exitTile αν πρόκειται να φανεί
+        if (isVisible)
+        {
+            mouse.transform.position = new Vector3(transform.position.x, transform.position.y, -1f);
+        }
 
         SpriteRenderer mouseRenderer = mouse.GetComponent<SpriteRenderer>();
         if (mouseRenderer != null)
         {
-            mouseRenderer.enabled = true;
+            mouseRenderer.enabled = isVisible;
+            Debug.Log(isVisible ? "Mouse is now visible." : "Mouse is now hidden.");
         }
 
-        Debug.Log("Mouse is visible on ExitTile.");
-    }
-
-    private void HideMouse(Mouse mouse)
-    {
-        SpriteRenderer mouseRenderer = mouse.GetComponent<SpriteRenderer>();
-        if (mouseRenderer != null)
-        {
-            mouseRenderer.enabled = false;
-        }
-
-        Debug.Log("Mouse is hidden.");
-    }
-
-    private void CloseBox()
-    {
-        if (tileRenderer != null && closedBoxSprite != null)
-        {
-            tileRenderer.sprite = closedBoxSprite;
-            Debug.Log("Exit box CLOSED");
-        }
-        else
-        {
-            Debug.LogWarning("CloseBox failed: tileRenderer or closedBoxSprite is missing.");
-        }
-    }
-
-    private void OpenBox()
-    {
-        if (tileRenderer != null && openBoxSprite != null)
-        {
-            tileRenderer.sprite = openBoxSprite;
-            Debug.Log("Exit box OPENED");
-        }
-        else
-        {
-            Debug.LogWarning("OpenBox failed: tileRenderer or openBoxSprite is missing.");
-        }
+        
     }
 }

@@ -11,13 +11,14 @@ public class GameManager : MonoBehaviour
     [Header("Game Settings")]
     public int maxAttempts = 7;
     [SerializeField] private int currentAttempt = 1;
+    public int GetCurrentAttempt() => currentAttempt;
     private bool gameOver = false;
 
     [Header("References")]
     public FeedBackManager feedbackManager; // Αναφορά στον FeedbackManager για να μπορούμε να εμφανίζουμε μηνύματα στον παίκτη
     public UIManager uiManager; // Αναφορά στον SoundManager για να ρυθμίζουμε τον ήχο ανά περιπτώσεις
     public SoundManager soundManager; // Αναφορά στον SoundManager για να ρυθμίζουμε τον ήχο ανά περιπτώσεις
-    private Player player; // Αναφορά στον Player για να μπορούμε να διαχειριστούμε την κατάσταση του παίκτη
+    public Player player; // Αναφορά στον Player για να μπορούμε να διαχειριστούμε την κατάσταση του παίκτη
     private GridManager gridManager; // Αναφορά στον GridManager για να μπορούμε να διαχειριστούμε το grid
     public Mouse mouse; // Αναφορά στο Mouse για να μπορούμε να το ελέγχουμε από το GameManager
     public GameObject background;
@@ -52,7 +53,7 @@ public class GameManager : MonoBehaviour
     {
         if (gameOver) return; // Αν το παιχνίδι έχει τελειώσει, δεν κάνουμε τίποτα
 
-        SpawnSkeletonsAtDeathPoints(); // Δημιουργούμε skeletons στα σημεία θανάτου του παίκτη
+        if (!player.isAlive) SpawnSkeletonsAtDeathPoints(); // Δημιουργούμε skeletons στα σημεία θανάτου του παίκτη αν ο παίκτης είναι νεκρός
 
         if (isPlayerAlive) WinGame();
         else StartCoroutine(FailAttemptProcessing());

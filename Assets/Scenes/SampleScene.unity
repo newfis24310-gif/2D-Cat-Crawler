@@ -4587,6 +4587,7 @@ MonoBehaviour:
   feedbackManager: {fileID: 1988554828}
   uiManager: {fileID: 1017028273}
   soundManager: {fileID: 1460109568}
+  player: {fileID: 1864003196}
   mouse: {fileID: 1145766236}
   background: {fileID: 1239764195}
   skeletonPrefab: {fileID: 4207684873929495311, guid: 1aae20159d7023d47a803f8c0418d61e, type: 3}
