@@ -28,24 +28,38 @@ position: -125,110
 ---
 <<stopmusic FMODSoundManager>>
 <<notmove Cat>>
+<<Clark _FeedbackManager>>
 Clark: ...Ok, that was a lucky guess.
+<<Steve _FeedbackManager>>
 Steve: So... that's it?
+<<Clark _FeedbackManager>>
 Clark: We did it! The experiment is complete.
+<<Steve _FeedbackManager>>
 Steve: Yeah! Oh man, Schrödinger would be so proud.
+<<No-one _FeedbackManager>>
 <<wait  1>>
+<<Steve _FeedbackManager>>
 Steve: Wait. What was the experiment again?
+<<Clark _FeedbackManager>>
 Clark: ...
+<<Steve _FeedbackManager>>
 Steve: That's... wait a minute, so... what did we find exactly?
 Steve: How did the maze contribute again? Why did we even root for the cat to die? Actually, why cats to begin with?
+<<Clark _FeedbackManager>>
 Clark: Because they're... cute?
+<<No-one _FeedbackManager>>
 <<wait  1>>
+<<Clark _FeedbackManager>>
 Clark: Steve... I think we screwed up. I think we got lost along the way. Mostly between the maze and the death traps.
+<<Steve _FeedbackManager>>
 Steve: Soooo... should I get the gas tank or...?
+<<Clark _FeedbackManager>>
 Clark: I'll call my dad's insurance company.
 <<if $deathOnce>>
 <<else>>
     Clark: I may take the cat with me though. Lucky paws!
 <<endif>>
+<<No-one _FeedbackManager>>
 <<winskill Canvas>>
 <<move Cat>>
 <<stopambience FMODSoundManager>>
@@ -65,16 +79,22 @@ Yep, couldn't be <color=red>deader</color>.
 She probably didn't understand a thing. Such naive creatures.
 <<wait  1>>
 Anyway, should we continue?
+<<Steve _FeedbackManager>>
 Indubitably dear <b>Clarkson</b>.
+<<Clark _FeedbackManager>>
 Don't ever say that again <b>Steve</b>. Anyway...
+<<No-one _FeedbackManager>>
 <<move Cat>>
 ===
 
 title: StartRound2
 position: 110,-41
 ---
+<<Steve _FeedbackManager>>
 Steve: Ok, the mouse is ready.
+<<Clark _FeedbackManager>>
 Clark: Here kitty kitty. Show it who's boss!
+<<No-one _FeedbackManager>>
 <<move Cat>>
 ===
 
@@ -82,31 +102,48 @@ title: EndRound2
 position: 110,-41
 ---
 <<notmove Cat>>
+<<Clark _FeedbackManager>>
 Clark: Another one probably bites the dust.
+<<Steve _FeedbackManager>>
 Steve: Good, I am allergic to cats.
+<<Clark _FeedbackManager>>
 Clark: And the cats are allergic to <color=green>poison</color>. So, you don't have to worry.
+<<No-one _FeedbackManager>>
 <<wait  2>>
+<<Steve _FeedbackManager>>
 Steve: Hey, do you think we should change the <color=green>poison gas</color>? I mean <color=green>6</color> boxes of it seem like a lot.
+<<Clark _FeedbackManager>>
 Clark: No Steve, this is science!
+<<No-one _FeedbackManager>>
 <<wait  1>>
 <<if $foundFish>>
     <<jump HasFoundFishBefore>>
 <<else>>
+    <<Clark _FeedbackManager>>
     Clark: I wonder when they will find our <color=blue>tasty treat</color>.
+    <<Steve _FeedbackManager>>
     Steve: The what?
+    <<Clark _FeedbackManager>>
     Clark: Steve... just... be quiet.
 <<endif>>
+<<No-one _FeedbackManager>>
 <<move Cat>>
 ===
 
 title: HasFoundFishBefore
 ---
+<<Steve _FeedbackManager>>
 Steve: Why did we have the <color=blue>fish</color> again?
+<<Clark _FeedbackManager>>
 Clark: I mean... we have to spice things up. This is about uncertainty.
+<<Steve _FeedbackManager>>
 Steve: Huh... why?
+<<Clark _FeedbackManager>>
 Clark: Come on Steve, we've been over this.
 Clark: This fish is special. You remember? The abnormal <color=blue>antidote</color> we developed?
+<<Steve _FeedbackManager>>
 Steve: Oh yeah yeah...
+<<No-one _FeedbackManager>>
 ===
 
 title: EndRound3
@@ -114,20 +151,32 @@ position: 110,-41
 ---
 <<notmove Cat>>
 <<wait  2>>
+<<Steve _FeedbackManager>>
 Steve: Well, here we go again.
+<<Clark _FeedbackManager>>
 Clark: We really need to automate corpse disposal.
+<<No-one _FeedbackManager>>
 <<wait  1>>
+<<Clark _FeedbackManager>>
 Clark: You know, it's crazy to think that a cat could survive this.
+<<Steve _FeedbackManager>>
 Steve: What do you mean?
+<<Clark _FeedbackManager>>
 Clark: I mean, a cat can survive <color=green>1</color> exposure. It's the <color=red>2nd</color> one that seals the deal actually.
+<<Steve _FeedbackManager>>
 Steve: Really!?
+<<Clark _FeedbackManager>>
 Clark: Yeah. Are you deaf? I'm telling you. Any of these cats can survive with a <color=green>single dose</color> in their lungs. The only problem is that they would need medical attention for the rest of their life.
+<<Steve _FeedbackManager>>
 Steve: So, that means that anything after the <color=red>2nd</color> exposure is like beating a dead horse.
+<<Clark _FeedbackManager>>
 Clark: Well, yes.
 <<if !$foundFish>>
+    <<Steve _FeedbackManager>>
     Steve: Wait, I feel like something is missing.
     <<jump HasFoundFishBefore>>
 <<endif>>
+<<No-one _FeedbackManager>>
 <<move Cat>>
 ===
 
@@ -136,20 +185,34 @@ position: 114,-39
 ---
 <<notmove Cat>>
 <<wait  2>>
+<<Clark _FeedbackManager>>
 Clark: There goes another one.
+<<Steve _FeedbackManager>>
 Steve: Hey Clark. I have a question?
+<<Clark _FeedbackManager>>
 Clark: Yeees?
+<<Steve _FeedbackManager>>
 Steve: What was the <color=blue>fish</color> again?
+<<Clark _FeedbackManager>>
 Clark: COME ON. FOCUS.
 Clark: Don't you remember when we tested for an <color=blue>antidote</color> to the <color=green>poison</color>?
+<<Steve _FeedbackManager>>
 Steve: Yea...
+<<Clark _FeedbackManager>>
 Clark: Don't you remember that the <color=blue>antidote</color> had different effects depending on the exposure to the <color=green>poison</color>?
+<<Steve _FeedbackManager>>
 Steve: Yes?
+<<Clark _FeedbackManager>>
 Clark: It is only good if the <color=green>poison</color> has full effect. Remeber when you tried to eat it and I told you NO because you were <color=green>not poisoned enough</color> and I said that it would <color=red>kill</color> you?
+<<Steve _FeedbackManager>>
 Steve: No.
+<<No-one _FeedbackManager>>
 <<wait  1>>
+<<Clark _FeedbackManager>>
 Clark: How did you survive this long?
+<<Steve _FeedbackManager>>
 Steve: I'm on that keto.
+<<No-one _FeedbackManager>>
 <<move Cat>>
 ===
 
@@ -158,17 +221,28 @@ position: 114,-39
 ---
 <<notmove Cat>>
 <<wait  2>>
+<<Steve _FeedbackManager>>
 Steve: I'm kind of bored.
+<<Clark _FeedbackManager>>
 Clark: I know.
+<<Steve _FeedbackManager>>
 Steve: I just wish that the cat would know better. 
+<<Clark _FeedbackManager>>
 Clark: I know. If only they could recognise the <color=green>gas indication</color>. And then realise if they are <color=red>dead or not</color>. And, based on that, if there was an open path to the end, make the decision to consume or not the <color=blue>fish</color> depending on their <color=red>status</color>. And then manage to escape from the cruel hands of fate that brought them to this place.
+<<Steve _FeedbackManager>>
 Steve: True true true.
+<<Clark _FeedbackManager>>
 Clark: Yeah...
+<<No-one _FeedbackManager>>
 <<wait  1>>
+<<Steve _FeedbackManager>>
 Steve: So...
 Steve: The cat is <color=red>dead</color>.
+<<No-one _FeedbackManager>>
 <<wait  1>>
+<<Steve _FeedbackManager>>
 Steve: Well, anyway. Let's bring in the next specimen.
+<<No-one _FeedbackManager>>
 <<move Cat>>
 ===
 
@@ -177,15 +251,24 @@ position: 114,-39
 ---
 <<notmove Cat>>
 <<wait  2>>
+<<Steve _FeedbackManager>>
 Steve: ...Are you mad?
+<<Clark _FeedbackManager>>
 Clark: ...No.
+<<Steve _FeedbackManager>>
 Steve: ...Are you sure?
+<<Clark _FeedbackManager>>
 Clark: ...
 Clark: No.
+<<Steve _FeedbackManager>>
 Steve: Well then, I guess you are mentally prepared for Schrödinger's test then. 
+<<Clark _FeedbackManager>>
 Clark: ...Well, I can't stay mad at you forever.
+<<Steve _FeedbackManager>>
 Steve: Of course, I pay for-
+<<Clark _FeedbackManager>>
 Clark: You pay for the rent. I know.
+<<No-one _FeedbackManager>>
 <<move Cat>>
 ===
 
@@ -194,23 +277,39 @@ position: 114,-39
 ---
 <<notmove Cat>>
 <<wait  2>>
+<<Clark _FeedbackManager>>
 Clark: Too bad. Welp, thank you next.
+<<Steve _FeedbackManager>>
 Steve: Clark, there is no next.
+<<Clark _FeedbackManager>>
 Clark: What do you mean dear collegue?
 <<stopmusic FMODSoundManager>>
+<<Steve _FeedbackManager>>
 Steve: We are out of cats.
+<<No-one _FeedbackManager>>
 <<wait  1>>
+<<Clark _FeedbackManager>>
 Clark: So, this experiment-
+<<Steve _FeedbackManager>>
 Steve: Is a failure.
+<<No-one _FeedbackManager>>
 <<wait  3>>
+<<Steve _FeedbackManager>>
 Steve: Welp, I'm off to gather my stuff from the office. If you need me, I will be tearing up my degree next door.
 Steve: I WILL be crying and I WILL go after my second career choice. I will become an artist! 
+<<No-one _FeedbackManager>>
 <<wait  1>>
+<<Clark _FeedbackManager>>
 Clark: ...I spent so much money on this.
+<<No-one _FeedbackManager>>
 <<wait  1>>
+<<Clark _FeedbackManager>>
 Clark: ...my dad is gonna kill me.
+<<No-one _FeedbackManager>>
 <<wait  2>>
+<<Clark _FeedbackManager>>
 Clark: Welp, time to flee the country.
+<<No-one _FeedbackManager>>
 <<lose Canvas>>
 <<move Cat>>
 <<stopambience FMODSoundManager>>

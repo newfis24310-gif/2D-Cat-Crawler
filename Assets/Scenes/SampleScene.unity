@@ -2111,10 +2111,12 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Congratulations! The kitty proved smarter than the humans!
+  m_text: 'Congratulations! The kitty proved smarter
 
-    Such an
-    priviledged cat knows her way around danger.
+    than the humans!
+
+    Such
+    an priviledged cat knows her way around danger.
 
     Now, to destroy the world!'
   m_isRightToLeft: 0
@@ -2213,7 +2215,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &497459966
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5875,7 +5877,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1755751612
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6768,7 +6770,7 @@ SceneRoots:
   - {fileID: 1223221771}
   - {fileID: 1988554829}
   - {fileID: 277979555}
+  - {fileID: 1073917741}
   - {fileID: 62296974}
   - {fileID: 1145766238}
-  - {fileID: 1073917741}
   - {fileID: 1239764196}

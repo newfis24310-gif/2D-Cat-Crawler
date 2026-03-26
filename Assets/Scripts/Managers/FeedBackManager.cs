@@ -53,18 +53,21 @@ public class FeedBackManager : MonoBehaviour
     }
 
     // Mέθογος για την ενεργοποίηση της μιας εικόνας και την απενεργοποίηση της άλλης
+    [YarnCommand("Steve")]
     public void ShowSteveImage()
     {
         ImageSc_1.SetActive(true);
         ImageSc_2.SetActive(false);
     }
     
+    [YarnCommand("Clark")]
     public void ShowClarkImage()
     {
         ImageSc_1.SetActive(false);
         ImageSc_2.SetActive(true);
     }
 
+    [YarnCommand("No-one")]
     public void HiddeBothImages()
     {
         ImageSc_1.SetActive(false);
