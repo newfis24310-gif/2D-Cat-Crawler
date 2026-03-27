@@ -35,14 +35,9 @@ public class ExitTile : BaseTile
     public override void OnPlayerEnter()
     {
         if (sequenceStarted) return;
-        StartCoroutine(PlayExitSequence1(GameManager.Instance.player));
+        StartCoroutine(PlayExitSequence(GameManager.Instance.player));
 
-        // Να βγει απο σχολιο οταν φτιαχτει το υπολοιπο
-        //if (GameManager.Instance.GetCurrentAttempt() > 1)
-        //{
-        //    StartCoroutine(PlayExitSequence2(GameManager.Instance.player));
-        //}
-
+    
     }
 
     /*
@@ -53,7 +48,7 @@ public class ExitTile : BaseTile
      * - εμφανίζεται μόνο η γάτα ή μόνο το ποντίκι
      * - στο τέλος ενημερώνεται ο GameManager
      */
-    private IEnumerator PlayExitSequence1(Player player)
+    private IEnumerator PlayExitSequence(Player player)
     {
         sequenceStarted = true;
         player.canMove = false;
@@ -76,12 +71,6 @@ public class ExitTile : BaseTile
         }
         yield return new WaitForSeconds(boxClosedTime);
 
-
-         yield return PlayExitSequence1(player);
-
-        
-        // Θα το βγαλουμε απο εδω και κατω υπαρχει το PlayExitSequence2 που θα τρέχει σε επόμενες προσπάθειες, για να μην επηρεάζει την πρώτη προσπάθεια του παίκτη
-
         // 3. Αν η γάτα ζει, κρύβουμε το ποντίκι πριν ξανανοίξει το κουτί
         SetBoxOpen(true);
         yield return new WaitForSeconds(reopenDelay);
@@ -103,32 +92,7 @@ public class ExitTile : BaseTile
 
     }
 
-    private IEnumerator PlayExitSequence2(Player player)
-    {
-        Mouse mouse = FindAnyObjectByType<Mouse>();
-        SpriteRenderer playerRenderer = player.GetComponent<SpriteRenderer>();
-
-        yield return PlayExitSequence1(player);
-
-         // 3. Αν η γάτα ζει, κρύβουμε το ποντίκι πριν ξανανοίξει το κουτί
-        SetBoxOpen(true);
-        yield return new WaitForSeconds(reopenDelay);
-
-        if (player.isAlive)
-        {
-            if (playerRenderer != null) playerRenderer.enabled = true; 
-            SetMouseVisible(mouse, false);
-        }
-        else
-        {
-            if (playerRenderer != null) playerRenderer.enabled = false; 
-            SetMouseVisible(mouse, true);
-        }
-
-        yield return new WaitForSeconds(reopenDelay);
-        GameManager.Instance.OnPlayerReachedExit(player.isAlive);
-    }
-
+    
     private void SetBoxOpen(bool isOpen)
     {
         if (tileRenderer == null) return;

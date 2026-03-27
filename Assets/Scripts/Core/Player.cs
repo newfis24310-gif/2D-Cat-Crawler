@@ -48,12 +48,6 @@ public class Player : MonoBehaviour
             // Αν ο διάλογος τρέχει, μην επιτρέπουμε την κίνηση του παίκτη
             return;
         }
-        
-        if (!canMove) 
-        {
-            // Αν ο παίκτης δεν μπορεί να κινηθεί, μην κάνουμε τίποτα
-            return;
-        }
 
         if (Input.GetMouseButtonDown(0)) 
         {
