@@ -311,6 +311,5 @@ Clark: ...my dad is gonna kill me.
 Clark: Welp, time to flee the country.
 <<No-one _FeedbackManager>>
 <<lose Canvas>>
-<<move Cat>>
 <<stopambience FMODSoundManager>>
 ===

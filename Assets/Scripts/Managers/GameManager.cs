@@ -72,57 +72,51 @@ public class GameManager : MonoBehaviour
     {
         gameOver = true; // Ορίζουμε το παιχνίδι ως τελειωμένο
         Debug.Log("Game Over! Player has failed all attempts.");
-        feedbackManager.ShowFailAttemptMessage(currentAttempt); // Εμφανίζουμε το μήνυμα αποτυχίας ανάλογα με την τρέχουσα προσπάθεια
+        //feedbackManager.ShowFailAttemptMessage(currentAttempt); // Εμφανίζουμε το μήνυμα αποτυχίας ανάλογα με την τρέχουσα προσπάθεια
         SoundManager.Instance.PlayLoseStinger();
     }
     
     private IEnumerator FailAttemptProcessing()
     {
-        Debug.Log($"Player failed attempt {currentAttempt}. Processing feedback...");
-        // Εμφανίζουμε το κατάλληλο μήνυμα αποτυχίας στον παίκτη ανάλογα με την τρέχουσα προσπάθεια
-        if(currentAttempt > 1){SoundManager.Instance.currentAmbient.setParameterByName("Cat ambience", 1);} //Αλλάζω παράμετρο στο FMOD 
+        if (currentAttempt >= maxAttempts) gameOver = true; // Αν έχουμε φτάσει στο μέγιστο αριθμό προσπαθειών, ορίζουμε το παιχνίδι ως τελειωμένο
+
+        if(currentAttempt > 1) {SoundManager.Instance.currentAmbient.setParameterByName("Cat ambience", 1); }
         SoundManager.Instance.PlayVacantBox();
-        feedbackManager.ShowFailAttemptMessage(currentAttempt);
 
-        Debug.Log("Waiting for feedback dialogue to complete...");
+        feedbackManager.ShowFailAttemptMessage(currentAttempt); // Εμφανίζουμε το μήνυμα αποτυχίας ανάλογα με την τρέχουσα προσπάθεια
+        yield return new WaitForSeconds(2f); // Προσωρινή αναμονή για να δώσουμε χρόνο στον παίκτη να διαβάσει το μήνυμα (μπορεί να αφαιρεθεί όταν έχουμε έτοιμο το σύστημα διαλόγων)
 
-         yield return new WaitForSeconds(2f); // Προσωρινή αναμονή για να δώσουμε χρόνο στον παίκτη να διαβάσει το μήνυμα (μπορεί να αφαιρεθεί όταν έχουμε έτοιμο το σύστημα διαλόγων)
-
-        //feedbackManager.ShowImageSc_1(true);
-        //feedbackManager.ShowImageSc_2(true); 
         while (feedbackManager.dialogueRunner.IsDialogueRunning)
         {
             // Περιμένουμε μέχρι να τελειώσει ο διάλογος
             yield return null;
         }
 
-        //feedbackManager.ShowImageSc_1(false);
-        //feedbackManager.ShowImageSc_2(false); 
+        if (gameOver)
+        {
+            LoseGame(); // Αν το παιχνίδι έχει τελειώσει, καλούμε τη μέθοδο για να χειριστούμε το τέλος του παιχνιδιού
+            yield break; // Τερματίζουμε την εκτέλεση της μεθόδου
+        }
+
+        currentAttempt++;
+        if(currentAttempt <= maxAttempts) UpdateAttempText();
+        NextAttempt();
+    }
 
         
-
        
-        // Aφου τελειώσει ο διάλογος, ελέγχουμε αν έχουμε φτάσει στο μέγιστο αριθμό προσπαθειών
-        if (currentAttempt < maxAttempts)
-        {
-            currentAttempt++;
-            NextAttempt();
-        } 
-        else
-        {
-            LoseGame();
-        }
-    }
 
     private void NextAttempt()
     {
+
+        if (gameOver) return; // Αν το παιχνίδι έχει τελειώσει, δεν κάνουμε τίποτα
+
         Debug.Log($"Preparing for attempt {currentAttempt}...");
         player.canMove = false; // Απενεργοποιούμε την κίνηση του παίκτη κατά τη διάρκεια της προετοιμασίας για τον επόμενο γύρο
         YarnDeathOnceFalse(); //Αρχικοποιώ μεταβλητή στο Yarn
 
         ClearSkeletons(); // Καθαρίζουμε τα skeletons sprites από την προηγούμενη προσπάθεια
         deathPoints.Clear(); // Καθαρίζουμε τα σημεία θανάτου από την προηγούμενη προσπάθεια
-        if(currentAttempt < maxAttempts) UpdateAttempText();
         if (gridManager != null)
         {
             gridManager.ResetGrid(); // Επαναφορά του grid στην αρχική κατάσταση
