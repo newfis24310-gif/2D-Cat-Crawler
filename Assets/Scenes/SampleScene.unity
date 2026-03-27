@@ -1805,7 +1805,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Cat Crawler:'
+  m_text: 'The Cat Crawler:'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4a2a1facd35bd29499eff0f3ab5a0e5e, type: 2}
   m_sharedMaterial: {fileID: -3775678130634126340, guid: 4a2a1facd35bd29499eff0f3ab5a0e5e, type: 2}
