@@ -61,6 +61,7 @@ Clark: I'll call my dad's insurance company.
     Clark: I may take the cat with me though. Lucky paws!
 <<endif>>
 <<No-one _FeedbackManager>>
+<<wait  1>>
 <<winskill Canvas>>
 <<move Cat>>
 <<stopambience FMODSoundManager>>
@@ -85,6 +86,7 @@ Indubitably dear <b>Clarkson</b>.
 <<Clark _FeedbackManager>>
 Don't ever say that again <b>Steve</b>. Anyway...
 <<No-one _FeedbackManager>>
+<<wait  1>>
 <<move Cat>>
 ===
 
@@ -128,6 +130,7 @@ Clark: No Steve, this is science!
     Clark: Steve... just... be quiet.
 <<endif>>
 <<No-one _FeedbackManager>>
+<<wait  1>>
 <<move Cat>>
 ===
 
@@ -145,6 +148,7 @@ Clark: This fish is special. You remember? The abnormal <color=blue>antidote</co
 <<Steve _FeedbackManager>>
 Steve: Oh yeah yeah...
 <<No-one _FeedbackManager>>
+<<wait  1>>
 ===
 
 title: EndRound3
@@ -178,6 +182,7 @@ Clark: Well, yes.
     <<jump HasFoundFishBefore>>
 <<endif>>
 <<No-one _FeedbackManager>>
+<<wait  1>>
 <<move Cat>>
 ===
 
@@ -214,6 +219,7 @@ Clark: How did you survive this long?
 <<Steve _FeedbackManager>>
 Steve: I'm on that keto.
 <<No-one _FeedbackManager>>
+<<wait  1>>
 <<move Cat>>
 ===
 
@@ -244,6 +250,7 @@ Steve: The cat is <color=red>dead</color>.
 <<Steve _FeedbackManager>>
 Steve: Well, anyway. Let's bring in the next specimen.
 <<No-one _FeedbackManager>>
+<<wait  1>>
 <<move Cat>>
 ===
 
@@ -270,6 +277,7 @@ Steve: Of course, I pay for-
 <<Clark _FeedbackManager>>
 Clark: You pay for the rent. I know.
 <<No-one _FeedbackManager>>
+<<wait  1>>
 <<move Cat>>
 ===
 
@@ -311,6 +319,7 @@ Clark: ...my dad is gonna kill me.
 <<Clark _FeedbackManager>>
 Clark: Welp, time to flee the country.
 <<No-one _FeedbackManager>>
+<<wait  1>>
 <<lose Canvas>>
 <<stopambience FMODSoundManager>>
 ===
