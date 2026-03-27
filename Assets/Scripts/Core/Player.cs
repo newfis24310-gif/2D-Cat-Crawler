@@ -12,7 +12,7 @@ public class Player : MonoBehaviour
     [Header("Player Stats")]
     public int x, y; // Συντεταγμένες του παίκτη στον πίνακα
     public bool isAlive = true; // Κατάσταση ζωής του παίκτη
-    public bool canMove = true; // Δυνατότητα κίνησης του παίκτη (μπορεί να απενεργοποιηθεί όταν ο παίκτης πεθάνει)
+    public bool canMove = false; // Δυνατότητα κίνησης του παίκτη (μπορεί να απενεργοποιηθεί όταν ο παίκτης πεθάνει)
 
     public DialogueRunner dialogueRunner; // Αναφορά στον DialogueRunner για να μπορούμε να ξεκινάμε διαλόγους
 
@@ -35,7 +35,7 @@ public class Player : MonoBehaviour
         });
 
         dialogueRunner.AddCommandHandler<string>("move", (target) => {
-            //canMove = true; // Ενεργοποιούμε την κίνηση του παίκτη όταν εκτελείται η εντολή "move" στον Yarn
+            canMove = true; // Ενεργοποιούμε την κίνηση του παίκτη όταν εκτελείται η εντολή "move" στον Yarn
             Debug.Log($"{target} movement has been enabled by Yarn command.");
         }); 
     }
@@ -43,11 +43,16 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        // ΠΡΟΣΩΡΙΝΟ: Πατώντας το πλήκτρο 'K' ξεκλειδώνεις τον παίκτη χειροκίνητα
-        if (Input.GetKeyDown(KeyCode.K)) 
+        if (dialogueRunner.IsDialogueRunning) 
         {
-            canMove = true;
-            Debug.Log("MANUAL UNLOCK: canMove is now TRUE");
+            // Αν ο διάλογος τρέχει, μην επιτρέπουμε την κίνηση του παίκτη
+            return;
+        }
+        
+        if (!canMove) 
+        {
+            // Αν ο παίκτης δεν μπορεί να κινηθεί, μην κάνουμε τίποτα
+            return;
         }
 
         if (Input.GetMouseButtonDown(0)) 
