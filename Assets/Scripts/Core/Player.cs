@@ -101,6 +101,9 @@ public class Player : MonoBehaviour
                 clickedTile.OnPlayerEnter(); // Καλούμε τη μέθοδο που χειρίζεται την είσοδο του παίκτη στο tile 
                 SoundManager.Instance.PlayBoxMovement(); // Ήχος για κάθε κουτί
                 if (!clickedTile.isRevealed) gridManager.UpdateGridVisibility(x, y); // Αποκαλύπτουμε το tile που βρίσκεται στις συντεταγμένες του παίκτη μονο αν δεν είναι ήδη αποκαλυμμένο
+            } else
+            {
+                Debug.Log($"Clicked tile at ({clickedTile.name}) is not a neighbor of the current tile at ({currentTile.name}). Player cannot move there.");
             }
         }
     }
@@ -170,7 +173,9 @@ public class Player : MonoBehaviour
         startTile.RevealTile(true); // Αποκαλύπτουμε το tile που βρίσκεται στις συντεταγμένες του παίκτη
         
         gridManager.UpdateGridVisibility(x, y); // Ενημερώνουμε την ορατότητα του grid με βάση τις νέες συντεταγμένες του παίκτη
-    
+        
+        canMove = true; // Ενεργοποιούμε την κίνηση του παίκτη μετά την επαναφορά
+        Debug.Log("Player has moved to the starting tile and is ready to play.");
     }
 
 }

@@ -159,15 +159,12 @@ public class GameManager : MonoBehaviour
 
         if (feedbackManager != null && feedbackManager.dialogueRunner != null)
         {
-            //feedbackManager.ShowImageSc_1(true);
-            //feedbackManager.ShowImageSc_2(true); 
             yield return null;
             while (feedbackManager.dialogueRunner.IsDialogueRunning)
             {
                 yield return null; // Περίμενε το επόμενο frame
             }
-            //feedbackManager.ShowImageSc_1(false);
-            //feedbackManager.ShowImageSc_2(false);
+            
         }
 
         // To ποντίκι ξεκινάει την διαδρομή του
