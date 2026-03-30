@@ -92,6 +92,83 @@ This structure makes the project easier to extend with new tiles, items, and gam
 
 ---
 
+## 🎨 Assets & Credits
+
+### 🖋 Font
+**Medodica** by Roberto Mocci  
+Copyright (c) 2024 Roberto Mocci  
+Licensed under the **SIL Open Font License 1.1**  
+Reserved Font Name: **Medodica**
+
+- Author / contact: postocarattere@gmail.com
+- Author page: https://patreon.com/rmocci
+- OFL reference: http://scripts.sil.org/OFL
+
+> The full font license text is included in the project files.
+
+---
+
+### 🔊 Sound Effects
+Sound effects sourced from **Pixabay**:
+
+- Cardboard box close  
+- Cardboard box handling / movement  
+- Cardboard box drop hit  
+- Box opening  
+- Dropping cardboard box  
+- Cardboard box open / close  
+- Opening package / parcel box  
+- Robotic movement  
+- Dark horror ambience  
+- Gas decompression  
+- Notification / alert  
+- Footsteps on stone floor  
+- Lab bottles bubbling ambience  
+- Cat meow effects  
+- Cat purring  
+- Computer lab ambience  
+- Eating sound  
+- Additional cat vocalizations  
+- Keyboard typing sound  
+
+Source links:
+- https://pixabay.com/sound-effects/film-special-effects-cardboard-box-close-182562/
+- https://pixabay.com/sound-effects/film-special-effects-cardboard-box-73023/
+- https://pixabay.com/sound-effects/film-special-effects-cardboard-box-drop-hit-handling-32135/
+- https://pixabay.com/sound-effects/film-special-effects-box-open-90674/
+- https://pixabay.com/sound-effects/dropping-cardboard-box-453026/
+- https://pixabay.com/sound-effects/film-special-effects-cardboard-box-open-close-86303/
+- https://pixabay.com/sound-effects/film-special-effects-open-package-box-parcel-100334/
+- https://pixabay.com/sound-effects/technology-28-movimientosroboticos-29880/
+- https://pixabay.com/sound-effects/horror-dark-horror-ambient-05-425468/
+- https://pixabay.com/sound-effects/film-special-effects-gas-decompression-329819/
+- https://pixabay.com/sound-effects/film-special-effects-notification-alert-8-331718/
+- https://pixabay.com/sound-effects/film-special-effects-2-persons-walking-on-stonefloor-28579/
+- https://pixabay.com/sound-effects/film-special-effects-lab-bottles-bubbling-ambience-211721/
+- https://pixabay.com/sound-effects/cat-meow-fx-461188/
+- https://pixabay.com/sound-effects/nature-real-cat-purring-sound-354510/
+- https://pixabay.com/sound-effects/technology-computer-lab-33482/
+- https://pixabay.com/sound-effects/people-eat-353533/
+- https://pixabay.com/sound-effects/nature-cute-cat-meow-472372/
+- https://pixabay.com/sound-effects/nature-cat-meow-321642/
+- https://pixabay.com/sound-effects/nature-262312-steffcaffrey-cat-meow1-80256/
+- https://pixabay.com/sound-effects/film-special-effects-keyboard-typing-one-short-1-292590/
+
+---
+
+### 🛠 Tools
+- Unity
+- Yarn Spinner
+- FMOD Studio
+- TextMeshPro
+
+---
+
+### 🛠 Tools
+- Unity Engine
+- Yarn Spinner
+- FMOD Studio
+
 ## 🎥 Demo
 
 
